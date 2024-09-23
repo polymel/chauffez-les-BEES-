@@ -16,11 +16,22 @@ Bête à corne
 
 
 J2 : Tester la tension à vide du panneau solaire : besoin d'une fiche (connecteur) , du panneau solaire et le mettre sous le néon. 
-Le jour où il ferra beau faire le montage : 
+Le jour où il ferra beau faire le montage. 
 
+
+Utiliser en série un ampère mètre et en parrallèle un voltmètre. Utiliser une résistance "réglable". 
 
 Utiliser lush pour faire les schémas 
 
+
+Première ébauche de la PCBA :
+BOM: 
+
+-ESP32, alimenté en 3,3 V 
+-Régulateur de tension (un seule composant) 
+-Groupe comparateur (diode zener pour fixer une tension de seuil , une résistance pour mettre une charge à la diode, un comparateur) 
+-un interrupteur piloté par l'ESP32 
+- X résistan
 
 
 
