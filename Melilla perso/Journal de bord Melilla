@@ -57,7 +57,17 @@ Est ce que les parois métalliques des résistances conduisent ? comme les bains
 
 
 Trigger de Shmitt 
-Une des application du Trigger de Shmitt est : réaliser des circuits de contrôle avec hystérésis : thermostats, interrupteurs crépusculaires, maintien du niveau dans une cuve. C'est donc pile ce que l'on veut
+Une des application du Trigger de Shmitt est : réaliser des circuits de contrôle avec hystérésis : thermostats, interrupteurs crépusculaires, maintien du niveau dans une cuve. C'est donc pile ce que l'on veut.
+
+
+Comment définir les seuils inférieur et superieur ? 
+Tension min = tension à partir de la quelle le sytème de fonctionnerait ples. 3,3 V? 
+Tension max = tension à partir de laquelle la température est dangereuse pour les abeilles
+
+
+Quelle est la température dangereuse pour l'essaim ? 
+
+pas de régulateur de Tension sur lush project
 
 Hystérésis
 
