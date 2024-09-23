@@ -15,14 +15,14 @@ Bête à corne
 
 
 
-J2 : Tester la tension à vide du panneau solaire : besoin d'une fiche (connecteur) , du panneau solaire et le mettre sous le néon. 
+J2 : Tester la tension à vide du panneau solaire : besoin d'une fiche (connecteur RCA) , du panneau solaire et le mettre sous le néon. 
 Le jour où il ferra beau faire le montage. 
 
 
 Utiliser en série un ampère mètre et en parrallèle un voltmètre. Utiliser une résistance "réglable". 
 
 Utiliser lush pour faire les schémas 
-
+1. Tester le panneau solaire: on remplace le panneau solaire par un génerateur de thevenin 
 
 Première ébauche de la PCBA :
 BOM: 
@@ -31,7 +31,7 @@ BOM:
 -Régulateur de tension (un seule composant) 
 -Groupe comparateur (diode zener pour fixer une tension de seuil , une résistance pour mettre une charge à la diode, un comparateur) 
 -un interrupteur piloté par l'ESP32 
-- X résistan
+- X résistances
 
 
 
