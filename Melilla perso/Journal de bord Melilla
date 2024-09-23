@@ -40,6 +40,24 @@ J'ai ajouté à l'aide de Simon Git dans VS Code.
 
 MPN et réferences du materiel : 
 
+Je me suis renseignée egalement sur le process du radiateur à inertie fluide. 
+
+C'est le principe sur lequel on base le chauffage des résistances. 
+
+Pour le liquide on peut choisir : De l’eau glycolée, De l’huile, minérale ou végétale. 
+On appelle ces fluides :fluide caloporteur ou thermo-conducteur
 
 
+résistance, qui transforme le courant en chaleur ;
+
+Est ce que les parois métalliques des résistances conduisent ? comme les bains d'huile 
+
+- : lourd, dur de réguler à cause du temps de latence 
+![alt text](image.png)
+
+
+Trigger de Shmitt 
+Une des application du Trigger de Shmitt est : réaliser des circuits de contrôle avec hystérésis : thermostats, interrupteurs crépusculaires, maintien du niveau dans une cuve. C'est donc pile ce que l'on veut
+
+Hystérésis
 
