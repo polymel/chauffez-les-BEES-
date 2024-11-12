@@ -71,7 +71,7 @@ pas de régulateur de Tension sur lush project
 
 Hystérésis
 
-
+J3
 -------12/11-------
 
 essai 
@@ -91,4 +91,16 @@ https://www.st.com/en/power-management/mppt-dc-dc-converters.html
 Il nous donne aussi un INA 219. il nous permet de mesurer la tension et l'intensité. Il dessine de montage : un premier montage pour de test pour faire les mesures T/I avec l'INA 219 
 et un autre "final" où l'INA sera intégré dans la carte 
 
-voir photo  Montage avec INA 219 et final
+*voir photo  "Montage avec INA 219 et final"*
+
+Le capteur INA219 est un capteur de courant et de tension qui permet de mesurer la puissance électrique échangée entre des appareils. Il communique avec l'Arduino via une interface I2C 
+et est adapté à la mesure de la puissance dans une chaîne de puissance.
+
+
+je m'occupe de la partie code du : 
+
+
+18B20 : Capteurs de température
+
+et de comment obtenir le fonctionnement du système àn p arti d'une certaine tension (3,3 V ? tension de fonctionnement de l'esp21) .
+ce montage sera composé d'une diode zener , un comparateur et un abaisseur de tension ).
