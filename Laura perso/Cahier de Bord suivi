@@ -1,0 +1,8 @@
+Cahier de bord Laura :
+
+12/11/2024 :
+Nous avons déterminé le schéma electronique. 
+Bien séparé et compris nos tâches respectives. 
+Pour ma part : 
+- 1ere étape : écrire un code en arduino qui récupère les valeurs de courant et de tension via le bus I2C entre les composants INA219 et ESP32.
+- 2e étape : 
