@@ -75,3 +75,20 @@ Hystérésis
 -------12/11-------
 
 essai 
+
+Le professeur nous donne des articles à lire :
+
+https://www.morningstarcorp.com/faq/what-are-the-different-types-of-solar-charge-controllers/#:~:text=All%20things%20being%20equal%2C%20MPPT,boost%20is%20not%20as%20significant.
+
+https://www.ti.com/lit/ug/tidudj2/tidudj2.pdf?ts=1728344845244&ref_url=https%253A%252F%252Fwww.google.com%252F
+
+https://www.ti.com/lit/an/slyt478/slyt478.pdf?ts=1728361811934
+
+https://www.st.com/en/power-management/mppt-dc-dc-converters.html
+
+
+
+Il nous donne aussi un INA 219. il nous permet de mesurer la tension et l'intensité. Il dessine de montage : un premier montage pour de test pour faire les mesures T/I avec l'INA 219 
+et un autre "final" où l'INA sera intégré dans la carte 
+
+voir photo  Montage avec INA 219 et final
