@@ -8,3 +8,7 @@ Pour ma part :
 objectif : faire communiquer en bus I2C la tension et le courant entre l’INA 219 et ESP32
 - 2e étape : créer le schéma élec : GS + capacité solaire 
 - 3e étape : connaitre la caractéristique : quelle capacité solaire il nous faut 
+
+
+A FAIRE prochaie séance : brancher le circuit à mon ordinateur afin de tester mon ode arduino 
+avec composants suivants : générateur de tension, INA219, ESP32, bus I2C et résistance. 
