@@ -1,0 +1,28 @@
+#include <Wire.h>
+#include <Adafruit_INA219.h>
+
+// Création de l'objet INA219
+Adafruit_INA219 ina219;
+
+void setup() {
+  Serial.begin(115200);
+  while (!Serial) { delay(10); } // Attente d'ouverture du moniteur série
+
+  // Initialisation de l'INA219
+  if (!ina219.begin()) {
+    Serial.println("Échec de la communication avec INA219");
+    while (1) { delay(10); }
+  }
+  Serial.println("INA219 initialisé avec succès !");
+}
+
+void loop() {
+  float tensionBus = ina219.getBusVoltage_V();  // Tension en volts
+  float courant = ina219.getCurrent_mA();       // Courant en mA
+
+  Serial.print("Tension du bus: "); Serial.print(tensionBus); Serial.println(" V");
+  Serial.print("Courant: "); Serial.print(courant); Serial.println(" mA");
+  Serial.println("---------------------------------");
+
+  delay(1000); // Attente de 1 seconde entre chaque mesure
+}
