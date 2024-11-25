@@ -186,6 +186,24 @@ COMPARATEUR DE PHASE
 Le comparateur active l'abaisseur de tension Si la tension du panneau est supérieure au seuil. 
 
 
+on détermine la valeur des composants entre le panneau solaire et l'esp32. 
+
+R2 : on fait une KVL pour détérminer la valeur de la résistance qui se situe entre la panneau solaire et la diode Zener . 
+
+KVL : panneau solaire equivalent à la generateur de tension avec 10V< tension <24V. + Ur2 (tension au borne de R2) + diode zener 
+parfaite equivalent generateur de tension de 6,8 V. 
+
+
+CHoix de la tension de la diode zener 6,8 V: on reagrde sur le diagramme P_Panneau_Solaire à partir de quelle tension le panneau solaire fonctionne à "pleine puissance". 
+
+On observe que peut importe l'éclairage, le panneau commence à fonctionner autour de 10V. 
+
+
+
+on choisit une tension parmi les tensions standards des diodes : 
+
+
+voir "Schémas alimentation de l'esp32 au panneau solaire"
 
 
 
