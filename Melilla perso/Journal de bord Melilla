@@ -169,24 +169,20 @@ Commment choisir les composants ?
 
 
 
+
 DIODE ZENER 
+CHoix de la tension de la diode zener 6,8 V: on reagrde sur le diagramme P_Panneau_Solaire à partir de quelle tension le panneau solaire fonctionne à "pleine puissance". 
+
+On observe que peut importe l'éclairage, le panneau commence à fonctionner autour de 10V. On doit choisir une tesnion en fonction de : 
 
 
-La diode Zener définit une tension de seuil ici on doit prendre X V. 
-
-On doit choisir une tesnion en fonction de : 
-
-- la tension minimale de fonctionnement du système : pour alimenter l'ESP32 il faut 3.3V  + autres composants ?? 
-- plage de tension du panneau solaire  , le notre fonctionne de 0 à 22v ???? 
-+ une marge de sécurité 
-
-
-COMPARATEUR DE PHASE 
-
-Le comparateur active l'abaisseur de tension Si la tension du panneau est supérieure au seuil. 
-
+on choisit une tension parmi les tensions standards des diodes : Diode zener valeurs standards . 
 
 on détermine la valeur des composants entre le panneau solaire et l'esp32. 
+
+Je me demandais pourquoi on choisissait 6,8 V alors qu'il y a des valeurs standards des diodes zener plus proche de 10v. 
+Sauf que R2 va faire chuter la tension donc si on choissit une Zner avec une tension > 6,8 V , il est possible que le sytème ne 
+sa'ctive pas à partir de 10v reçu dans le panneau solaire. La résistance aura fait chuter la tension de 10V. 
 
 R2 : on fait une KVL pour détérminer la valeur de la résistance qui se situe entre la panneau solaire et la diode Zener . 
 
@@ -194,16 +190,39 @@ KVL : panneau solaire equivalent à la generateur de tension avec 10V< tension <
 parfaite equivalent generateur de tension de 6,8 V. 
 
 
-CHoix de la tension de la diode zener 6,8 V: on reagrde sur le diagramme P_Panneau_Solaire à partir de quelle tension le panneau solaire fonctionne à "pleine puissance". 
+R2 = (tension max du panneau solaire - tension de la zener ) / cournant de R2. 
 
-On observe que peut importe l'éclairage, le panneau commence à fonctionner autour de 10V. 
+pour déterminer cournat de R2 IR2 : 
+
+on doit avoir IR2 compris entre le cournat minimum de la zener et courant maximum  de la zener. Ces courants peuvent être trouvés dans
+la doc de la zener. 
+
+Mais où parmis cette intervalle le Ir2 doit être ? 
+
+déja à quoi correspondent les bornes ? 
 
 
+Izener min = courant minimal pour que la diode Zener fonctionne correctement en mode Zener , si Ir2 trop proche de Izener min la diode ne maintiendra pas la tension de claquage et la régulation échouera.
+Izener max = courant maximal que la diode Zener peut supporter sans surchauffe ou destruction.
 
-on choisit une tension parmi les tensions standards des diodes : 
+il faut que pour la tension max du panneau solaire (26 V), le courant dans la diode (= Ir2 = IdiodeZ) doit être  inferieur à Izener max, sinon la diode claque.
+il faut que pour la tension min de panneau solaire (10v), le cournat dans la diodde doit être superieur à Izener min, sinon la diode ne fonctionne pas. 
+
+Il faut que Ir2 soit le plus proche possible de Izmin afin de ne pas faire chauffer la diode et ne pas l'user prématuremment. 
 
 
 voir "Schémas alimentation de l'esp32 au panneau solaire"
+
+
+
+
+
+
+
+COMPARATEUR DE PHASE 
+
+Le comparateur active l'abaisseur de tension Si la tension du panneau est supérieure au seuil. 
+
 
 
 
