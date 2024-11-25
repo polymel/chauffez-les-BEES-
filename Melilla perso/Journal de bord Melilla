@@ -104,3 +104,39 @@ je m'occupe de la partie code du :
 
 et de comment obtenir le fonctionnement du système àn p arti d'une certaine tension (3,3 V ? tension de fonctionnement de l'esp21) .
 ce montage sera composé d'une diode zener , un comparateur et un abaisseur de tension ).
+
+
+Je veux tester l'iDE arduino que j'ai télécharger. Le televersement ne fonctionne pas. Mon ordi ne reconnait pas la carte. 
+J'ai désinstaller et retélécharger l'ide. Tekecharger d'autres drivers mais cela ne fonctionne pas. 
+
+
+Difficultés rencontrées
+
+
+Téléversement du code sur l’ESP32 :
+
+Problème avec l'installation des pilotes.
+Vérifier si la carte ESP32 est bien sélectionnée dans l’IDE Arduino et si les paramètres de port série sont corrects.
+Utiliser un code basique pour tester la communication avec la carte.
+
+25/11
+
+
+Objectif du jour :
+
+Résoudre le problème de téléversement sur l’ESP32.
+Tester et coder la gestion des capteurs DS18B20 pour lire la température.
+
+
+Je m'informe sur le capteur : 
+
+
+On peut mettre plusieurs capteurs en série : 
+
+
+Chaque capteur de température DS18B20 possède un code série 64 bits unique. Cela vous permet de câbler plusieurs capteurs au même câble de données.
+Ainsi, vous pouvez obtenir la température de plusieurs capteurs en utilisant une seule broche numérique Arduino.
+
+
+source : 
+https://www.raspberryme.com/guide-du-capteur-de-temperature-ds18b20-avec-arduino/
