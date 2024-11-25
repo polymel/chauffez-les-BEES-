@@ -102,12 +102,12 @@ je m'occupe de la partie code du :
 
 18B20 : Capteurs de température
 
-et de comment obtenir le fonctionnement du système àn p arti d'une certaine tension (3,3 V ? tension de fonctionnement de l'esp21) .
+et de comment obtenir le fonctionnement du système àn p arti d'une certaine tension (3,3 V ? tension de fonctionnement de l'esp) .
 ce montage sera composé d'une diode zener , un comparateur et un abaisseur de tension ).
 
 
 Je veux tester l'iDE arduino que j'ai télécharger. Le televersement ne fonctionne pas. Mon ordi ne reconnait pas la carte. 
-J'ai désinstaller et retélécharger l'ide. Tekecharger d'autres drivers mais cela ne fonctionne pas. 
+J'ai désinstaller et retélécharger l'ide. Telecharger d'autres drivers mais cela ne fonctionne pas. 
 
 
 Difficultés rencontrées
@@ -140,3 +140,53 @@ Ainsi, vous pouvez obtenir la température de plusieurs capteurs en utilisant un
 
 source : 
 https://www.raspberryme.com/guide-du-capteur-de-temperature-ds18b20-avec-arduino/
+
+
+COmment brancher l'esp32 au capteur de température ? 
+
+Le capteur de temlpéarature à 2 pins
+
+A quoi les brancher ? 
+
+
+---- changement d'objectif du jour --> il faut commencer la fabrication du PCB donc il faut trouver commetn relier le panneau solaire  à l'esp32 . 
+
+comment alimenter l'esp32 avec l'enregie du panneau solaire ? 
+
+
+ en Parlant avec Simon : 
+
+
+Schéma fonctionnel
+
+
+Entrée : Le panneau solaire fournit une tension variable (par exemple, entre 12V et 18V).
+Diode Zener et comparateur : Vérifient si la tension est suffisante pour alimenter le système.
+Abaisseur de tension (buck converter) : Régule la tension à 3.3V pour alimenter l’ESP32.
+
+
+Commment choisir les composants ? 
+
+
+
+DIODE ZENER 
+
+
+La diode Zener définit une tension de seuil ici on doit prendre X V. 
+
+On doit choisir une tesnion en fonction de : 
+
+- la tension minimale de fonctionnement du système : pour alimenter l'ESP32 il faut 3.3V  + autres composants ?? 
+- plage de tension du panneau solaire  , le notre fonctionne de 0 à 22v ???? 
++ une marge de sécurité 
+
+
+COMPARATEUR DE PHASE 
+
+Le comparateur active l'abaisseur de tension Si la tension du panneau est supérieure au seuil. 
+
+
+
+
+
+
