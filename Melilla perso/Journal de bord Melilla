@@ -210,6 +210,9 @@ il faut que pour la tension min de panneau solaire (10v), le cournat dans la dio
 
 Il faut que Ir2 soit le plus proche possible de Izmin afin de ne pas faire chauffer la diode et ne pas l'user prématuremment. 
 
+à partir de la doc de la znzer et des valeurs Izener min et Izener max on fait l'application numérique pour R2 :
+
+
 
 voir "Schémas alimentation de l'esp32 au panneau solaire"
 
