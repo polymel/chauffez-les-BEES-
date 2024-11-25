@@ -1,0 +1,62 @@
+// code pour tester l'esp32 et le capteur de température 
+
+#include <OneWire.h>
+#include <DallasTemperature.h>
+
+// Définition des broches
+#define ONE_WIRE_BUS 21   // Broche du DS18B20
+#define RELAY_PIN 22      // Broche du relais
+
+
+// Température cible
+const float TEMP_TARGET = 50.0;
+const float TEMP_HYSTERESIS = 2.0; // Hystérésis : 2°C
+
+// Initialisation du bus OneWire et du capteur
+OneWire oneWire(ONE_WIRE_BUS);
+DallasTemperature sensors(&oneWire);
+
+// Variables de contrôle
+bool heating = false;
+
+void setup() {
+  Serial.begin(115200);
+  sensors.begin();
+
+  // Configuration du relais
+  pinMode(RELAY_PIN, OUTPUT);
+  digitalWrite(RELAY_PIN, LOW); // Relais désactivé au départ
+
+  Serial.println("Système de régulation de température démarré.");
+}
+
+void loop() {
+  sensors.requestTemperatures(); // Lire la température du capteur
+  float temperature = sensors.getTempCByIndex(0); // Lecture du 1er capteur
+  
+  if (temperature == DEVICE_DISCONNECTED_C) {
+    Serial.println("Erreur : Capteur déconnecté !");
+    return;
+  }
+  
+  Serial.print("Température actuelle : ");
+  Serial.println(temperature);
+
+  // Régulation de la température avec hystérésis
+  if (temperature < TEMP_TARGET - TEMP_HYSTERESIS) {
+    heating = true; // Activer le chauffage
+  } else if (temperature > TEMP_TARGET + TEMP_HYSTERESIS) {
+    heating = false; // Désactiver le chauffage
+  }
+
+  // Contrôle du relais
+  if (heating) {
+    digitalWrite(RELAY_PIN, HIGH);
+    Serial.println("Chauffage activé.");
+  } else {
+    digitalWrite(RELAY_PIN, LOW);
+    Serial.println("Chauffage désactivé.");
+  }
+
+  delay(1000); // Attente avant la prochaine mesure
+}
