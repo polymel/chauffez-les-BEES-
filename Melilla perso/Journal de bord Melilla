@@ -212,7 +212,23 @@ Il faut que Ir2 soit le plus proche possible de Izmin afin de ne pas faire chauf
 
 à partir de la doc de la znzer et des valeurs Izener min et Izener max on fait l'application numérique pour R2 :
 
+J'ai du mal à lire la doc : je ne trouve pas de Iz min et Izmax à proprment parler. Il y a  Zerner Voltage Range mais il n' y a qu'une valeur de I
+, il y a Maximum Zener Impedance et il y a Maximum Reverse Current mais je n
 
+on lit dans la doc Izener min = 2mA. On voit sur le ghraphique que la zone du coude se termine à 2mA. 
+voir shémas graphique détermination Izmin. 
+
+Pour être sur d'avoir passer la zone du coude et parce que la fabrication des composants est variable on prends Ir2 = 5mA. 
+
+Determination de R2 pour Vps max/min avec Ir2 = 5ma :
+
+
+Pour U panneau solaire = min = 10v et pour Ir2 = 5ma on a R2 = (10-6,8)/5*10^3 donc R2 = 640 omh.
+POur u panneau solaire = max =26v et pour Ir2 = 5ma on a R2 = (26-6,8)/5*10^3 donc R2 = 3840 omh. 
+
+
+pour Izamx on lit dans la doc que la puissance max dissipée = 350 mW donc on fait 350/6,8 = 50 mA. 
+donc IzMax = 50mA. 
 
 voir "Schémas alimentation de l'esp32 au panneau solaire"
 
