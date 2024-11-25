@@ -36,4 +36,6 @@ Je me suis rendu compte que je n'avais pas Git de téléchargé, je l'ai donc t�
 Mais j'ai encore le problème "cmd" dans le path, même si je l'ai ajouté au Path.
 Solution: j'executerais mes codes sur l'ordi de Simon. 
 
-
+Le code ne met pas d'erreur sur l'ordi de simon.
+Donc prochaine séance je testerais de brancher l'ESP32 avec l'INA219 et d'y faire passer une tension et un courant.
+Et telecharger tera term : programme d'emulation de terminal.
