@@ -31,6 +31,7 @@ avec composants suivants : générateur de tension, INA219, ESP32, bus I2C et r�
 J'ai téléchargé le logiciel Arduno IDE afin de pouvoir piloter la carte avec ESP32 et l'INA219.
 J'ai également téléchargé la carte ESP32 sur le logiciel Arduino IDE.
 Je teste à présent mon code arduino sur la carte.
-
+Bon, après m'être trompé de board lors du téléchargement, j'ai enfin téléchargé la bonne board MAIS mon ordi ne veut pas compiler mon script.
+-> erreur de "cmd"
 
 
