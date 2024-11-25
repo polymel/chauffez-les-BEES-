@@ -102,5 +102,147 @@ je m'occupe de la partie code du :
 
 18B20 : Capteurs de température
 
-et de comment obtenir le fonctionnement du système àn p arti d'une certaine tension (3,3 V ? tension de fonctionnement de l'esp21) .
+et de comment obtenir le fonctionnement du système àn p arti d'une certaine tension (3,3 V ? tension de fonctionnement de l'esp) .
 ce montage sera composé d'une diode zener , un comparateur et un abaisseur de tension ).
+
+
+Je veux tester l'iDE arduino que j'ai télécharger. Le televersement ne fonctionne pas. Mon ordi ne reconnait pas la carte. 
+J'ai désinstaller et retélécharger l'ide. Telecharger d'autres drivers mais cela ne fonctionne pas. 
+
+
+Difficultés rencontrées
+
+
+Téléversement du code sur l’ESP32 :
+
+Problème avec l'installation des pilotes.
+Vérifier si la carte ESP32 est bien sélectionnée dans l’IDE Arduino et si les paramètres de port série sont corrects.
+Utiliser un code basique pour tester la communication avec la carte.
+
+25/11
+
+
+Objectif du jour :
+
+Résoudre le problème de téléversement sur l’ESP32.
+Tester et coder la gestion des capteurs DS18B20 pour lire la température.
+
+
+Je m'informe sur le capteur : 
+
+
+On peut mettre plusieurs capteurs en série : 
+
+
+Chaque capteur de température DS18B20 possède un code série 64 bits unique. Cela vous permet de câbler plusieurs capteurs au même câble de données.
+Ainsi, vous pouvez obtenir la température de plusieurs capteurs en utilisant une seule broche numérique Arduino.
+
+
+source : 
+https://www.raspberryme.com/guide-du-capteur-de-temperature-ds18b20-avec-arduino/
+
+
+COmment brancher l'esp32 au capteur de température ? 
+
+Le capteur de temlpéarature à 2 pins
+
+A quoi les brancher ? 
+
+
+---- changement d'objectif du jour --> il faut commencer la fabrication du PCB donc il faut trouver commetn relier le panneau solaire  à l'esp32 . 
+
+comment alimenter l'esp32 avec l'enregie du panneau solaire ? 
+
+
+ en Parlant avec Simon : 
+
+
+Schéma fonctionnel
+
+
+Entrée : Le panneau solaire fournit une tension variable (par exemple, entre 12V et 18V).
+Diode Zener et comparateur : Vérifient si la tension est suffisante pour alimenter le système.
+Abaisseur de tension (buck converter) : Régule la tension à 3.3V pour alimenter l’ESP32.
+
+
+Commment choisir les composants ? 
+
+
+
+
+DIODE ZENER 
+CHoix de la tension de la diode zener 6,8 V: on reagrde sur le diagramme P_Panneau_Solaire à partir de quelle tension le panneau solaire fonctionne à "pleine puissance". 
+
+On observe que peut importe l'éclairage, le panneau commence à fonctionner autour de 10V. On doit choisir une tesnion en fonction de : 
+
+
+on choisit une tension parmi les tensions standards des diodes : Diode zener valeurs standards . 
+
+on détermine la valeur des composants entre le panneau solaire et l'esp32. 
+
+Je me demandais pourquoi on choisissait 6,8 V alors qu'il y a des valeurs standards des diodes zener plus proche de 10v. 
+Sauf que R2 va faire chuter la tension donc si on choissit une Zner avec une tension > 6,8 V , il est possible que le sytème ne 
+sa'ctive pas à partir de 10v reçu dans le panneau solaire. La résistance aura fait chuter la tension de 10V. 
+
+R2 : on fait une KVL pour détérminer la valeur de la résistance qui se situe entre la panneau solaire et la diode Zener . 
+
+KVL : panneau solaire equivalent à la generateur de tension avec 10V< tension <24V. + Ur2 (tension au borne de R2) + diode zener 
+parfaite equivalent generateur de tension de 6,8 V. 
+
+
+R2 = (tension max du panneau solaire - tension de la zener ) / cournant de R2. 
+
+pour déterminer cournat de R2 IR2 : 
+
+on doit avoir IR2 compris entre le cournat minimum de la zener et courant maximum  de la zener. Ces courants peuvent être trouvés dans
+la doc de la zener. 
+
+Mais où parmis cette intervalle le Ir2 doit être ? 
+
+déja à quoi correspondent les bornes ? 
+
+
+Izener min = courant minimal pour que la diode Zener fonctionne correctement en mode Zener , si Ir2 trop proche de Izener min la diode ne maintiendra pas la tension de claquage et la régulation échouera.
+Izener max = courant maximal que la diode Zener peut supporter sans surchauffe ou destruction.
+
+il faut que pour la tension max du panneau solaire (26 V), le courant dans la diode (= Ir2 = IdiodeZ) doit être  inferieur à Izener max, sinon la diode claque.
+il faut que pour la tension min de panneau solaire (10v), le cournat dans la diodde doit être superieur à Izener min, sinon la diode ne fonctionne pas. 
+
+Il faut que Ir2 soit le plus proche possible de Izmin afin de ne pas faire chauffer la diode et ne pas l'user prématuremment. 
+
+à partir de la doc de la znzer et des valeurs Izener min et Izener max on fait l'application numérique pour R2 :
+
+J'ai du mal à lire la doc : je ne trouve pas de Iz min et Izmax à proprment parler. Il y a  Zerner Voltage Range mais il n' y a qu'une valeur de I
+, il y a Maximum Zener Impedance et il y a Maximum Reverse Current mais je n
+
+on lit dans la doc Izener min = 2mA. On voit sur le ghraphique que la zone du coude se termine à 2mA. 
+voir shémas graphique détermination Izmin. 
+
+Pour être sur d'avoir passer la zone du coude et parce que la fabrication des composants est variable on prends Ir2 = 5mA. 
+
+Determination de R2 pour Vps max/min avec Ir2 = 5ma :
+
+
+Pour U panneau solaire = min = 10v et pour Ir2 = 5ma on a R2 = (10-6,8)/5*10^3 donc R2 = 640 omh.
+POur u panneau solaire = max =26v et pour Ir2 = 5ma on a R2 = (26-6,8)/5*10^3 donc R2 = 3840 omh. 
+
+
+pour Izamx on lit dans la doc que la puissance max dissipée = 350 mW donc on fait 350/6,8 = 50 mA. 
+donc IzMax = 50mA. 
+
+voir "Schémas alimentation de l'esp32 au panneau solaire"
+
+
+
+
+
+
+
+COMPARATEUR DE PHASE 
+
+Le comparateur active l'abaisseur de tension Si la tension du panneau est supérieure au seuil. 
+
+
+
+
+

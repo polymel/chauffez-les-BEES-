@@ -1,5 +1,19 @@
 Cahier de bord Laura :
 
+23/09/2024 : 
+Où nous en étions : 
+La séance dernière nous avons étudié les objectifs du projet à travers la réalisation du cahier des charges (les destinataires du projet, les utilités, les contraintes du projet, coûts, les délais etc.). 
+Projet qui s’étalera sur 9 mois comprenant des séances de 4h. 
+
+Ce que nous avons fait cette séance : 
+Création du schéma électrique (voir pj)
+On a déterminé les différents composants nécessaires : une source d'énergie (un panneau solaire et un régulateur), un actionneur (résistances qui chauffent un interrupteur), un automate (ESP32 et le comparateur) et des capteurs (ici les DS18B20, pour mesurer la température de l'huile). 
+On se sert d'une huile pour stocker l'énergie. 
+
+Ce que nous ferons la séance prochaine :
+On regardera comment faire le montage. 
+
+
 12/11/2024 :
 Nous avons déterminé le schéma electronique. 
 Bien séparé et compris nos tâches respectives. 
@@ -9,6 +23,19 @@ objectif : faire communiquer en bus I2C la tension et le courant entre l’INA 2
 - 2e étape : créer le schéma élec : GS + capacité solaire 
 - 3e étape : connaitre la caractéristique : quelle capacité solaire il nous faut 
 
-
 A FAIRE prochaie séance : brancher le circuit à mon ordinateur afin de tester mon ode arduino 
 avec composants suivants : générateur de tension, INA219, ESP32, bus I2C et résistance. 
+
+25/11/2024 :
+J'ai téléchargé le logiciel Arduno IDE afin de pouvoir piloter la carte avec ESP32 et l'INA219.
+J'ai également téléchargé la carte ESP32 sur le logiciel Arduino IDE.
+Je teste à présent mon code arduino sur la carte (branché à l'ESP32).
+Bon, après m'être trompé de board lors du téléchargement, j'ai enfin téléchargé la bonne board MAIS mon ordi ne veut pas compiler mon script.
+-> erreur de "cmd"
+Je me suis rendu compte que je n'avais pas Git de téléchargé, je l'ai donc téléchargé.
+Mais j'ai encore le problème "cmd" dans le path, même si je l'ai ajouté au Path.
+Solution: j'executerais mes codes sur l'ordi de Simon. 
+
+Le code ne met pas d'erreur sur l'ordi de simon.
+Donc prochaine séance je testerais de brancher l'ESP32 avec l'INA219 et d'y faire passer une tension et un courant.
+Et telecharger tera term : programme d'emulation de terminal.
