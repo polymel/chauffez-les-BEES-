@@ -223,8 +223,15 @@ Pour être sur d'avoir passer la zone du coude et parce que la fabrication des c
 Determination de R2 pour Vps max/min avec Ir2 = 5ma :
 
 
-Pour U panneau solaire = min = 10v et pour Ir2 = 5ma on a R2 = (10-6,8)/5*10^3 donc R2 = 640 omh.
-POur u panneau solaire = max =26v et pour Ir2 = 5ma on a R2 = (26-6,8)/5*10^3 donc R2 = 3840 omh. 
+Pour U panneau solaire = min = 10v et pour Ir2 = 5ma on a R2 = (10-6,8)/5*10^3 donc R2 = 640 omh. N'existe pas . 
+
+
+POur la tension max dans le panneau ,quelle courant on aurait avce R2 = 640 ohm ? est ce qu'il serait < à Iz max ? 
+
+Iz pour u max panneau solaire = (26-6,8)/640= 0,03 A --> 30 mA<Iz max OK. 
+
+820 ohm --> 24 mA à 26 V ; ne dépasse pas Izmax/2 pour la puissance max dissipée, on chosit cette valeur car elle existe dans les valeurs standards des 
+résistance et quelle est précautiuonneuse (loin du max). 
 
 
 pour Izamx on lit dans la doc que la puissance max dissipée = 350 mW donc on fait 350/6,8 = 50 mA. 
