@@ -28,7 +28,9 @@ A FAIRE prochaie séance : brancher le circuit à mon ordinateur afin de tester 
 avec composants suivants : générateur de tension, INA219, ESP32, bus I2C et résistance. 
 
 25/11/2024 :
-
+J'ai téléchargé le logiciel Arduno IDE afin de pouvoir piloter la carte avec ESP32 et l'INA219.
+J'ai également téléchargé la carte ESP32 sur le logiciel Arduino IDE.
+Je teste à présent mon code arduino sur la carte.
 
 
 
