@@ -1,5 +1,19 @@
 Cahier de bord Laura :
 
+23/09/2024 : 
+Où nous en étions : 
+La séance dernière nous avons étudié les objectifs du projet à travers la réalisation du cahier des charges (les destinataires du projet, les utilités, les contraintes du projet, coûts, les délais etc.). 
+Projet qui s’étalera sur 9 mois comprenant des séances de 4h. 
+
+Ce que nous avons fait cette séance : 
+Création du schéma électrique (voir pj)
+On a déterminé les différents composants nécessaires : une source d'énergie (un panneau solaire et un régulateur), un actionneur (résistances qui chauffent un interrupteur), un automate (ESP32 et le comparateur) et des capteurs (ici les DS18B20, pour mesurer la température de l'huile). 
+On se sert d'une huile pour stocker l'énergie. 
+
+Ce que nous ferons la séance prochaine :
+On regardera comment faire le montage. 
+
+
 12/11/2024 :
 Nous avons déterminé le schéma electronique. 
 Bien séparé et compris nos tâches respectives. 
@@ -12,3 +26,9 @@ objectif : faire communiquer en bus I2C la tension et le courant entre l’INA 2
 
 A FAIRE prochaie séance : brancher le circuit à mon ordinateur afin de tester mon ode arduino 
 avec composants suivants : générateur de tension, INA219, ESP32, bus I2C et résistance. 
+
+25/11/2024 :
+
+
+
+
