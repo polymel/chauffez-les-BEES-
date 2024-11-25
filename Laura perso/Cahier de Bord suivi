@@ -32,5 +32,8 @@ J'ai également téléchargé la carte ESP32 sur le logiciel Arduino IDE.
 Je teste à présent mon code arduino sur la carte (branché à l'ESP32).
 Bon, après m'être trompé de board lors du téléchargement, j'ai enfin téléchargé la bonne board MAIS mon ordi ne veut pas compiler mon script.
 -> erreur de "cmd"
+Je me suis rendu compte que je n'avais pas Git de téléchargé, je l'ai donc téléchargé.
+Mais j'ai encore le problème "cmd" dans le path, même si je l'ai ajouté au Path.
+Solution: j'executerais mes codes sur l'ordi de Simon. 
 
 
