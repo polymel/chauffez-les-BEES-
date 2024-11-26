@@ -252,6 +252,17 @@ Objectif d'aujourd'hui :
 
 Finir le dimensionnementet choix des composants ( resistances du pdt, AOP et sa résitance, et regulateur de tension)
 
-je vais chercher à partir 
+j'ai récupéré la resistance grâce à "valeur  R2". 
+
+Résistances du PDT : 
+
+V- de l'AOP est fixé à Vdiode zener = 6,8v. 
+Lorsque V+ > Vdiode zener on a Vsortie AOP = + Vcc
+
+On fixe une des deux résistances du PDT : 
+
+on veut 6,8 v au borne de R4 avec Vpanneausolaire = 10v pour que au minmium on est bien la sortie de l'AOP qui alimente 
+le regulateur ( puis le reste de circuit ).
+
 
 
