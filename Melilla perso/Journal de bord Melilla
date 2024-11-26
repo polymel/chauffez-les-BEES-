@@ -264,5 +264,12 @@ On fixe une des deux résistances du PDT :
 on veut 6,8 v au borne de R4 avec Vpanneausolaire = 10v pour que au minmium on est bien la sortie de l'AOP qui alimente 
 le regulateur ( puis le reste de circuit ).
 
+On fixe R4= 
+
+
+je fais le schémas du R2 + PDV + diode + resistance de la Diode 
+
+je n'arrive pas à connceter le fils sur les noeuds 
+
 
 
