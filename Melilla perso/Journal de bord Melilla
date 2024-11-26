@@ -223,8 +223,15 @@ Pour être sur d'avoir passer la zone du coude et parce que la fabrication des c
 Determination de R2 pour Vps max/min avec Ir2 = 5ma :
 
 
-Pour U panneau solaire = min = 10v et pour Ir2 = 5ma on a R2 = (10-6,8)/5*10^3 donc R2 = 640 omh.
-POur u panneau solaire = max =26v et pour Ir2 = 5ma on a R2 = (26-6,8)/5*10^3 donc R2 = 3840 omh. 
+Pour U panneau solaire = min = 10v et pour Ir2 = 5ma on a R2 = (10-6,8)/5*10^3 donc R2 = 640 omh. N'existe pas . 
+
+
+POur la tension max dans le panneau ,quelle courant on aurait avce R2 = 640 ohm ? est ce qu'il serait < à Iz max ? 
+
+Iz pour u max panneau solaire = (26-6,8)/640= 0,03 A --> 30 mA<Iz max OK. 
+
+820 ohm --> 24 mA à 26 V ; ne dépasse pas Izmax/2 pour la puissance max dissipée, on chosit cette valeur car elle existe dans les valeurs standards des 
+résistance et quelle est précautiuonneuse (loin du max). 
 
 
 pour Izamx on lit dans la doc que la puissance max dissipée = 350 mW donc on fait 350/6,8 = 50 mA. 
@@ -234,15 +241,53 @@ voir "Schémas alimentation de l'esp32 au panneau solaire"
 
 
 
-
-
-
-
 COMPARATEUR DE PHASE 
 
 Le comparateur active l'abaisseur de tension Si la tension du panneau est supérieure au seuil. 
 
 
+26/11
+
+Objectif d'aujourd'hui : 
+
+Finir le dimensionnementet choix des composants ( resistances du pdt, AOP et sa résitance, et regulateur de tension)
+
+j'ai récupéré la resistance grâce à "valeur  R2". 
+
+Résistances du PDT : 
+
+V- de l'AOP est fixé à Vdiode zener = 6,8v. 
+Lorsque V+ > Vdiode zener on a Vsortie AOP = + Vcc
+
+On fixe une des deux résistances du PDT : 
+
+on veut 6,8 v au borne de R4 avec Vpanneausolaire = 10v pour que au minmium on est bien la sortie de l'AOP qui alimente 
+le regulateur ( puis le reste de circuit ).
+
+
+je fais le schémas du R2 + PDV + diode + resistance de la Diode 
+
+je n'arrive pas à connEceter le fils sur les noeuds; il y a des noeuds fixés sur les fils il faut relier les composants sur ses noeuds.
+
+M. Peter m' a fait changer un AOP pour un comparateur. 
+
+La simulation Lush fonctionne : je fixe R4 à 1000 ohm. Tandis que je fais varier R3 pour finir par avoir 6,8 aux bornes de R4. 
+ donc R3 = 470 ohm et R4 = 1000 ohm.
+voir Détrermination R3 et R4 sans valeurs standards des résistances.png
+
+on remet un AOP car on se sait pas comment fonctionne le comparateur. 
+
+On ajoute dans la simulation un condensateur (+ resistance sinon la simulation ne fonctionne pas)  qui fonctionnera avec le panneau solaire. 
+
+On multiplie par 10 la valeur des resistances R3 et R4 du PDT afin de reduire la conso d'energie.
+
+resultat de simulation avce R3 = 4700 ohm et R4 = 10000 ohm
+
+On rajoute une résiatnce en V+ et la sortie --> à quoi cela peut servir ? 
+
+
+Prochaine fois : 
+rajouter une resistance en sorti et et trouver les mpn de l'AOP et du regulateur 
 
 
 

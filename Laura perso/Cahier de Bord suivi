@@ -39,3 +39,10 @@ Solution: j'executerais mes codes sur l'ordi de Simon.
 Le code ne met pas d'erreur sur l'ordi de simon.
 Donc prochaine séance je testerais de brancher l'ESP32 avec l'INA219 et d'y faire passer une tension et un courant.
 Et telecharger tera term : programme d'emulation de terminal.
+
+
+26/11/2024:
+Je cherche la capacité à mettre en sortie du GS afin de stocker l'énergie généré par le GS via un condensateur en fonction du courant
+qu'on va tirer sur un temps.
+On prend un condensateur C = 1 mF.
+Voir pj pour voir le schéma electronique.
