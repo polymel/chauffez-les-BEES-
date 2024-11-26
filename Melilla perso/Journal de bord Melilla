@@ -269,7 +269,12 @@ On fixe R4=
 
 je fais le schémas du R2 + PDV + diode + resistance de la Diode 
 
-je n'arrive pas à connceter le fils sur les noeuds 
+je n'arrive pas à connEceter le fils sur les noeuds; il y a des noeuds fixés sur les fils il faut relier les composants sur ses noeuds.
+
+M. Peter m' afait changer un AOP pour un comparateur. 
+
+La simulation Lush fonctionne : je fixe R4 à 1000 ohm. Tandis que je fais varier R3 pour finir par avoir 6,8 aux bornes de R4. 
+
 
 
 
