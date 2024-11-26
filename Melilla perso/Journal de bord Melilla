@@ -241,15 +241,17 @@ voir "Schémas alimentation de l'esp32 au panneau solaire"
 
 
 
-
-
-
-
 COMPARATEUR DE PHASE 
 
 Le comparateur active l'abaisseur de tension Si la tension du panneau est supérieure au seuil. 
 
 
+26/11
 
+Objectif d'aujourd'hui : 
+
+Finir le dimensionnementet choix des composants ( resistances du pdt, AOP et sa résitance, et regulateur de tension)
+
+je vais chercher à partir 
 
 
