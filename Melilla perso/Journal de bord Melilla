@@ -264,17 +264,30 @@ On fixe une des deux résistances du PDT :
 on veut 6,8 v au borne de R4 avec Vpanneausolaire = 10v pour que au minmium on est bien la sortie de l'AOP qui alimente 
 le regulateur ( puis le reste de circuit ).
 
-On fixe R4= 
-
 
 je fais le schémas du R2 + PDV + diode + resistance de la Diode 
 
 je n'arrive pas à connEceter le fils sur les noeuds; il y a des noeuds fixés sur les fils il faut relier les composants sur ses noeuds.
 
-M. Peter m' afait changer un AOP pour un comparateur. 
+M. Peter m' a fait changer un AOP pour un comparateur. 
 
 La simulation Lush fonctionne : je fixe R4 à 1000 ohm. Tandis que je fais varier R3 pour finir par avoir 6,8 aux bornes de R4. 
-
+ donc R3 = 470 ohm et R4 = 1000 ohm.
 voir Détrermination R3 et R4 sans valeurs standards des résistances.png
+
+on remet un AOP car on se sait pas comment fonctionne le comparateur. 
+
+On ajoute dans la simulation un condensateur (+ resistance sinon la simulation ne fonctionne pas)  qui fonctionnera avec le panneau solaire. 
+
+On multiplie par 10 la valeur des resistances R3 et R4 du PDT afin de reduire la conso d'energie.
+
+resultat de simulation avce R3 = 4700 ohm et R4 = 10000 ohm
+
+On rajoute une résiatnce en V+ et la sortie --> à quoi cela peut servir ? 
+
+
+Prochaine fois : 
+rajouter une resistance en sorti et et trouver les mpn de l'AOP et du regulateur 
+
 
 
