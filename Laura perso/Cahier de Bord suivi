@@ -44,4 +44,5 @@ Et telecharger tera term : programme d'emulation de terminal.
 26/11/2024:
 Je cherche la capacité à mettre en sortie du GS afin de stocker l'énergie généré par le GS via un condensateur en fonction du courant
 qu'on va tirer sur un temps.
-
+On prend un condensateur C = 1 mF.
+Voir pj pour voir le schéma electronique.
