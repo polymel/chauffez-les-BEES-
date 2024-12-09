@@ -51,3 +51,5 @@ Voir pj pour voir le schéma electronique.
 09/12/2024 :
 cf. l'image elec2 qui met en avant les blocs principaux de notre circuit.
 La capacité solaire : le + du PS (GS) relié au + du codensateur (capacité solaire = 1mF) et le - du GS relié au - du condensateur.
+
+Il faudrait réussir a partir du script que j'ai envoyé a Simon sur l'INA219, que ce soit toujours le maximum de puissance qui soit envoyé. 
