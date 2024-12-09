@@ -49,4 +49,5 @@ On prend un condensateur C = 1 mF.
 Voir pj pour voir le schéma electronique.
 
 09/12/2024 :
-cf. l'image elec2 qui met en avant les composants concernant le panneau solaire. 
+cf. l'image elec2 qui met en avant les blocs principaux de notre circuit.
+La capacité solaire : le + du PS (GS) relié au + du codensateur (capacité solaire = 1mF) et le - du GS relié au - du condensateur.
