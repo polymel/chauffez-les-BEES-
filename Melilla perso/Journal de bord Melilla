@@ -301,9 +301,19 @@ La resistance de l'AOP permet de neutraloiser la chute de tension engendrée par
 lors de la bascule de 0 à V+. 
 
 
-La target est d'avoir la resistance la plus petite possible. Cependnat il faut diminuer la valeur de la resistance
-jusqu'à voir 
-voir 
+La target est d'avoir la resistance la plus petite possible. Cependant  il faut diminuer la valeur de la resistance
+jusqu'à la limite de bascule de l'AOP. 
+
+voir SImulation pour détermination de RAOP. 
+
+On utilise le principe du trigger de Shmitt, voir "Target de Shmitt".
+
+
+Essai de differentes valeurs pour R AOP :
+
+1 K pas de bascule 
+
+
 
 
 
