@@ -287,7 +287,132 @@ On rajoute une résiatnce en V+ et la sortie --> à quoi cela peut servir ?
 
 
 Prochaine fois : 
-rajouter une resistance en sorti et et trouver les mpn de l'AOP et du regulateur 
+rajouter une resistance en sortie de l'AOP et et trouver les mpn de l'AOP et du regulateur 
+
+09/12
+
+Le MPN de l'AOP a été donné par le prof. AP331A.
+
+
+
+Resistance AOP 
+
+La resistance de l'AOP permet de neutraliser la chute de tension engendrée par la fermeture de l'interrupteur 
+lors de la bascule de 0 à V+. 
+
+
+La target est d'avoir la resistance la plus petite possible. Cependant  il faut diminuer la valeur de la resistance
+jusqu'à la limite de bascule de l'AOP. 
+
+on cherche à avoir la plus petite valeur de R AOP afin d'avoir le delta de tension plus élevée que la chute de tension.
+
+voir SImulation pour détermination de RAOP. 
+
+On utilise le principe du trigger de Shmitt, voir "Target de Shmitt".
+
+La "Target de Schmitt" consiste à optimiser les seuils d'hystérésis et la résistance AOP pour que :
+
+La bascule soit stable et fiable.
+Le delta de tension soit suffisamment grand pour compenser les chutes de tension induites par les charges connectées.
+
+Essai de differentes valeurs pour R AOP :
+
+1 K pas de bascule 
+10 K pas de bascule
+11 K pas de bascule
+12 K pas de bascule
+13 K bascule
+15 K bascule
+
+
+La bascule se fait à partir de 13K mais la valeur normalisée la plus proche et au dessus de 13k et 15K.
+
+R AOP = 15k ohm.
+
+
+
+Quel regulateur de tension doit être utilisé ? 
+
+est ce que le MPN est imposé ? Simon a déjà trouvé 
+
+
+------------------PARTIE PROGRAMMATION----------------
+
+
+Place à la deuxième partie de mon travail : repondre au besoin de lecture de température à l'aide du BUS des capteurs. 
+
+ESP32           DS18B20 (x5)
+------          -----------
+3.3V   ------>  VDD (tous en parallèle)
+GND    ------>  GND (tous en parallèle)
+GPIO4  ------>  DATA (tous en parallèle)
+          4.7 kΩ entre DATA et 3.3V resitance de pull-up.
+
+Les capteurs DS18B20, comme d'autres dispositifs utilisant le protocole OneWire, partagent une seule ligne de données pour communiquer. Cette ligne est utilisée pour transmettre des données entre les capteurs et le microcontrôleur (dans ce cas, l'ESP32).
+
+Comportement de la ligne de données :
+Lorsque le capteur ou le microcontrôleur ne communique pas, la ligne doit être maintenue à un niveau haut (logique "1").
+Lorsque le capteur envoie des données, il abaisse volontairement la ligne de données à un niveau bas (logique "0") pendant un court instant.
+Problème sans pull-up :
+Si la ligne de données n'est pas maintenue à un niveau haut lorsque le capteur n'est pas actif, la ligne pourrait "flotter", c'est-à-dire qu'elle pourrait prendre une valeur indéterminée, ce qui entraîne des comportements erratiques ou des erreurs de communication.
+Fonction de la résistance pull-up :
+La résistance pull-up relie la ligne de données à l'alimentation (généralement 3.3V ou 5V), assurant ainsi que la ligne soit au niveau haut (logique "1") lorsqu'aucun capteur n'envoie de signal.
+Comment ça fonctionne dans le cas du DS18B20 ?
+Lorsque le DS18B20 n'envoie pas de données, il laisse la ligne à haut (logique "1"), ce qui est rendu possible grâce à la résistance pull-up.
+Lorsque le DS18B20 veut envoyer un bit à 0, il tire la ligne de données vers le bas (logique "0").
+Lorsque le DS18B20 veut envoyer un bit à 1, il laisse la ligne de données à haut, et la résistance pull-up assure que la ligne reste dans cet état.
+Valeur typique de la résistance pull-up :
+La valeur standard pour cette résistance est souvent 4.7 kΩ, bien que des valeurs comme 10 kΩ puissent également fonctionner dans certains cas.
+
+Les bibliothèques à utiliser sont les : 
+
+
+Pour connecter 5 capteurs de température DS18B20 à un ESP32 et enregistrer leurs températures avant de les transmettre, voici les étapes détaillées :
+
+Matériel nécessaire
+1 x ESP32.
+5 x DS18B20.
+1 x résistance de 4.7 kΩ (pull-up).
+Breadboard et câbles de connexion.
+Câblage
+Les DS18B20 fonctionnent sur le principe d'une liaison en bus unique (OneWire), ce qui signifie que tous les capteurs partagent la même ligne de données. Voici comment les connecter :
+
+Étapes :
+Alimentation :
+
+Relie les broches VDD de tous les DS18B20 à la broche 3.3V de l’ESP32.
+Relie toutes les broches GND des DS18B20 au GND de l’ESP32.
+Ligne de données :
+
+Relie toutes les broches DATA des DS18B20 ensemble.
+Connecte cette ligne DATA à une broche GPIO de l’ESP32 (par exemple, GPIO4).
+Résistance pull-up :
+
+Place une résistance de 4.7 kΩ entre la ligne DATA et 3.3V.
+Schéma de câblage
+plaintext
+Copier le code
+ESP32           DS18B20 (x5)
+------          -----------
+3.3V   ------>  VDD (tous en parallèle)
+GND    ------>  GND (tous en parallèle)
+GPIO4  ------>  DATA (tous en parallèle)
+          4.7 kΩ entre DATA et 3.3V
+Programmation
+L'ESP32 devra gérer plusieurs capteurs sur une même ligne OneWire. Chaque capteur possède une adresse unique (ROM) qui permet de les identifier individuellement.
+
+Bibliothèques nécessaires :
+OneWire.
+DallasTemperature.
+
+je fais des test avec la plaquette ,  2 capteurs, la resistance de pull-up et l'esp32. 
+
+L'ordinateur sert d'alimentation avec l'usb. 
+
+je n'arrive pas à televrerser dans la carte. je colle les codes erreurs dans chat GPT pour essayer de debugger. 
+
+
+Prochaine séance : arriver à téleverser le programme
 
 
 
