@@ -287,7 +287,23 @@ On rajoute une résiatnce en V+ et la sortie --> à quoi cela peut servir ?
 
 
 Prochaine fois : 
-rajouter une resistance en sorti et et trouver les mpn de l'AOP et du regulateur 
+rajouter une resistance en sortie de l'AOP et et trouver les mpn de l'AOP et du regulateur 
+
+09/12
+
+Le MPN de l'AOP a été donné par le prof. AP331A.
+
+
+
+Resistance AOP 
+
+La resistance de l'AOP permet de neutraloiser la chute de tension engendrée par la fermeture de l'interrupteur 
+lors de la bascule de 0 à V+. 
+
+
+La target est d'avoir la resistance la plus petite possible. Cependnat il faut diminuer la valeur de la resistance
+jusqu'à voir 
+voir 
 
 
 
