@@ -304,14 +304,28 @@ lors de la bascule de 0 à V+.
 La target est d'avoir la resistance la plus petite possible. Cependant  il faut diminuer la valeur de la resistance
 jusqu'à la limite de bascule de l'AOP. 
 
+on cherche à avoir la plus petite valeur de R AOP afin d'avoir le delta de tension plus élevée que la chute de tension.
+
 voir SImulation pour détermination de RAOP. 
 
 On utilise le principe du trigger de Shmitt, voir "Target de Shmitt".
 
+La "Target de Schmitt" consiste à optimiser les seuils d'hystérésis et la résistance AOP pour que :
+
+La bascule soit stable et fiable.
+Le delta de tension soit suffisamment grand pour compenser les chutes de tension induites par les charges connectées.
 
 Essai de differentes valeurs pour R AOP :
 
 1 K pas de bascule 
+10 K pas de bascule
+11 K pas de bascule
+12 K pas de bascule
+13 K bascule
+15 K bascule
+
+
+
 
 
 
