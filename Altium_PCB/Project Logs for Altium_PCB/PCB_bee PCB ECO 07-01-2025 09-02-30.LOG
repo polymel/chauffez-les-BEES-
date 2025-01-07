@@ -1,0 +1,8 @@
+Removed Pin From Net: NetName=SDA_esp32 Pin=U2-14
+Removed Pin From Net: NetName=Signalline2 Pin=U2-26
+Removed Pin From Net: NetName=SCL_esp32 Pin=U2-29
+Added Pin To Net: NetName=DATA_Temp Pin=U2-14
+Added Pin To Net: NetName=Signalline2 Pin=U2-29
+Added Pin To Net: NetName=SDA_esp32 Pin=U2-33
+Added Pin To Net: NetName=SCL_esp32 Pin=U2-36
+Change Net Name : Old Net Name=NetJ2_6 New Net Name=IO0
