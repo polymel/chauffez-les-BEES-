@@ -15,7 +15,7 @@ LifeCycleDefinitionGUID=
 RevisionNamingSchemeGUID=
 
 [OutputGroup1]
-Name=Job1.OutJob
+Name=Output_job.OutJob
 Description=
 TargetOutputMedium=PCB_Project_Bee
 VariantName=[No Variations]
@@ -66,7 +66,7 @@ PageOptions2=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|PrintS
 Configuration2_Name1=ColumnNameFormat
 Configuration2_Item1=CaptionAsName
 Configuration2_Name2=General
-Configuration2_Item2=OpenExported=False|AddToProject=False|ReportBOMViolationsInMessages=False|ForceFit=False|NotFitted=False|Database=False|DatabasePriority=False|IncludePcbData=False|IncludeVaultData=True|IncludeCloudData=False|IncludeDocumentData=True|IncludeAlternatives=False|ShowExportOptions=True|TemplateFilename=|TemplateVaultGuid=|TemplateItemGuid=|TemplateRevisionGuid=|BatchMode=5|FormWidth=1200|FormHeight=710|SupplierProdQty=1|SupplierAutoQty=False|SupplierUseCachedPricing=False|SupplierCurrency=USD|SolutionsPerItem=1|SuppliersPerSolution=1|ViewType=0|BomSetName=
+Configuration2_Item2=OpenExported=False|AddToProject=False|ReportBOMViolationsInMessages=False|ForceFit=False|NotFitted=False|Database=False|DatabasePriority=False|IncludePcbData=False|IncludeVaultData=True|IncludeCloudData=False|IncludeDocumentData=True|IncludeAlternatives=False|ShowExportOptions=True|TemplateFilename=C:\Users\Public\Documents\Altium\AD23\Templates\BOM Template Dual Supplier.xlsx|TemplateVaultGuid=|TemplateItemGuid=|TemplateRevisionGuid=|BatchMode=5|FormWidth=1200|FormHeight=710|SupplierProdQty=1|SupplierAutoQty=False|SupplierUseCachedPricing=False|SupplierCurrency=EUR|SolutionsPerItem=1|SuppliersPerSolution=1|ViewType=0|UseDirectApi=False|BomSetName=
 Configuration2_Name3=GroupOrder
 Configuration2_Item3=
 Configuration2_Name4=VisibleOrder
@@ -81,13 +81,13 @@ Configuration2_Item7=Line #=100|Comment=100|Description=100|Designator=100|Revis
 [PublishSettings]
 OutputFilePath2=
 ReleaseManaged2=1
-OutputBasePath2=
+OutputBasePath2=Project Outputs for Altium_PCB
 OutputPathMedia2=
 OutputPathMediaValue2=
 OutputPathOutputer2=[Output Type]
 OutputPathOutputerPrefix2=
 OutputPathOutputerValue2=
-OutputFileName2=
+OutputFileName2=Output_job.PDF
 OutputFileNameMulti2=
 UseOutputNameForMulti2=1
 OutputFileNameSpecial2=
@@ -108,7 +108,7 @@ PDFACompliance2=Disabled
 PDFVersion2=Default
 OutputFilePath3=
 ReleaseManaged3=1
-OutputBasePath3=
+OutputBasePath3=Project Outputs for Altium_PCB
 OutputPathMedia3=
 OutputPathMediaValue3=
 OutputPathOutputer3=[Output Type]
@@ -121,7 +121,7 @@ OutputFileNameSpecial3=
 OpenOutput3=1
 OutputFilePath4=
 ReleaseManaged4=1
-OutputBasePath4=
+OutputBasePath4=Project Outputs for Altium_PCB
 OutputPathMedia4=
 OutputPathMediaValue4=
 OutputPathOutputer4=[Output Type]
@@ -156,7 +156,7 @@ FFmpegPixelFormat4=0
 FFmpegQuality4=80
 WmvVideoCodecName4=Windows Media Video V7
 WmvQuality4=80
-OutputFilePath5=C:\Users\simon\Documents\Polytech_Nice\chauffez-les-BEES-\Altium_PCB\Project Outputs for Altium_PCB\.PDF
+OutputFilePath5=C:\Users\SimonBressot\OneDrive - bizofficeonecorp\Documents\Polytech Nice\chauffez-les-BEES-\Altium_PCB\Project Outputs for Altium_PCB\Job1.PDF
 ReleaseManaged5=1
 OutputBasePath5=Project Outputs for Altium_PCB
 OutputPathMedia5=
@@ -164,14 +164,14 @@ OutputPathMediaValue5=
 OutputPathOutputer5=[Output Type]
 OutputPathOutputerPrefix5=
 OutputPathOutputerValue5=
-OutputFileName5=Job1.PDF
+OutputFileName5=Schematic&BOM.PDF
 OutputFileNameMulti5=
-UseOutputNameForMulti5=1
+UseOutputNameForMulti5=0
 OutputFileNameSpecial5=
 OpenOutput5=1
 PromptOverwrite5=1
 PublishMethod5=0
-ZoomLevel5=50
+ZoomLevel5=51
 FitSCHPrintSizeToDoc5=1
 FitPCBPrintSizeToDoc5=1
 GenerateNetsInfo5=1
@@ -199,6 +199,6 @@ OpenIPCOutput3=0
 EnableReload3=0
 RelativeOutputPath4=
 OpenOutputs4=1
-RelativeOutputPath5=C:\Users\simon\Documents\Polytech_Nice\chauffez-les-BEES-\Altium_PCB\Project Outputs for Altium_PCB\.PDF
+RelativeOutputPath5=C:\Users\SimonBressot\OneDrive - bizofficeonecorp\Documents\Polytech Nice\chauffez-les-BEES-\Altium_PCB\Project Outputs for Altium_PCB\Job1.PDF
 OpenOutputs5=1
 
