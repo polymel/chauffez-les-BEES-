@@ -65,3 +65,4 @@ La méthode p&o (Perturb and Observe) est une méthode utilisée pour suivre le 
 ou PV dans des systèmes tels que les panneaux solaires ou les circuits d'alimentation.
 Voir pj.
 Nous avons cablé l'ina219 avec l'ESP32 sur la carte via des fils, ainsi que la rsistance de 4,7kOhm, et les deux capteurs de températures. 
+Voir pj. 
