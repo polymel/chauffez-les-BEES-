@@ -53,3 +53,13 @@ cf. l'image elec2 qui met en avant les blocs principaux de notre circuit.
 La capacité solaire : le + du PS (GS) relié au + du codensateur (capacité solaire = 1mF) et le - du GS relié au - du condensateur.
 
 Il faudrait réussir a partir du script que j'ai envoyé a Simon sur l'INA219, que ce soit toujours le maximum de puissance qui soit envoyé. 
+
+07/01/2025:
+Il faudrait passer le maximum de puissance dans les trucs chauffants.
+
+J'ai fait un code qui utilise un capteur INA219 pour mesurer la tension, le courant et la puissance, puis applique l'algorithme 
+P&O afin de suivre dynamiquement le point de puissance maximale (MPPT). Il ajuste la tension de sortie via un signal PWM contrôlé par 
+une broche configurable de l'ESP32. Le pas de réglage et la tolérance sont optimisés pour minimiser les oscillations autour du MPP.
+
+La méthode p&o (Perturb and Observe) est une méthode utilisée pour suivre le point de puissance maximale (MPPT) sur une courbe IV 
+ou PV dans des systèmes tels que les panneaux solaires ou les circuits d'alimentation.
