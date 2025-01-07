@@ -424,6 +424,126 @@ Bonne année !!
 TO do du jour : 
 
 - Téleverser le programme
+#include <OneWire.h>
+#include <DallasTemperature.h>
+
+// Configuration des broches
+#define ONE_WIRE_BUS 4 // GPIO4 pour DATA
+
+// Initialisation du bus OneWire
+OneWire oneWire(ONE_WIRE_BUS);
+
+// Initialisation de la bibliothèque DallasTemperature
+DallasTemperature sensors(&oneWire);
+
+void setup() {
+  Serial.begin(115200);
+  sensors.begin();
+
+  Serial.println("Recherche de capteurs...");
+  int numberOfDevices = sensors.getDeviceCount();
+  Serial.print("Nombre de capteurs détectés : ");
+  Serial.println(numberOfDevices);
+
+  if (numberOfDevices == 0) {
+    Serial.println("Aucun capteur détecté. Vérifiez le câblage.");
+  }
+}
+
+void loop() {
+  sensors.requestTemperatures(); // Demande des températures à tous les capteurs
+  Serial.print("Température capteur 1 : ");
+  Serial.println(sensors.getTempCByIndex(0)); // Lecture du premier capteur
+  Serial.print("Température capteur 2 : ");
+  Serial.println(sensors.getTempCByIndex(1)); // Lecture du deuxième capteur
+
+  delay(1000); // Pause d'une seconde entre les lectures
+}
+Parameterage de l ide
+
+Ouvrez l'IDE Arduino.
+
+Allez dans Fichier → Préférences.
+
+Dans le champ URL de gestionnaire de cartes supplémentaires, ajoutez l'URL suivante :
+
+bash
+Copier le code
+https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
+Astuce : Si une URL est déjà présente, séparez-les par une virgule.
+
+Ensuite, allez dans Outils → Gestionnaire de cartes.
+
+Recherchez "ESP32" et installez le package officiel de Espressif Systems.
+
+2. Choisir la bonne carte
+Pour votre carte spécifique "WiFi LoRa 32 (V3)" :
+
+Allez dans Outils → Type de carte → ESP32 Arduino.
+Recherchez et sélectionnez la carte "ESP32 Dev Module".
+--> ne fonctionne pas 
+
+
+modif : 
+
+ Outils → Type de carte
+ESP32S3 Dev Module
+
+
+Téléversement réussi : Les étapes de compression, d'écriture, et de vérification des données se sont déroulées sans erreur.
+Chip détecté : ESP32-S3 (QFN56) avec 8MB de flash intégré.
+Baud rate : La communication a utilisé un débit efficace de 921600 baud.
+Hard resetting via RTS pin : Le microcontrôleur a redémarré automatiquement après le téléversement.
+
+
+Je veux maintenant tester le programme :
+
+
+Je configure le moniteur Série. 
+
+
+J'ai maintenant ce message :
+
+
+Température capteur 2 : -127.00
+Température capteur 1 : -127.00
+
+
+
+Le message indiquant Température capteur 1 : -127.00 signifie que le microcontrôleur (ESP32) n'arrive pas à lire correctement les capteurs DS18B20.
+
+
+1 . j'ai vérifié les branchement en re regardant les pins map de l'esp32 et du capteur : 
+Le GPIO n'était pas le bon #define ONE_WIRE_BUS 7 // GPIO7 pour DATA j'ai changé le "4" pour "7" car le câblage étaot sur le 7 !!! 
+
+Cela ne fonctionne toujours pas , puis après enfoncage des composants/câble cela fonctionne ! 
+
+
+Le capteur 1 détécte 19 degrès tandis que le 2 - 127 car il n'est toujours pas branché. 
+
+
+Mon thermomètre affiche quant à lui il affiche 16 degrès. 
+
+La mesure est surement faussée car les capteurs ont été manipulés. 
+
+Il faut donc prendre en compte cela : les prises de températures sont sensibles aux manipulations. 
+
+J'attends de voir si la mesure tend à la valeur de celle du thermomêtre. 
+
+Cela met en avant l'importance de la métrologie et de la tolérance des appareils : un degrès de trop pourrait tuer les abeilles. 
+
+Par principe de sureté je conseille de mettre un sueil max qui est d'au moins un degrès de moins que la température max supportée par l'essaim. 
+
+j'ai Laura a téste son code car il "ne focntionne pas sur son ordinateur". 
+
+il faut câbler l'ina aux montage déjà existant  :
+
+
+je suis la doc pour la câblage : 
+
+
+j'utilise une led pour mesurer la tension et le cournant. 
+
 
 
 
