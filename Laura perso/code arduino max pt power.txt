@@ -1,0 +1,87 @@
+// Ce code utilise un capteur INA219 pour mesurer la tension, le courant et la puissance, puis applique l'algorithme 
+P&O afin de suivre dynamiquement le point de puissance maximale (MPPT). Il ajuste la tension de sortie via un signal PWM 
+contrôlé par une broche configurable de l'ESP32. Le pas de réglage et la tolérance sont optimisés pour minimiser les 
+oscillations autour du MPP.
+
+
+#include <Wire.h>
+#include <Adafruit_INA219.h>
+#include <Arduino.h>
+
+Adafruit_INA219 ina219;
+
+float voltage, current, power;
+float prevPower = 0;
+float prevVoltage = 0;
+float stepSize = 0.05; // Pas initial de perturbation
+float epsilon = 0.01; // Seuil de tolérance pour la stabilité
+int direction = 1; // Direction initiale
+
+// PWM Configuration
+const int pwmPin = 5; // Broche PWM pour contrôler la tension
+const int pwmResolution = 8; // Résolution de la PWM (0-255 pour 8 bits)
+const float maxVoltage = 5.0; // Tension maximale réglable (à ajuster selon le matériel)
+
+void setup() {
+  Serial.begin(9600);
+  if (!ina219.begin()) {
+    Serial.println("INA219 non détecté!");
+    while (1);
+  }
+  Serial.println("INA219 initialisé.");
+
+  // Initialisation PWM
+  pinMode(pwmPin, OUTPUT);
+  analogWriteResolution(pwmResolution); // Résolution PWM
+  setVoltage(0.0); // Démarrer à 0V
+}
+
+void loop() {
+  // Lire les mesures du capteur INA219
+  voltage = ina219.getBusVoltage_V();
+  current = ina219.getCurrent_mA() / 1000.0; // Conversion en A
+  power = voltage * current; // Calcul de la puissance
+
+  // Affichage des valeurs actuelles
+  Serial.print("V: "); Serial.print(voltage); Serial.print(" V, ");
+  Serial.print("I: "); Serial.print(current); Serial.print(" A, ");
+  Serial.print("P: "); Serial.print(power); Serial.println(" W");
+
+  // Méthode P&O améliorée
+  float deltaPower = power - prevPower;
+
+  if (abs(deltaPower) > epsilon) { // Vérifier si la variation de puissance est significative
+    if (power > prevPower) {
+      // Si la puissance augmente, continuer dans la même direction
+      prevVoltage = voltage;
+      prevPower = power;
+    } else {
+      // Sinon, inverser la direction
+      direction = -direction;
+      stepSize *= 0.9; // Réduire la taille du pas pour plus de précision
+    }
+
+    // Ajuster la tension avec le pas
+    float newVoltage = prevVoltage + direction * stepSize;
+    setVoltage(newVoltage);
+  } else {
+    // Arrêter les perturbations si proche du MPP
+    Serial.println("Point de puissance maximale atteint (stabilité détectée).");
+  }
+
+  // Attendre un court instant avant la prochaine itération
+  delay(500);
+}
+
+// Fonction pour ajuster la tension via PWM
+void setVoltage(float targetVoltage) {
+  if (targetVoltage > maxVoltage) targetVoltage = maxVoltage;
+  if (targetVoltage < 0) targetVoltage = 0;
+
+  int pwmValue = (int)(targetVoltage / maxVoltage * ((1 << pwmResolution) - 1)); // Conversion en PWM
+  analogWrite(pwmPin, pwmValue);
+
+  Serial.print("Nouvelle tension cible: ");
+  Serial.print(targetVoltage);
+  Serial.println(" V");
+}

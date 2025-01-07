@@ -63,3 +63,13 @@ une broche configurable de l'ESP32. Le pas de réglage et la tolérance sont opt
 
 La méthode p&o (Perturb and Observe) est une méthode utilisée pour suivre le point de puissance maximale (MPPT) sur une courbe IV 
 ou PV dans des systèmes tels que les panneaux solaires ou les circuits d'alimentation.
+Voir pj.
+Nous avons cablé l'ina219 avec l'ESP32 sur la carte via des fils, ainsi que la rsistance de 4,7kOhm, et les deux capteurs de températures. 
+Une fois le branchement terminé, nous connecterons la carte a l'ordinateur et téléverserons mon code arduino à l'interieur afin de le tester.
+Voir pj. 
+On rajoutera une led à V+ et V- de l'ina pour mesurer la tension et le courant
+
+!!!!!! pour le 12 PRESENTATION DU PROJET : ou on en est etc !!!!!! 15 min par groupe
+
+--- Pour avoir un fichier ou l'on peut copier coller des images ou capture d'ecran, fichier.md et aller ensuite dans preview 
+pour voir l'image ----------
