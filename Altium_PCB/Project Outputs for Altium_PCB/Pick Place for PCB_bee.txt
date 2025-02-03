@@ -1,0 +1,58 @@
+Altium Designer Pick and Place Locations
+C:\Users\SimonBressot\OneDrive - bizofficeonecorp\Documents\Polytech Nice\chauffez-les-BEES-\Altium_PCB\Project Outputs for Altium_PCB\Pick Place for PCB_bee.txt
+
+========================================================================================================================
+File Design Information:
+
+Date:       03/02/25
+Time:       10:55
+Revision:   b74f156ac0fd49415aefc361902d6954c082c4d3
+Variant:    No variations
+Units used: mil
+
+Designator Comment                          Layer    Footprint                   Center-X(mil) Center-Y(mil) Rotation Description                                                                                            
+RPU2       ERJ-P08J333V                     TopLayer SMD-1206-RES                -1299.212     905.512       0        "RES SMD 33K OHM 5% 2/3W 1206"                                                                         
+RPD2       ERJ-P08J333V                     TopLayer SMD-1206-RES                -1102.362     905.512       180      "RES SMD 33K OHM 5% 2/3W 1206"                                                                         
+QP2        FQB22P10TM                       TopLayer FQB22P10TM                  -1705.019     787.402       90       "MOSFET (P-Channel)"                                                                                   
+QN2        BSS138                           TopLayer FP-318-08-IPC_B             -1259.842     669.291       0        "MOSFET N-CH 50V 220MA SOT-23"                                                                         
+U3         INA219AIDCNR                     TopLayer FP-DCN0008A-IPC_B           -590.551      1685.000      180      "IC CURRENT MONITOR 1% SOT23-8"                                                                        
+R_shunt1   WSLT2512R5000FEA                 TopLayer RESC6432X89X76NL25T25       -105.000      1620.000      90       "Chip Resistor, 0.5 Ohm, +/- 1%, 1 W, -65 to 275 degC, 2512 (6432 Metric), RoHS, Tape and Reel"        
+R8         ERJ-8GEYJ332V                    TopLayer SMD-1206-RES                -787.402      1369.999      180      "RES SMD 3.3K OHM 5% 1/4W 1206"                                                                        
+R7         ERJ-8GEYJ332V                    TopLayer SMD-1206-RES                -905.512      1369.999      180      "RES SMD 3.3K OHM 5% 1/4W 1206"                                                                        
+R6         ERJ-8ENF10R2V                    TopLayer SMD-1206-RES                -275.591      1417.322      180      "RES SMD 10.2 OHM 1% 1/4W 1206"                                                                        
+R5         ERJ-8ENF10R2V                    TopLayer SMD-1206-RES                -275.591      1653.544      0        "RES SMD 10.2 OHM 1% 1/4W 1206"                                                                        
+C8         GCM21BR71H104KA37K               TopLayer SMD-0805C                   -511.811      1850.395      0        "CAP CER 0.1UF 50V X7R 0805"                                                                           
+C7         GCM21BR71H104KA37K               TopLayer SMD-0805C                   -393.701      1633.858      180      "CAP CER 0.1UF 50V X7R 0805"                                                                           
+UT4        DS18B20U+T&R                     TopLayer MAXM-U8+1_M                 5118.110      1377.953      90       "High-Precision 1-Wire Digital Thermometer, -55 to 125 degC, 8-Pin SOP (U8+1), Pb-Free, Tape and Reel" 
+UT3        DS18B20U+T&R                     TopLayer MAXM-U8+1_M                 2559.056      1377.953      90       "High-Precision 1-Wire Digital Thermometer, -55 to 125 degC, 8-Pin SOP (U8+1), Pb-Free, Tape and Reel" 
+UT2        DS18B20U+T&R                     TopLayer MAXM-U8+1_M                 -2559.055     1377.953      90       "High-Precision 1-Wire Digital Thermometer, -55 to 125 degC, 8-Pin SOP (U8+1), Pb-Free, Tape and Reel" 
+UT1        DS18B20U+T&R                     TopLayer MAXM-U8+1_M                 -5118.110     1377.953      90       "High-Precision 1-Wire Digital Thermometer, -55 to 125 degC, 8-Pin SOP (U8+1), Pb-Free, Tape and Reel" 
+ULR1       TLS850B0TEV33ATMA1               TopLayer BTS6143D                    319.016       200.118       270      "Integrated Circuit"                                                                                   
+U2         "ESP32-WROOM-32E (16MB)"         TopLayer FP-ESP32-WROOM-32E_16MB-MFG -629.922      378.740       180      "RX TXRX MOD WIFI TRACE ANT SMD"                                                                       
+U1         AP331AWG-7                       TopLayer FP-SOT25-MFG                635.000       669.291       0        "IC COMPARATOR SGL DIFF SOT-25"                                                                        
+RPU4       "Resistor 4k7 +/-1% 1206 250 mW" TopLayer RESC3116X70X50ML13T20       -1310.000     1295.000      90       "Chip Resistor, 4.7 KOhm, +/- 1%, 0.25 W, -55 to 155 degC, 1206 (3216 Metric)"                         
+RPU3       ERJ-P08J333V                     TopLayer SMD-1206-RES                -100.000      415.000       180      "RES SMD 33K OHM 5% 2/3W 1206"                                                                         
+RPU1       ERJ-P08J333V                     TopLayer SMD-1206-RES                1299.212      905.512       0        "RES SMD 33K OHM 5% 2/3W 1206"                                                                         
+RPD1       ERJ-P08J333V                     TopLayer SMD-1206-RES                1141.732      905.512       180      "RES SMD 33K OHM 5% 2/3W 1206"                                                                         
+RIO01      ERJ-P08J104V                     TopLayer SMD-1206-RES                -650.000      2055.000      180      "RES SMD 100K OHM 5% 2/3W 1206"                                                                        
+Ren1       ERJ-P08J104V                     TopLayer SMD-1206-RES                -350.000      2055.000      180      "RES SMD 100K OHM 5% 2/3W 1206"                                                                        
+R4         ERJ-P08J102V                     TopLayer SMD-1206-RES                826.772       393.700       180      "RES SMD 1K OHM 5% 2/3W 1206"                                                                          
+R3         "Resistor 4k7 +/-1% 1206 250 mW" TopLayer RESC3116X70X50ML13T20       826.772       629.921       90       "Chip Resistor, 4.7 KOhm, +/- 1%, 0.25 W, -55 to 155 degC, 1206 (3216 Metric)"                         
+R2         ERJ-P08J821V                     TopLayer SMD-1206-RES                433.070       708.662       180      "RES SMD 820 OHM 5% 2/3W 1206"                                                                         
+R1         ERJ-P08J153V                     TopLayer SMD-1206-RES                680.000       393.700       180      "RES SMD 15K OHM 5% 2/3W 1206"                                                                         
+QP1        FQB22P10TM                       TopLayer FQB22P10TM                  1705.019      787.402       270      "MOSFET (P-Channel)"                                                                                   
+QN1        BSS138                           TopLayer FP-318-08-IPC_B             1259.842      669.291       0        "MOSFET N-CH 50V 220MA SOT-23"                                                                         
+PT1        "Header 3"                       TopLayer HDR1X3                      -1210.000     1465.000      180      "Header, 3-Pin"                                                                                        
+PR22       "Header 2"                       TopLayer HDR1X2                      -2705.906     157.480       0        "Header, 2-Pin"                                                                                        
+PR21       "Header 2"                       TopLayer HDR1X2                      -2312.204     157.480       0        "Header, 2-Pin"                                                                                        
+PR12       "Header 2"                       TopLayer HDR1X2                      2705.906      157.480       180      "Header, 2-Pin"                                                                                        
+PR11       "Header 2"                       TopLayer HDR1X2                      2312.204      157.480       180      "Header, 2-Pin"                                                                                        
+J2         "Header 6H"                      TopLayer HDR1X6H                     -400.000      2265.000      180      "Header, 6-Pin, Right Angle"                                                                           
+J1         XT60PW-M                         TopLayer XT60PWM                     405.748       1841.890      0        Connector                                                                                              
+D1         BZX84C6V8LT1G                    TopLayer ONSC-SOT-23-3-318-08_V      433.071       472.441       0        "Zener Voltage Regulator, 225 mW, 3-Pin SOT-23, Pb-Free, Tape and Reel"                                
+C6         GRJ21BR71H105KE01L               TopLayer SMD-0805C                   -245.000      2025.000      0        "CAP CER 1UF 50V X7R 0805"                                                                             
+C5         GRM21BR6YA106ME43L               TopLayer SMD-0805C                   -95.000       120.000       180      "CAP CER 10UF 35V X5R 0805"                                                                            
+C4         GCM21BR71H104KA37K               TopLayer SMD-0805C                   -190.000      120.000       180      "CAP CER 0.1UF 50V X7R 0805"                                                                           
+C3         GRM21BR6YA106ME43L               TopLayer SMD-0805C                   45.000        120.000       180      "CAP CER 10UF 35V X5R 0805"                                                                            
+C2         GCM21BR71H104KA37K               TopLayer SMD-0805C                   45.000        325.000       180      "CAP CER 0.1UF 50V X7R 0805"                                                                           
+C1         865080663020                     TopLayer WCAP-ASLI_D16H17            385.001       1240.000      180      "865080663020 WCAP-ASLI Aluminum Electrolytic Capacitors"                                              
