@@ -21,3 +21,8 @@ composants commandés
 commencer rassemblement boulot pour l'esp 32
 
 lien vers présentation: [Oral S7 Chauffage ruche.pptx](https://unice-my.sharepoint.com/:p:/g/personal/melilla_caillot_etu_unice_fr/EexJpyUrVStCtURrQXf4pCQBGJ_DhOEJgqGgKRXciLH0BQ?e=O4ab3Y)
+
+
+le suivi est fait aussi grace au rapport sur l'historique du projet altium (comme j'étais le seul à travailler dessus):
+
+![XEvent](./img/xevent.png)
