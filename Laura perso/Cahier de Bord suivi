@@ -88,3 +88,8 @@ tester code lecture tension courant
 travailler mppt en fonction de l'eclairage 
 faire les essais 
 definir contenant à huile --> ok 
+
+MPPT :
+1) Initialisation : Configuration des paramètres critiques
+2)  Mesure de la tension circuit ouvert en mode haute impédance afin de déterminer la plage de tension de recherche pour le suivi
+3) on modifie la tension et on observe le courant et la puissance 
