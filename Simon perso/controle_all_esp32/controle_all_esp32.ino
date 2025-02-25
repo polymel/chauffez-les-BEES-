@@ -22,15 +22,41 @@ const float TEMP_HYSTERESIS = 2.0; // Hystérésis : 2°C
 // Initialisation du bus OneWire et du capteur
 OneWire oneWire(TEMP_SENSOR_PIN);
 DallasTemperature sensors(&oneWire);
+
+int numberOfDevices=5; // Number of temperature devices found
+float temperaturemin=0,temperaturemax=60;
 DeviceAddress tempDeviceAddress; // We'll use this variable to store a found device address
 // Variables de contrôle
 bool heating = false;
 
 void setup() {
-    Serial.begin(115200);  // Initialise le port série
-
+  Serial.begin(115200);  // Initialise le port série
+  //temp config
   // Start up the library for temp sensor
   sensors.begin();
+  // Grab a count of devices on the wire
+  numberOfDevices = sensors.getDeviceCount();
+   // locate devices on the bus
+  Serial.print("Locating devices...");
+  Serial.print("Found ");
+  Serial.print(numberOfDevices, DEC);
+  Serial.println(" devices.");
+ // Loop through each device, print out address
+  for(int i=0;i<numberOfDevices; i++) {
+    // Search the wire for address
+    if(sensors.getAddress(tempDeviceAddress, i)) {
+      Serial.print("Found device ");
+      Serial.print(i, DEC);
+      Serial.print(" with address: ");
+      printAddress(tempDeviceAddress);
+      Serial.println();
+		} else {
+		  Serial.print("Found ghost device at ");
+		  Serial.print(i, DEC);
+		  Serial.print(" but could not detect address. Check power and cabling");
+		}
+  }
+  //end temp config
 
     // Configuration de l'I2C
     Wire.begin(SDA_PIN, SCL_PIN);
@@ -47,11 +73,46 @@ void setup() {
 }
 
 void loop() {
-    // Lire la valeur du capteur de température
-    sensors.requestTemperatures(); // Lire la température du capteur
-    float temperature = sensors.getTempCByIndex(0); // Lecture du 1er capteur
-    Serial.println(temperature);
+  // Lire la valeur du capteur de température
+  sensors.requestTemperatures(); // Send the command to get temperatures
+  
+  // Loop through each device, print out temperature data
+  for(int i=0;i<numberOfDevices; i++) {
+    // Search the wire for address
+      if(sensors.getAddress(tempDeviceAddress, i)){
+      
+      // Output the device ID
+      Serial.print("Temperature for device: ");
+      Serial.println(i,DEC);
 
+      // Print the data
+      float tempC = sensors.getTempC(tempDeviceAddress);
+      Serial.print("Temp C: ");
+      Serial.print(tempC);
+      Serial.print(" Temp F: ");
+      Serial.println(DallasTemperature::toFahrenheit(tempC)); // Converts tempC to Fahrenheit
+      if (tempC == DEVICE_DISCONNECTED_C) {
+      Serial.println("Erreur : Capteur déconnecté !");
+      return;
+      }
+      Serial.print("Température actuelle : ");
+      Serial.println(tempC);
+      if(temperaturemin>= tempC){
+        temperaturemin=tempC;
+      }
+      if(temperaturemax<= tempC){
+        temperaturemax=tempC;
+      }
+
+      // Régulation de la température avec hystérésis
+      if (temperaturemax > TEMP_TARGET + TEMP_HYSTERESIS) {
+        heating = false; // Désactiver le chauffage
+      }else if (temperaturemin < TEMP_TARGET - TEMP_HYSTERESIS) {
+        heating = true; // Activer le chauffage
+      }
+      
+    } 	
+  }
     // // Lire les signaux numériques
     // int signal1 = digitalRead(SIGNAL_1);
     // int signal2 = digitalRead(SIGNAL_2);
@@ -64,20 +125,14 @@ void loop() {
     //     Serial.print("Reçu sur UART: ");
     //     Serial.println(c);
     // }
-  if (temperature == DEVICE_DISCONNECTED_C) {
-    Serial.println("Erreur : Capteur déconnecté !");
-    return;
-  }
   
-  Serial.print("Température actuelle : ");
-  Serial.println(temperature);
-
-  // Régulation de la température avec hystérésis
-  if (temperature < TEMP_TARGET - TEMP_HYSTERESIS) {
-    heating = true; // Activer le chauffage
-  } else if (temperature > TEMP_TARGET + TEMP_HYSTERESIS) {
-    heating = false; // Désactiver le chauffage
-  }
 
     delay(3000);
+}
+// function to print a device address
+void printAddress(DeviceAddress deviceAddress) {
+  for (uint8_t i = 0; i < 8; i++) {
+    if (deviceAddress[i] < 16) Serial.print("0");
+      Serial.print(deviceAddress[i], HEX);
+  }
 }
