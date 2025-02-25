@@ -73,3 +73,18 @@ On rajoutera une led à V+ et V- de l'ina pour mesurer la tension et le courant
 
 --- Pour avoir un fichier ou l'on peut copier coller des images ou capture d'ecran, fichier.md et aller ensuite dans preview 
 pour voir l'image ----------
+
+
+25/02/25 :
+Point avec l'équipe :
+Ce qui est fait : 
+la carte 
+le code de la lecture de temperature
+code de lecture tension courant 
+commande du PCB
+
+Ce qui reste à faire : 
+tester code lecture tension courant
+travailler mppt en fonction de l'eclairage 
+faire les essais 
+definir contenant à huile --> ok 
