@@ -99,3 +99,5 @@ firts : on fixe vcc a 0.7 ou 0.8 et on regarde l'allure
 second: on recuper un delta V et si puissance augmente, voltage augmente et si puiss diminue, voltage diminue (delta V ne change pas)
 troisième : dichotomie avec ecart de delta V diminue au fur et a mesure 
 On peut pas encore determiner laquelle est la meilleure solution
+On se renseigne pour quand c'est dynamique (notre projet) et ces methodes fonctionnent tres bien en statique mais dynamique on sait 
+pas encore
