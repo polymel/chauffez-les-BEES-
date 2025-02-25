@@ -73,3 +73,31 @@ On rajoutera une led à V+ et V- de l'ina pour mesurer la tension et le courant
 
 --- Pour avoir un fichier ou l'on peut copier coller des images ou capture d'ecran, fichier.md et aller ensuite dans preview 
 pour voir l'image ----------
+
+
+25/02/25 :
+Point avec l'équipe :
+Ce qui est fait : 
+la carte 
+le code de la lecture de temperature
+code de lecture tension courant 
+commande du PCB
+
+Ce qui reste à faire : 
+tester code lecture tension courant
+travailler mppt en fonction de l'eclairage 
+faire les essais 
+definir contenant à huile --> ok 
+
+MPPT :
+1) Initialisation : Configuration des paramètres critiques
+2)  Mesure de la tension circuit ouvert en mode haute impédance afin de déterminer la plage de tension de recherche pour le suivi
+3) on modifie la tension et on observe le courant et la puissance
+
+on a recuperé les trois méthodes adequates pour trouver le mppt
+firts : on fixe vcc a 0.7 ou 0.8 et on regarde l'allure 
+second: on recuper un delta V et si puissance augmente, voltage augmente et si puiss diminue, voltage diminue (delta V ne change pas)
+troisième : dichotomie avec ecart de delta V diminue au fur et a mesure 
+On peut pas encore determiner laquelle est la meilleure solution
+On se renseigne pour quand c'est dynamique (notre projet) et ces methodes fonctionnent tres bien en statique mais dynamique on sait 
+pas encore

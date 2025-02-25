@@ -534,7 +534,7 @@ Cela met en avant l'importance de la métrologie et de la tolérance des apparei
 
 Par principe de sureté je conseille de mettre un sueil max qui est d'au moins un degrès de moins que la température max supportée par l'essaim. 
 
-j'ai Laura a téste son code car il "ne focntionne pas sur son ordinateur". 
+j'aiDE Laura a téste son code car il "ne focntionne pas sur son ordinateur". 
 
 il faut câbler l'ina aux montage déjà existant  :
 
@@ -545,5 +545,36 @@ je suis la doc pour la câblage :
 j'utilise une led pour mesurer la tension et le cournant. 
 
 
+25/02/2025 -
 
+Besoin de faire un point avec l'equipe 
 
+Fait : 
+routage PCB
+commande du PCB --> arrivé  27/02
+
+définition des composants 
+code capteur de température 
+code complet lecture temperature - lecture courant tension 
+Schemas electronique 
+
+Reste à faire : 
+
+verifier commande des composants OK
+finaliser code complet lecture temperature - lecture courant tension 
+appro. huile 
+vérification code  lecture courant/tension --> adaptation  mppt avec methode PWM
+Montage des composants 
+définir un plan de test PCBA 
+
+après verifi PCBA : 
+definir contenant huile OK 
+essayer sur la ruche 
+
+idées : 
+
+export de données pour exploitation 
+
+trou dans la raquette :
+
+workshop mppt : essai plusieurs puissances source de lumière , rester au point 
