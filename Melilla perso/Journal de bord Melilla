@@ -578,3 +578,25 @@ export de données pour exploitation
 trou dans la raquette :
 
 workshop mppt : essai plusieurs puissances source de lumière , rester au point 
+
+
+28/02/2025
+
+objectif du jour :
+comprendre les notions mppt et Mpp
+
+article 3 : https://www.ti.com/lit/an/slyt478/slyt478.pdf?ts=1728361811934
+caractéristiques du fonctiionnement at mppt : 
+Une caractéristique des panneaux solaires est que leur tension de sortie diminue à mesure que le courant prélevé augmente. 
+Méthode des 2 points : pour fonctionner à 90 % du MPP consiste à activer la charge au Point 1 et la désactiver au Point 2
+Lorsque la charge est activée, elle consomme de la puissance, ce qui fait baisser la tension du panneau. Cela déplace le point de fonctionnement du Point 1, en passant par le MPP, jusqu’au Point 2. À ce point, la charge est désactivée, ce qui permet à la tension du panneau de remonter.*
+
+défis du fonctionnement du  panneau solaire : 
+
+- Adaptation de la tension : la charge (ici les résistances chauffantes) et le panneau solaire ne sont pas égales. 
+-  gérer automatiquement  l'alimentation électrique en fonction de la tension mesurée sur un panneau, en utilisant une entrée numérique pour activer ou désactiver l'alimentation.pas possible de connecter directement la tension du panneau à l'entrée d'activation, ce qui impose l'utilisation d'un circuit externe doté d'un seuil précis.
+
+
+interruption : j'aide Laura a téste son code. je debug 
+
+
