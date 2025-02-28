@@ -4,6 +4,9 @@
 
 //pour INA219 bibliotheque Adafruit
 
+#include <Adafruit_INA219.h>
+Adafruit_INA219 ina219;
+
 // Définition des broches
 #define SDA_PIN 33
 #define SCL_PIN 36
@@ -11,6 +14,11 @@
 #define TX_PIN  35
 #define ONE_WIRE_BUS 14   // Broche du DS18B20 (DATA_temp)
 #define TEMP_SENSOR_PIN 7//ONE_WIRE_BUS après
+#define TEMP_ID1 2816408EFA001D0
+#define TEMP_ID2 2816408EBE3980D
+#define TEMP_ID3 2816408E
+#define TEMP_ID4 2816408E
+#define TEMP_ID5 2816408E
 
 // #define SIGNAL_1 24  
 // #define SIGNAL_2 29
@@ -29,8 +37,15 @@ DeviceAddress tempDeviceAddress; // We'll use this variable to store a found dev
 // Variables de contrôle
 bool heating = false;
 
+
+
+
 void setup() {
   Serial.begin(115200);  // Initialise le port série
+    while (!Serial) {
+      delay(1);
+  }
+
   //temp config
   // Start up the library for temp sensor
   sensors.begin();
@@ -63,13 +78,25 @@ void setup() {
     Serial.println("I2C initialisé");
 
 
+    // Configuration de la liaison série alternative (UART)
+    Serial1.begin(115200, SERIAL_8N1, RX_PIN, TX_PIN);
+    Serial.println("UART initialisé");
+
+
+  //INA219 
+  uint32_t currentFrequency;
+  if (! ina219.begin()) {
+    Serial.println("Failed to find INA219 chip");
+    while (1) { delay(10); }
+  }else{
+    Serial.println("INA219 initialisé");
+  }
+  
+
     // // Configurer les GPIO comme entrées ou sorties
     // pinMode(SIGNAL_1, INPUT);
     // pinMode(SIGNAL_2, INPUT);
 
-    // Configuration de la liaison série alternative (UART)
-    Serial1.begin(115200, SERIAL_8N1, RX_PIN, TX_PIN);
-    Serial.println("UART initialisé");
 }
 
 void loop() {
@@ -82,21 +109,17 @@ void loop() {
       if(sensors.getAddress(tempDeviceAddress, i)){
       
       // Output the device ID
-      Serial.print("Temperature for device: ");
+      Serial.print("Capteur: ");
       Serial.println(i,DEC);
-
       // Print the data
       float tempC = sensors.getTempC(tempDeviceAddress);
-      Serial.print("Temp C: ");
-      Serial.print(tempC);
-      Serial.print(" Temp F: ");
-      Serial.println(DallasTemperature::toFahrenheit(tempC)); // Converts tempC to Fahrenheit
       if (tempC == DEVICE_DISCONNECTED_C) {
-      Serial.println("Erreur : Capteur déconnecté !");
+      Serial.println("E: Déconnecté !");
       return;
       }
-      Serial.print("Température actuelle : ");
+      Serial.print("M: ");
       Serial.println(tempC);
+      Serial.print("°C");
       if(temperaturemin>= tempC){
         temperaturemin=tempC;
       }
@@ -125,9 +148,26 @@ void loop() {
     //     Serial.print("Reçu sur UART: ");
     //     Serial.println(c);
     // }
-  
+  float shuntvoltage = 0;
+  float busvoltage = 0;
+  float current_mA = 0;
+  float loadvoltage = 0;
+  float power_mW = 0;
 
-    delay(3000);
+  shuntvoltage = ina219.getShuntVoltage_mV();
+  busvoltage = ina219.getBusVoltage_V();
+  current_mA = ina219.getCurrent_mA();
+  power_mW = ina219.getPower_mW();
+  loadvoltage = busvoltage + (shuntvoltage / 1000);
+  
+  Serial.print("Bus Voltage:   "); Serial.print(busvoltage); Serial.println(" V");
+  Serial.print("Shunt Voltage: "); Serial.print(shuntvoltage); Serial.println(" mV");
+  Serial.print("Load Voltage:  "); Serial.print(loadvoltage); Serial.println(" V");
+  Serial.print("Current:       "); Serial.print(current_mA); Serial.println(" mA");
+  Serial.print("Power:         "); Serial.print(power_mW); Serial.println(" mW");
+  Serial.println("");
+
+  delay(2000);
 }
 // function to print a device address
 void printAddress(DeviceAddress deviceAddress) {
