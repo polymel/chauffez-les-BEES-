@@ -586,17 +586,82 @@ objectif du jour :
 comprendre les notions mppt et Mpp
 
 article 3 : https://www.ti.com/lit/an/slyt478/slyt478.pdf?ts=1728361811934
-caractéristiques du fonctiionnement at mppt : 
+
 Une caractéristique des panneaux solaires est que leur tension de sortie diminue à mesure que le courant prélevé augmente. 
+
+
 Méthode des 2 points : pour fonctionner à 90 % du MPP consiste à activer la charge au Point 1 et la désactiver au Point 2
 Lorsque la charge est activée, elle consomme de la puissance, ce qui fait baisser la tension du panneau. Cela déplace le point de fonctionnement du Point 1, en passant par le MPP, jusqu’au Point 2. À ce point, la charge est désactivée, ce qui permet à la tension du panneau de remonter.*
 
-défis du fonctionnement du  panneau solaire : 
+défis de la méthode des 2 points : 
 
-- Adaptation de la tension : la charge (ici les résistances chauffantes) et le panneau solaire ne sont pas égales. 
--  gérer automatiquement  l'alimentation électrique en fonction de la tension mesurée sur un panneau, en utilisant une entrée numérique pour activer ou désactiver l'alimentation.pas possible de connecter directement la tension du panneau à l'entrée d'activation, ce qui impose l'utilisation d'un circuit externe doté d'un seuil précis.
+- Adaptation de la tension : la charge (ici les résistances chauffantes) et le panneau solaire ne sont pas égales. ==> besoin de  convertir la tension
+-  Gestion des variations rapide la tension du panneau 
+- Ajouter un superviseur de tension d’alimentation pour activer ou de désactiver l’alimentation électrique en fonction de la tension du panneau solaire 
+
 
 
 interruption : j'aide Laura a téste son code. je debug 
+
+
+
+
+
+
+10/03/25
+
+A faire aujourd'hui : 
+
+- Assembler les PCBAs
+- définir une spec de test 
+- COnclure l'inclusion du MPPT PWM dans la programmation 
+
+
+Je reviens sur la méthode des 2 points : 
+
+pour mettre en place cette méthode on a besoin du TPS62125 un régulateur de tension cependat nous avons utiliser le 
+
+est ce que le regulateur que l'on a choisit a les mêmes caractéristiques que celui proposé dans l'article ? 
+Comment trouver les 2 points ? 
+
+On doit déterminer une formule dynamique qui calcule P1 et P2. P& et P2 doivent être détermioner de manière dynamique puisque 
+l'ensoleillment varie. 
+
+Est ce qu'on a mis les composnats autour ? 
+
+Alors notre configuration est très différente que celle dans l'article. 
+On doit déterminer à partir du bloc de l'INA 219 les formule P1 et P2. 
+
+Quels sont les paramètres de P1 et P2 ? 
+
+
+
+
+Sérigraphie du PCB : on étale la pâte à braser sur le pochoir fixé à l'aide de pince sur le PCB. 
+
+voir image sérigraphie
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
