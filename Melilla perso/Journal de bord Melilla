@@ -762,12 +762,12 @@ Précaution : chaleur importante et pas de moyen de protection
 
 explication installation broche pour téléverser : 
 
-Rx  
-Tx 
-Gnd 
-IO 
-rst 
-3,3 V 
+RX	Réception (UART)	Lire des données d’un PC, capteur série
+TX	Transmission (UART)	Envoyer des données à un PC, autre microcontrôleur
+GND	Masse	Connexion de référence pour tous les composants
+RST	Reset	Redémarrer l’ESP32
+3.3V	Alimentation	Alimenter des modules (capteurs, écrans, etc.)
+
 
 
 
