@@ -759,7 +759,7 @@ Utilisation du four : cycle à vide + cycle "C3 pour cuire la PCBA
 
 * photo four **
 Précaution : chaleur importante et pas de moyen de protection 
-
+On inspecte la carte visuellement => * image inpestion * 
 explication installation broche pour téléverser : 
 
 RX	Réception (UART)	Lire des données d’un PC, capteur série
@@ -767,6 +767,9 @@ TX	Transmission (UART)	Envoyer des données à un PC, autre microcontrôleur
 GND	Masse	Connexion de référence pour tous les composants
 RST	Reset	Redémarrer l’ESP32
 3.3V	Alimentation	Alimenter des modules (capteurs, écrans, etc.)
+
+
+-- Brasage manuel des cpateur ==> difficultés rencontrées : ponts entre les pins, peut être du à la taille de la tige. 
 
 
 
