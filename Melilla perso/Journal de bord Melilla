@@ -674,10 +674,100 @@ Si beaucoup de puissance est disponible, on augmente le PWM.
 Si la puissance diminue, on réduit le PWM pour ne pas surcharger le panneau.
 
 
+-----------erreur de montage sur la première carte on change R1 montée 4,7k omh avec un 470 omh---------------------
+
+J'utilise chatGPT pour le developpement du code 2.
+
+#include <Wire.h>
+#include <Adafruit_INA219.h>
+
+Adafruit_INA219 ina219;
+
+const int pwmPin = 5;      // Broche de sortie du PWM (à connecter à la résistance chauffante)
+const int pwmChannel = 0;  // Canal PWM utilisé par l'ESP32
+const int pwmFreq = 1000;  // Fréquence PWM (1 kHz)
+const int pwmResolution = 8; // Résolution en bits (0-255)
+
+void setup() {
+    Serial.begin(115200);
+    Wire.begin(); // Initialisation du bus I2C
+
+    // Vérifier que l'INA219 fonctionne
+    if (!ina219.begin()) {
+        Serial.println("Échec de la connexion à l'INA219 !");
+        while (1);
+    }
+    
+    Serial.println("INA219 initialisé !");
+    
+    // Initialisation du PWM
+    ledcSetup(pwmChannel, pwmFreq, pwmResolution);
+    ledcAttachPin(pwmPin, pwmChannel);
+}
+
+void loop() {
+    // Lire la tension et le courant du panneau solaire
+    float tension = ina219.getBusVoltage_V();
+    float courant = ina219.getCurrent_mA() / 1000.0; // Convertir en A
+    float puissance = tension * courant; // Calcul de la puissance (P = U × I)
+
+    // Définir la valeur du PWM en fonction de la puissance disponible
+    int pwmValue = map(puissance, 0, 10, 0, 255); // Adapter selon la plage de puissance réelle
+
+    // Limiter la valeur du PWM entre 0 et 255
+    pwmValue = constrain(pwmValue, 0, 255);
+
+    // Appliquer le PWM à la résistance chauffante
+    ledcWrite(pwmChannel, pwmValue);
+
+    // Afficher les valeurs sur le moniteur série
+    Serial.print("Tension : "); Serial.print(tension); Serial.print(" V, ");
+    Serial.print("Courant : "); Serial.print(courant, 3); Serial.print(" A, ");
+    Serial.print("Puissance : "); Serial.print(puissance); Serial.print(" W, ");
+    Serial.print("PWM : "); Serial.println(pwmValue);
+
+    delay(1000); // Attendre 1 seconde avant la prochaine mesure
+}
 
 
+erreure rencontrée : C:\Users\melim\Documents\Etude\POLYTECH\4A\S7\Projet électronique\32\32.ino: In function 'void setup()':
+C:\Users\melim\Documents\Etude\POLYTECH\4A\S7\Projet électronique\32\32.ino:10:3: error: 'ledcSetup' was not declared in this scope
+C:\Users\melim\Documents\Etude\POLYTECH\4A\S7\Projet électronique\32\32.ino:11:3: error: 'ledcAttachPin' was not declared in this scope; did you mean 'ledcAttach'?
+
+exit status 1
+
+Compilation error: 'ledcSetup' was not declared in this scope
 
 
+je teste un code simple pour véfier la connxion de mon ESP32 et mon environnement : 
+void setup() {
+  Serial.begin(115200);  // Initialise la communication série
+  delay(1000);  // Pause pour stabiliser
+  Serial.println("ESP32 OK");
+}
+
+void loop() {
+  Serial.println("ESP32 fonctionne !");
+  delay(1000);  // Attendre 1 seconde
+}
+
+
+--- en parrallèle on remonte le PCBA + on le met au four --- 
+
+Utilisation du four : cycle à vide + cycle "C3 pour cuire la PCBA
+
+
+* photo four **
+Précaution : chaleur importante et pas de moyen de protection 
+
+explication installation broche pour téléverser : 
+
+Rx  
+Tx 
+Gnd 
+IO 
+rst 
+3,3 V 
 
 
 
