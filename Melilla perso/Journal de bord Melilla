@@ -644,10 +644,34 @@ voir image sérigraphie
 
 
 
+Changement de technique pour rester au pwm :
 
 
+faire varier le trapport de cycle en fonction de la variation de la tension/courant
 
 
+Sérigraphie + montage d'un autre PCB : erreur rencontrée --> lavage du PCB à l'alcool on refait le lendemain. 
+
+
+11/03/25
+
+Prévue aujourd'hui : 
+
+- Code avec la nouvelle méthode pour garder le pwn 
+-Assemblage de le seconde carte 
+
+
+Principe de la modulation de rapport de cycle : 
+
+La tension varie en fonction de l'ensoleillement et des conditions de fonctionnement du panneau solaire. Si la tension augmente, cela signifie qu'il y a plus de puissance disponible, et vice versa. 
+En ajustant le rapport cyclique du PWM en fonction de la tension mesurée, vous pouvez réguler la quantité d'énergie transmise à la résistance chauffante
+
+1. Mesurer la tension et le courant du panneau solaire avec l’INA219. --> code existant 
+
+
+2 . Calculer la puissance disponible + Ajustement du rapport cyclique du PWM en fonction de cette puissance.
+Si beaucoup de puissance est disponible, on augmente le PWM.
+Si la puissance diminue, on réduit le PWM pour ne pas surcharger le panneau.
 
 
 
