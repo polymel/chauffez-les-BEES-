@@ -129,3 +129,9 @@ Nous avons ajouté a notre montage GS le panneau solaire avec l'éclairage et l'
 de mesurer l'intensité lumineuse des ampoules placées au dessus du PS (= GS pour moi = générateur solaire) (voir montage GS complet.jpg)
 Nous allons à présent réaliser ce montage avec nos composants dans la vraie vie. 
 Nous allons tester les caractéristiques du panneau solaire.
+Nous faisons les mesures avec le GS, les ampoules, le voltmetres, l'ampermetre, auto transfo pour faire varier la lumiere 
+et le reaustat.
+Ces mesures nous servent a tracer la courbe I=f(V).
+Nous relevons plusieurs valeurs de V et de I en faisant varier les ohms (via le reaustat) pour tracer plusieurs courbes, 
+chaque courbe depend de l'intensité de la lumiere sur les GS (on fait varier cette intensité via l'auto transfo). 
+
