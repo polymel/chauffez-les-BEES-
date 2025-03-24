@@ -806,7 +806,7 @@ voir photo choix montage ampèrmetre
 On peut soit mettre l'ampèremetre dans le branchment du voltmêtre soit en dehors. 
 
 Cela dépend de l'impédance caractéristique du multimêtre.  le multi peut être numérique ou à aiguille. 
-Dans le premier cas : on a Z proche de 1 méga ohm. 
+Dans le premier cas : on a Z proche de 1 méga ohm. - photo autotransfo --
 
 Tandis que dans un mécanisme à aiguille on a un bobinage unique avec un curseur qui fait varier le rapport de spear et donc la tension secondaire entre 0 et 230 V. Ce bobinage 
 est en série avec une résistance et celle ci à une valeur << à 1 mega ohm. 
@@ -817,7 +817,7 @@ On choisira alors de mettre l'ampèremêtre dans la boucle et oon peut négliger
 
 2.2 montage pratique 
 
-
+Voir image montage physique 
 
 
 
