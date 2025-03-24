@@ -827,7 +827,7 @@ Les resultas experimentaux suivent les résultats théoriques attendus.
 
 On a deux varibales à mesurer : la tension et le courant. 
 On a 2 variables à faire varier : le réaustat et l'intensité lumineuse avec l'auto transformateur. 
-On augmente la prise de point entre 20 et 20 ohm car c'est la que ce trouve le pwm
+On augmente la prise de point entre 20 et 20 ohm car c'est la que ce trouve le pwm  => rectification c'est entre 1200 et 300
 
 
 
