@@ -101,3 +101,39 @@ troisième : dichotomie avec ecart de delta V diminue au fur et a mesure
 On peut pas encore determiner laquelle est la meilleure solution
 On se renseigne pour quand c'est dynamique (notre projet) et ces methodes fonctionnent tres bien en statique mais dynamique on sait 
 pas encore
+
+
+10/03/2025
+Nous avons reçu le PCB.
+Il faut avec le PCB : 
+- créer le script qui va tester les blocs fonctionnels
+- tester les blocs fonctionnels
+
+Nous avons appliquer la pate à braser sur les deux cartes électroniques. 
+J'ai commencé à mettre les composants sur la pate, mais elle avait déjà séchée, je l'ai netoyée, donc on recommence la prochaine fois.
+
+
+11/03/2025
+Je viens de finir de mettre les composants sur la carte, je viens de la passer au four, et à la loupe + test de connectivité,
+nous avons remarqué que certainement deux PIN de U3 qui sont connectés.
+Il nous manque juste les capteurs de temperatures sur la crte, que nous brasons à la main.
+
+24/03/2025:
+Nous avons déterminée le montage elec du panneaux solaire (voir montage GS.jpg). 
+Le choix du montage a été determiné en fonction de l'impédance caractéristique du voltmètre :
+- numérique (val resistance dans l'ordre de du méga ohm donc Iv = 0) 
+- à aiguille 
+--> ici pour nous c'est avec le voltmètre numérique.
+
+Nous avons ajouté a notre montage GS le panneau solaire avec l'éclairage et l'auto transfo ainsi que le solar power-metre afin 
+de mesurer l'intensité lumineuse des ampoules placées au dessus du PS (= GS pour moi = générateur solaire) (voir montage GS complet.jpg)
+Nous allons à présent réaliser ce montage avec nos composants dans la vraie vie. 
+Nous allons tester les caractéristiques du panneau solaire.
+Nous faisons les mesures avec le GS, les ampoules, le voltmetres, l'ampermetre, auto transfo pour faire varier la lumiere 
+et le reaustat.
+Ces mesures nous servent a tracer la courbe I=f(V).
+Nous relevons plusieurs valeurs de V et de I en faisant varier les ohms (via le reaustat) pour tracer plusieurs courbes, 
+chaque courbe depend de l'intensité de la lumiere sur les GS (on fait varier cette intensité via l'auto transfo). 
+Pour cette séance nous avons relevé et tracé les valeurs If(V) pour 3 differentes intensité de lumiere.
+La dernière courbe est la meilleure car nous avons rajouté des points en fin de courbe pour etre plus précises. 
+Prochaine séance nous continuerons de faire des mesures + améliorerons nos deux premieres courbes en rajoutant des mesures.

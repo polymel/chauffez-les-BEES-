@@ -586,17 +586,254 @@ objectif du jour :
 comprendre les notions mppt et Mpp
 
 article 3 : https://www.ti.com/lit/an/slyt478/slyt478.pdf?ts=1728361811934
-caractéristiques du fonctiionnement at mppt : 
+
 Une caractéristique des panneaux solaires est que leur tension de sortie diminue à mesure que le courant prélevé augmente. 
+
+
 Méthode des 2 points : pour fonctionner à 90 % du MPP consiste à activer la charge au Point 1 et la désactiver au Point 2
 Lorsque la charge est activée, elle consomme de la puissance, ce qui fait baisser la tension du panneau. Cela déplace le point de fonctionnement du Point 1, en passant par le MPP, jusqu’au Point 2. À ce point, la charge est désactivée, ce qui permet à la tension du panneau de remonter.*
 
-défis du fonctionnement du  panneau solaire : 
+défis de la méthode des 2 points : 
 
-- Adaptation de la tension : la charge (ici les résistances chauffantes) et le panneau solaire ne sont pas égales. 
--  gérer automatiquement  l'alimentation électrique en fonction de la tension mesurée sur un panneau, en utilisant une entrée numérique pour activer ou désactiver l'alimentation.pas possible de connecter directement la tension du panneau à l'entrée d'activation, ce qui impose l'utilisation d'un circuit externe doté d'un seuil précis.
+- Adaptation de la tension : la charge (ici les résistances chauffantes) et le panneau solaire ne sont pas égales. ==> besoin de  convertir la tension
+-  Gestion des variations rapide la tension du panneau 
+- Ajouter un superviseur de tension d’alimentation pour activer ou de désactiver l’alimentation électrique en fonction de la tension du panneau solaire 
+
 
 
 interruption : j'aide Laura a téste son code. je debug 
+
+
+
+
+
+
+10/03/25
+
+A faire aujourd'hui : 
+
+- Assembler les PCBAs
+- définir une spec de test 
+- COnclure l'inclusion du MPPT PWM dans la programmation 
+
+
+Je reviens sur la méthode des 2 points : 
+
+pour mettre en place cette méthode on a besoin du TPS62125 un régulateur de tension cependat nous avons utiliser le 
+
+est ce que le regulateur que l'on a choisit a les mêmes caractéristiques que celui proposé dans l'article ? 
+Comment trouver les 2 points ? 
+
+On doit déterminer une formule dynamique qui calcule P1 et P2. P& et P2 doivent être détermioner de manière dynamique puisque 
+l'ensoleillment varie. 
+
+Est ce qu'on a mis les composnats autour ? 
+
+Alors notre configuration est très différente que celle dans l'article. 
+On doit déterminer à partir du bloc de l'INA 219 les formule P1 et P2. 
+
+Quels sont les paramètres de P1 et P2 ? 
+
+
+
+
+Sérigraphie du PCB : on étale la pâte à braser sur le pochoir fixé à l'aide de pince sur le PCB. 
+
+voir image sérigraphie
+
+
+
+
+Changement de technique pour rester au pwm :
+
+
+faire varier le trapport de cycle en fonction de la variation de la tension/courant
+
+
+Sérigraphie + montage d'un autre PCB : erreur rencontrée --> lavage du PCB à l'alcool on refait le lendemain. 
+
+
+11/03/25
+
+Prévue aujourd'hui : 
+
+- Code avec la nouvelle méthode pour garder le pwn 
+-Assemblage de le seconde carte 
+
+
+Principe de la modulation de rapport de cycle : 
+
+La tension varie en fonction de l'ensoleillement et des conditions de fonctionnement du panneau solaire. Si la tension augmente, cela signifie qu'il y a plus de puissance disponible, et vice versa. 
+En ajustant le rapport cyclique du PWM en fonction de la tension mesurée, vous pouvez réguler la quantité d'énergie transmise à la résistance chauffante
+
+1. Mesurer la tension et le courant du panneau solaire avec l’INA219. --> code existant 
+
+
+2 . Calculer la puissance disponible + Ajustement du rapport cyclique du PWM en fonction de cette puissance.
+Si beaucoup de puissance est disponible, on augmente le PWM.
+Si la puissance diminue, on réduit le PWM pour ne pas surcharger le panneau.
+
+
+-----------erreur de montage sur la première carte on change R1 montée 4,7k omh avec un 470 omh---------------------
+
+J'utilise chatGPT pour le developpement du code 2.
+
+#include <Wire.h>
+#include <Adafruit_INA219.h>
+
+Adafruit_INA219 ina219;
+
+const int pwmPin = 5;      // Broche de sortie du PWM (à connecter à la résistance chauffante)
+const int pwmChannel = 0;  // Canal PWM utilisé par l'ESP32
+const int pwmFreq = 1000;  // Fréquence PWM (1 kHz)
+const int pwmResolution = 8; // Résolution en bits (0-255)
+
+void setup() {
+    Serial.begin(115200);
+    Wire.begin(); // Initialisation du bus I2C
+
+    // Vérifier que l'INA219 fonctionne
+    if (!ina219.begin()) {
+        Serial.println("Échec de la connexion à l'INA219 !");
+        while (1);
+    }
+    
+    Serial.println("INA219 initialisé !");
+    
+    // Initialisation du PWM
+    ledcSetup(pwmChannel, pwmFreq, pwmResolution);
+    ledcAttachPin(pwmPin, pwmChannel);
+}
+
+void loop() {
+    // Lire la tension et le courant du panneau solaire
+    float tension = ina219.getBusVoltage_V();
+    float courant = ina219.getCurrent_mA() / 1000.0; // Convertir en A
+    float puissance = tension * courant; // Calcul de la puissance (P = U × I)
+
+    // Définir la valeur du PWM en fonction de la puissance disponible
+    int pwmValue = map(puissance, 0, 10, 0, 255); // Adapter selon la plage de puissance réelle
+
+    // Limiter la valeur du PWM entre 0 et 255
+    pwmValue = constrain(pwmValue, 0, 255);
+
+    // Appliquer le PWM à la résistance chauffante
+    ledcWrite(pwmChannel, pwmValue);
+
+    // Afficher les valeurs sur le moniteur série
+    Serial.print("Tension : "); Serial.print(tension); Serial.print(" V, ");
+    Serial.print("Courant : "); Serial.print(courant, 3); Serial.print(" A, ");
+    Serial.print("Puissance : "); Serial.print(puissance); Serial.print(" W, ");
+    Serial.print("PWM : "); Serial.println(pwmValue);
+
+    delay(1000); // Attendre 1 seconde avant la prochaine mesure
+}
+
+
+erreure rencontrée : C:\Users\melim\Documents\Etude\POLYTECH\4A\S7\Projet électronique\32\32.ino: In function 'void setup()':
+C:\Users\melim\Documents\Etude\POLYTECH\4A\S7\Projet électronique\32\32.ino:10:3: error: 'ledcSetup' was not declared in this scope
+C:\Users\melim\Documents\Etude\POLYTECH\4A\S7\Projet électronique\32\32.ino:11:3: error: 'ledcAttachPin' was not declared in this scope; did you mean 'ledcAttach'?
+
+exit status 1
+
+Compilation error: 'ledcSetup' was not declared in this scope
+
+
+je teste un code simple pour véfier la connxion de mon ESP32 et mon environnement : 
+void setup() {
+  Serial.begin(115200);  // Initialise la communication série
+  delay(1000);  // Pause pour stabiliser
+  Serial.println("ESP32 OK");
+}
+
+void loop() {
+  Serial.println("ESP32 fonctionne !");
+  delay(1000);  // Attendre 1 seconde
+}
+
+
+--- en parrallèle on remonte le PCBA + on le met au four --- 
+
+Utilisation du four : cycle à vide + cycle "C3 pour cuire la PCBA
+
+
+* photo four **
+Précaution : chaleur importante et pas de moyen de protection 
+On inspecte la carte visuellement => * image inpestion * 
+explication installation broche pour téléverser : 
+
+RX	Réception (UART)	Lire des données d’un PC, capteur série
+TX	Transmission (UART)	Envoyer des données à un PC, autre microcontrôleur
+GND	Masse	Connexion de référence pour tous les composants
+RST	Reset	Redémarrer l’ESP32
+3.3V	Alimentation	Alimenter des modules (capteurs, écrans, etc.)
+
+
+-- Brasage manuel des caPteur ==> difficultés rencontrées : ponts entre les pins, peut être du à la taille de la tige. 
+
+24/03 
+
+Ordre du jour : 
+
+1. reprise des composants brasés manuellement 
+2. mesures des caractéristiques du panneau solaire à l'aide du réaustat
+
+
+2.1 Montage théorique 
+
+Materiel nécessaire : 
+
+- Réaustat 
+-2 multimêtres 
+-panneau solaire 
+- fiches bananes 
+- Lumière variable 
+- Autotransfo 
+
+
+
+Determination du schémas : 
+
+voir photo Montage mesure caractéristique panneau solaire .jpg
+
+point de vigilance : comment monter les multimêtres ? 
+
+-> le voltmêtre se branche en parrallèle à la charge : Le voltmètre mesure la différence de potentiel électrique entre deux points d'un circuit.
+La tension est la différence de potentiel entre deux points, donc pour mesurer cette différence, il doit être connecté en parallèle aux deux points où la tension est à mesurer.
+
+voir photo choix montage ampèrmetre 
+-> L'ampèremêtre : Un ampèremètre doit toujours être connecté en série avec le circuit dont tu veux mesurer le courant, car il doit permettre au courant de passer à travers lui.
+On peut soit mettre l'ampèremetre dans le branchment du voltmêtre soit en dehors. 
+
+Cela dépend de l'impédance caractéristique du multimêtre.  le multi peut être numérique ou à aiguille. 
+Dans le premier cas : on a Z proche de 1 méga ohm. - photo autotransfo --
+
+Tandis que dans un mécanisme à aiguille on a un bobinage unique avec un curseur qui fait varier le rapport de spear et donc la tension secondaire entre 0 et 230 V. Ce bobinage 
+est en série avec une résistance et celle ci à une valeur << à 1 mega ohm. 
+
+On choisira alors de mettre l'ampèremêtre dans la boucle et oon peut négliger ainsi la cournat du voltmèetre. 
+
+
+
+2.2 montage pratique 
+
+Voir image montage physique 
+
+
+Rq = : le panneau solaire chauffe entre chaque mesure il faut le laisser refroidire. Les panneaux solaire perdent en puissance lorsqu'ils chauffent => les panneaux solaires 
+sur les toits ne doivent pas être collés au toit des maison mais devraient laisse circuler l'air. 
+
+Les resultas experimentaux suivent les résultats théoriques attendus. 
+
+On a deux varibales à mesurer : la tension et le courant. 
+On a 2 variables à faire varier : le réaustat et l'intensité lumineuse avec l'auto transformateur. 
+On augmente la prise de point entre 20 et 20 ohm car c'est la que ce trouve le pwm  => rectification c'est entre 1200 et 300
+
+
+
+rq : on a pas de valeur pour A = 0 
+
+
+
 
 
