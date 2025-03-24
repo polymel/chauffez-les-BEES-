@@ -120,4 +120,8 @@ Il nous manque juste les capteurs de temperatures sur la crte, que nous brasons 
 
 24/03/2025:
 Nous avons déterminée le montage elec du panneaux solaire (voir jpeg). 
+Le choix du montage a été determiné en fonction de l'impédance caractéristique du voltmètre :
+- numérique (val resistance dans l'ordre de du méga ohm donc Iv = 0) 
+- à aiguille 
+--> ici pour nous c'est avec le voltmètre numérique.
 Nous allons tester les caractéristiques du panneau solaire.
