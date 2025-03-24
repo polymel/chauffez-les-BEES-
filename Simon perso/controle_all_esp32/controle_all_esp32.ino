@@ -8,12 +8,10 @@
 Adafruit_INA219 ina219;
 
 // Définition des broches
-#define SDA_PIN 33
-#define SCL_PIN 36
-#define RX_PIN  34
-#define TX_PIN  35
+#define SDA_PIN 21
+#define SCL_PIN 22
 #define ONE_WIRE_BUS 14   // Broche du DS18B20 (DATA_temp)
-#define TEMP_SENSOR_PIN 7//ONE_WIRE_BUS après
+#define TEMP_SENSOR_PIN ONE_WIRE_BUS
 #define TEMP_ID1 2816408EFA001D0
 #define TEMP_ID2 2816408EBE3980D
 #define TEMP_ID3 2816408E
@@ -45,17 +43,17 @@ void setup() {
     while (!Serial) {
       delay(1);
   }
-
+  Serial.print("ESP32 connected to UART\n");
   //temp config
   // Start up the library for temp sensor
   sensors.begin();
   // Grab a count of devices on the wire
   numberOfDevices = sensors.getDeviceCount();
    // locate devices on the bus
-  Serial.print("Locating devices...");
+  Serial.print("Locating temp sensors devices...");
   Serial.print("Found ");
   Serial.print(numberOfDevices, DEC);
-  Serial.println(" devices.");
+  Serial.println(" devices.\n");
  // Loop through each device, print out address
   for(int i=0;i<numberOfDevices; i++) {
     // Search the wire for address
@@ -68,7 +66,7 @@ void setup() {
 		} else {
 		  Serial.print("Found ghost device at ");
 		  Serial.print(i, DEC);
-		  Serial.print(" but could not detect address. Check power and cabling");
+		  Serial.print(" but could not detect address. Check power and cabling\n");
 		}
   }
   //end temp config
@@ -76,11 +74,6 @@ void setup() {
     // Configuration de l'I2C
     Wire.begin(SDA_PIN, SCL_PIN);
     Serial.println("I2C initialisé");
-
-
-    // Configuration de la liaison série alternative (UART)
-    Serial1.begin(115200, SERIAL_8N1, RX_PIN, TX_PIN);
-    Serial.println("UART initialisé");
 
 
   //INA219 
@@ -118,8 +111,8 @@ void loop() {
       return;
       }
       Serial.print("M: ");
-      Serial.println(tempC);
-      Serial.print("°C");
+      Serial.print(tempC);
+      Serial.println("°C");
       if(temperaturemin>= tempC){
         temperaturemin=tempC;
       }
