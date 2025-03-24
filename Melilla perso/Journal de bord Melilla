@@ -769,7 +769,48 @@ RST	Reset	Redémarrer l’ESP32
 3.3V	Alimentation	Alimenter des modules (capteurs, écrans, etc.)
 
 
--- Brasage manuel des cpateur ==> difficultés rencontrées : ponts entre les pins, peut être du à la taille de la tige. 
+-- Brasage manuel des caPteur ==> difficultés rencontrées : ponts entre les pins, peut être du à la taille de la tige. 
+
+24/03 
+
+Ordre du jour : 
+
+1. reprise des composants brasés manuellement 
+2. mesures des caractéristiques du panneau solaire à l'aide du réaustat
+
+Materiel nécessaire : 
+
+- Réaustat 
+-2 multimêtres 
+-panneau solaire 
+- fiches bananes 
+- Lumière variable 
+- Autotransfo 
+
+
+
+Determination du schémas : 
+
+point de vigilance : comment monter les multimêtres ? 
+
+-> le voltmêtre se branche en parrallèle à la charge : Le voltmètre mesure la différence de potentiel électrique entre deux points d'un circuit.
+La tension est la différence de potentiel entre deux points, donc pour mesurer cette différence, il doit être connecté en parallèle aux deux points où la tension est à mesurer.
+
+voir photo choix montage ampèrmetre 
+-> L'ampèremêtre : Un ampèremètre doit toujours être connecté en série avec le circuit dont tu veux mesurer le courant, car il doit permettre au courant de passer à travers lui.
+On peut soit mettre l'ampèremetre dans le branchment du voltmêtre soit en dehors. 
+
+Cela dépend de l'impédance caractéristique du multimêtre.  le multi peut être numérique ou à aiguille. 
+Dans le premier cas : on a Z proche de 1 méga ohm. 
+
+Tandis que dans un mécanisme à aiguille on a un bobinage unique avec un curseur qui fait varier le rapport de spear et donc la tension secondaire entre 0 et 230 V. Ce bobinage 
+est en série avec une résistance et celle ci à une valeur << à 1 mega ohm. 
+
+On choisira alors de mettre l'ampèremêtre dans la boucle et oon peut négliger ainsi la cournat du voltmèetre. 
+
+
+
+
 
 
 
