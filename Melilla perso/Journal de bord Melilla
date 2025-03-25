@@ -859,3 +859,10 @@ on trace ne plus P en fontion de U -> cela nous sera utile dans le but de défin
 
 
 INFO / passage de fournissement de 220 à 230 V par EDF car moins d epertes à 230 V
+
+on observe que pour des puissances lumineuses comprise entre 260 et 750 W/M^2 on a une puissance compriuse entre 0,02 et 0,2 W tandis aque pour l'
+intensité luminuse max à 2000 w/m^2 on a une puissance comprise netre 0,6 et 6 W. 
+
+La puissance du panneau semble faible.
+
+Quelle est l'ordre de grandeur luminuse du soleil en W/m^2 ? 
