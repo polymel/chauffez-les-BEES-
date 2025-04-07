@@ -137,3 +137,16 @@ chaque courbe depend de l'intensité de la lumiere sur les GS (on fait varier ce
 Pour cette séance nous avons relevé et tracé les valeurs If(V) pour 3 differentes intensité de lumiere.
 La dernière courbe est la meilleure car nous avons rajouté des points en fin de courbe pour etre plus précises. 
 Prochaine séance nous continuerons de faire des mesures + améliorerons nos deux premieres courbes en rajoutant des mesures.
+
+25/05/25:
+nous avons refait des mesures sous les spots + au soleil mais à 16h30 donc il va falloir refaire des mesures en pleine journée 
+nous avons également calculé les puissances mais nous avons des valeurs basse, or le PS peut monter jusqu'a 10 W. Mais d'un coté 
+les valeurs d'apres M. Peter ont l'air cohérentes quand meme. 
+
+07/04/25 :
+Nous devions aujourd'hui refaire des mesures au soleil, mais il ne fai pas beau. Et il s'agit de notre avant dernière séance.
+Donc tant pis pour les mesures au soleil.
+Du coup je passe directement à l'analyse des mesures en traçant les courbes P=f(V).
+Une fois ces courbes tracées pour chaque cas (nous en avons 6), je cherche sur celles ci les points MPPT.
+Je me sers des courbes de tendance pour cela. Mais j'ai du mal à l'appliquer. Car les courbes de tendances qui coincident le mieux 
+sont les polynomiales, mais c'est bizard quand meme.

@@ -834,6 +834,357 @@ On augmente la prise de point entre 20 et 20 ohm car c'est la que ce trouve le p
 rq : on a pas de valeur pour A = 0 
 
 
+25/03/25 
 
 
+Retex 24/03 : prise des mesures pour 3 intensités lumineuses 
+
+ordre du jour : 
+
+
+1. reprise des composants brasés manuellement 
+2. continuer mesures des caractéristiques du panneau solaire à l'aide du réaustat
+3.Analyse des mesures 
+
+On re installe le montage 
+
+
+rq : on est obligé de faire des pauses fréquente car le panneau chauffe 
+voir influence de la température sur les mesures .jpg
+
+
+besoin de faire l'algo 
+
+on trace ne plus P en fontion de U -> cela nous sera utile dans le but de définir les 2 bornes nécessaires à l'algo mppt
+
+
+INFO / passage de fournissement de 220 à 230 V par EDF car moins de pertes à 230 V
+
+on observe que pour des puissances lumineuses comprise entre 260 et 750 W/M^2 on a une puissance compriuse entre 0,02 et 0,2 W tandis aque pour l'
+intensité luminuse max à 2000 w/m^2 on a une puissance comprise netre 0,6 et 6 W. 
+
+La puissance du panneau semble faible.
+
+Quelle est l'ordre de grandeur luminuse du soleil en W/m^2 ? 
+
+source chat GPT : L'ordre de grandeur de la puissance lumineuse du Soleil est d’environ 1361 W/m² au niveau de la limite de l’atmosphère terrestre (c'est la constante solaire).
+
+📌 Sur Terre, après absorption et diffusion par l’atmosphère, l’ensoleillement maximal atteint environ :
+
+1000 W/m² en plein midi, par temps clair et sans obstacle. ==> on va faire un mesure à 1000
+
+200 à 500 W/m² par temps nuageux. ==> on a déjà des mesures proches de ces grandeurs 
+
+0 W/m² la nuit. 
+
+Pour lever le doute prise de mesure en exterieur => modification de l'instalation en prenant des multimêtre pas sur secteur 
+
+
+Pour mesurer les courbes caractèristiques de panneau solaire : 
+1.Choisir une tension d'alimentation grâce à l'autotransfo 
+2. Faire varier la résistance 
+
+07/04/25
+
+Fait à la dernière séance : 
+
+-Prise  de mesure courbe VI en exterieur à 16h 
+
+A faire cette séance : 
+
+- Prendre mesure autours de 12h plein soleil 
+-Mesurer l'impact de la chaleur sur la prise de puissance du panneau 
+-Appliquer la PWM aux courbes prises => 
+
+
+- Refléxion sur l'algo de gestion du MPPT en fonction des courbes tracées
+https://www.researchgate.net/publication/325203523_Conception_d'un_regulateur_solaire_avec_commande_MPPT
+
+=> adaptation du process de l'article à notre cas 
+
+Besoin de déterminer une equation du tableau V et ppt => pour avoir un intervalle continue consituté à partir de prise de valeurs discretes 
+
+Utiliser ligne de tendance pour déterminer l'equation 
+
+
+comment augmenter alpha ? 
+
+le rapport cyclique alp$ha pest compris entre 0 et 1. 
+
+On commence le alpha à 0 pour ne pas avoir de regime transitoire. 
+
+après explication de l'algo à Mistral on trouve : 
+------------------------------------------------------
+void loop() {
+  // Lire les valeurs actuelles de tension et de courant
+  float currentVoltage = ina219.getBusVoltage_V();
+  float currentCurrent = ina219.getCurrent_mA() / 1000.0; // Convertir en Ampères
+
+  // Calculer la puissance actuelle
+  float currentPower = currentVoltage * currentCurrent;
+
+  // Comparer la puissance actuelle avec la puissance précédente
+  static float previousPower = currentPower;
+  if (currentPower > previousPower) {
+    // Si la puissance augmente, vérifier la tension
+    if (currentVoltage > previousVoltage) {
+      // Si la tension augmente, diminuer le rapport cyclique
+      pwmValue -= 0.01;
+    } else {
+      // Si la tension diminue, augmenter le rapport cyclique
+      pwmValue += 0.01;
+    }
+  } else {
+    // Si la puissance diminue, vérifier la tension
+    if (currentVoltage > previousVoltage) {
+      // Si la tension augmente, diminuer le rapport cyclique
+      pwmValue -= 0.01;
+    } else {
+      // Si la tension diminue, augmenter le rapport cyclique
+      pwmValue += 0.01;
+    }
+  }
+
+  // Limiter pwmValue entre 0 et 1
+  pwmValue = constrain(pwmValue, 0.0, 1.0);
+
+  // Mettre à jour le rapport cyclique PWM
+  int pwmDutyCycle = (int)(pwmValue * 255);
+  ledcWrite(0, pwmDutyCycle);
+
+  // Mettre à jour la puissance précédente
+  previousPower = currentPower;
+
+  // Afficher les valeurs sur le moniteur série
+  Serial.print("Tension: ");
+  Serial.print(currentVoltage);
+  Serial.print("V Courant: ");
+  Serial.print(currentCurrent);
+  Serial.print("A Puissance: ");
+  Serial.print(currentPower);
+  Serial.print("W Rapport Cyclique: ");
+  Serial.println(pwmValue);
+
+  // Attendre un peu avant la prochaine lecture
+  delay(1000);
+
+-------------------------------------------------------------
+Rq : ce code reprend l'algo avce les 4 etats et affiches les metriques.
+
+Ensuite j'enlève les parties qui ne m'interessent pas pour lemoment dans le code de l'esp32: je conserve la lectuore de V avce l'ina 
+----------------------------------------Code INA--------------------
+J'ajoute le code de lecture des P et V avec l'INA, puis j'essaie de compiler. 
+#include <Wire.h>
+#include <OneWire.h>
+#include <DallasTemperature.h>
+
+//pour INA219 bibliotheque Adafruit
+
+#include <Adafruit_INA219.h>
+Adafruit_INA219 ina219;
+
+// Définition des broches
+#define SDA_PIN 21
+#define SCL_PIN 22
+#define ONE_WIRE_BUS 14   // Broche du DS18B20 (DATA_temp)
+
+
+// #define SIGNAL_1 24  
+// #define SIGNAL_2 29
+
+
+
+// Initialisation du bus OneWire et du capteur
+OneWire oneWire(TEMP_SENSOR_PIN);
+
+
+void setup() {
+  Serial.begin(115200);  // Initialise le port série
+    while (!Serial) {
+      delay(1);
+  }
+  Serial.print("ESP32 connected to UART\n");
+  //temp config
+  // Start up the library for temp sensor
+  sensors.begin();
+  // Grab a count of devices on the wire
+  numberOfDevices = sensors.getDeviceCount();
+   // locate devices on the bus
+  Serial.print("Locating temp sensors devices...");
+  Serial.print("Found ");
+  Serial.print(numberOfDevices, DEC);
+  Serial.println(" devices.\n");
+ // Loop through each device, print out address
+  for(int i=0;i<numberOfDevices; i++) {
+    // Search the wire for address
+    if(sensors.getAddress(tempDeviceAddress, i)) {
+      Serial.print("Found device ");
+      Serial.print(i, DEC);
+      Serial.print(" with address: ");
+      printAddress(tempDeviceAddress);
+      Serial.println();
+		} else {
+		  Serial.print("Found ghost device at ");
+		  Serial.print(i, DEC);
+		  Serial.print(" but could not detect address. Check power and cabling\n");
+		}
+  }
+  //end temp config
+
+    // Configuration de l'I2C
+    Wire.begin(SDA_PIN, SCL_PIN);
+    Serial.println("I2C initialisé");
+
+
+  //INA219 
+  uint32_t currentFrequency;
+  if (! ina219.begin()) {
+    Serial.println("Failed to find INA219 chip");
+    while (1) { delay(10); }
+  }else{
+    Serial.println("INA219 initialisé");
+  }
+  
+
+    // // Configurer les GPIO comme entrées ou sorties
+    // pinMode(SIGNAL_1, INPUT);
+    // pinMode(SIGNAL_2, INPUT);
+
+}
+
+
+  }
+    // // Lire les signaux numériques
+    // int signal1 = digitalRead(SIGNAL_1);
+    // int signal2 = digitalRead(SIGNAL_2);
+    // Serial.print("Signal 1: "); Serial.println(signal1);
+    // Serial.print("Signal 2: "); Serial.println(signal2);
+
+    // // Vérifier la communication série avec un périphérique externe
+    // if (Serial1.available()) {
+    //     char c = Serial1.read();
+    //     Serial.print("Reçu sur UART: ");
+    //     Serial.println(c);
+    // }
+  float shuntvoltage = 0;
+  float busvoltage = 0;
+  float current_mA = 0;
+  float loadvoltage = 0;
+  float power_mW = 0;
+
+  shuntvoltage = ina219.getShuntVoltage_mV();
+  busvoltage = ina219.getBusVoltage_V();
+  current_mA = ina219.getCurrent_mA();
+  power_mW = ina219.getPower_mW();
+  loadvoltage = busvoltage + (shuntvoltage / 1000);
+  
+
+
+  delay(2000);
+}
+
+}
+
+Je vais devoir faire un montage pour tester cela : 
+
+RQ : et pourquoi on ne commencerez pas avce un rapport cyclique à 0,5 pour être au milieu de l'intervalle.
+
+
+
+Code mergé : 
+
+#include <Wire.h>
+#include <Adafruit_INA219.h>
+
+// Initialisation de l'INA219
+Adafruit_INA219 ina219;
+
+// Définition des broches
+#define SDA_PIN 21
+#define SCL_PIN 22
+#define PWM_PIN 25  // Broche pour le signal PWM
+
+// Variable pour le rapport cyclique PWM
+float pwmValue = 0.5; // Valeur initiale (50% de rapport cyclique)
+
+void setup() {
+  Serial.begin(115200);  // Initialise le port série
+  while (!Serial) {
+    delay(1);
+  }
+  Serial.println("ESP32 connected to UART");
+
+  // Configuration de l'I2C
+  Wire.begin(SDA_PIN, SCL_PIN);
+  Serial.println("I2C initialisé");
+
+  // Initialisation de l'INA219
+  if (!ina219.begin()) {
+    Serial.println("Failed to find INA219 chip");
+    while (1) { delay(10); }
+  } else {
+    Serial.println("INA219 initialisé");
+  }
+
+  // Configuration du PWM
+  ledcSetup(0, 5000, 10); // Canal 0, fréquence 5kHz, résolution 10 bits
+  ledcAttachPin(PWM_PIN, 0);
+}
+
+void loop() {
+  // Lire les valeurs actuelles de tension et de courant
+  float currentVoltage = ina219.getBusVoltage_V();
+  float currentCurrent = ina219.getCurrent_mA() / 1000.0; // Convertir en Ampères
+
+  // Calculer la puissance actuelle
+  float currentPower = currentVoltage * currentCurrent;
+
+  // Comparer la puissance actuelle avec la puissance précédente
+  static float previousPower = currentPower;
+  static float previousVoltage = currentVoltage;
+
+  if (currentPower > previousPower) {
+    // Si la puissance augmente, vérifier la tension
+    if (currentVoltage > previousVoltage) {
+      // Si la tension augmente, diminuer le rapport cyclique
+      pwmValue -= 0.01;
+    } else {
+      // Si la tension diminue, augmenter le rapport cyclique
+      pwmValue += 0.01;
+    }
+  } else {
+    // Si la puissance diminue, vérifier la tension
+    if (currentVoltage > previousVoltage) {
+      // Si la tension augmente, diminuer le rapport cyclique
+      pwmValue -= 0.01;
+    } else {
+      // Si la tension diminue, augmenter le rapport cyclique
+      pwmValue += 0.01;
+    }
+  }
+
+  // Limiter pwmValue entre 0 et 1
+  pwmValue = constrain(pwmValue, 0.0, 1.0);
+
+  // Mettre à jour le rapport cyclique PWM
+  int pwmDutyCycle = (int)(pwmValue * 1023); // Utiliser la résolution 10 bits
+  ledcWrite(0, pwmDutyCycle);
+
+  // Mettre à jour la puissance précédente et la tension précédente
+  previousPower = currentPower;
+  previousVoltage = currentVoltage;
+
+  // Afficher les valeurs sur le moniteur série
+  Serial.print("Tension: ");
+  Serial.print(currentVoltage);
+  Serial.print("V Courant: ");
+  Serial.print(currentCurrent);
+  Serial.print("A Puissance: ");
+  Serial.print(currentPower);
+  Serial.print("W Rapport Cyclique: ");
+  Serial.println(pwmValue);
+
+  // Attendre un peu avant la prochaine lecture
+  delay(1000);
+}
 
