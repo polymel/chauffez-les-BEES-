@@ -971,10 +971,220 @@ void loop() {
 -------------------------------------------------------------
 Rq : ce code reprend l'algo avce les 4 etats et affiches les metriques.
 
-
+Ensuite j'enlève les parties qui ne m'interessent pas pour lemoment dans le code de l'esp32: je conserve la lectuore de V avce l'ina 
+----------------------------------------Code INA--------------------
 J'ajoute le code de lecture des P et V avec l'INA, puis j'essaie de compiler. 
+#include <Wire.h>
+#include <OneWire.h>
+#include <DallasTemperature.h>
 
+//pour INA219 bibliotheque Adafruit
+
+#include <Adafruit_INA219.h>
+Adafruit_INA219 ina219;
+
+// Définition des broches
+#define SDA_PIN 21
+#define SCL_PIN 22
+#define ONE_WIRE_BUS 14   // Broche du DS18B20 (DATA_temp)
+
+
+// #define SIGNAL_1 24  
+// #define SIGNAL_2 29
+
+
+
+// Initialisation du bus OneWire et du capteur
+OneWire oneWire(TEMP_SENSOR_PIN);
+
+
+void setup() {
+  Serial.begin(115200);  // Initialise le port série
+    while (!Serial) {
+      delay(1);
+  }
+  Serial.print("ESP32 connected to UART\n");
+  //temp config
+  // Start up the library for temp sensor
+  sensors.begin();
+  // Grab a count of devices on the wire
+  numberOfDevices = sensors.getDeviceCount();
+   // locate devices on the bus
+  Serial.print("Locating temp sensors devices...");
+  Serial.print("Found ");
+  Serial.print(numberOfDevices, DEC);
+  Serial.println(" devices.\n");
+ // Loop through each device, print out address
+  for(int i=0;i<numberOfDevices; i++) {
+    // Search the wire for address
+    if(sensors.getAddress(tempDeviceAddress, i)) {
+      Serial.print("Found device ");
+      Serial.print(i, DEC);
+      Serial.print(" with address: ");
+      printAddress(tempDeviceAddress);
+      Serial.println();
+		} else {
+		  Serial.print("Found ghost device at ");
+		  Serial.print(i, DEC);
+		  Serial.print(" but could not detect address. Check power and cabling\n");
+		}
+  }
+  //end temp config
+
+    // Configuration de l'I2C
+    Wire.begin(SDA_PIN, SCL_PIN);
+    Serial.println("I2C initialisé");
+
+
+  //INA219 
+  uint32_t currentFrequency;
+  if (! ina219.begin()) {
+    Serial.println("Failed to find INA219 chip");
+    while (1) { delay(10); }
+  }else{
+    Serial.println("INA219 initialisé");
+  }
+  
+
+    // // Configurer les GPIO comme entrées ou sorties
+    // pinMode(SIGNAL_1, INPUT);
+    // pinMode(SIGNAL_2, INPUT);
+
+}
+
+
+  }
+    // // Lire les signaux numériques
+    // int signal1 = digitalRead(SIGNAL_1);
+    // int signal2 = digitalRead(SIGNAL_2);
+    // Serial.print("Signal 1: "); Serial.println(signal1);
+    // Serial.print("Signal 2: "); Serial.println(signal2);
+
+    // // Vérifier la communication série avec un périphérique externe
+    // if (Serial1.available()) {
+    //     char c = Serial1.read();
+    //     Serial.print("Reçu sur UART: ");
+    //     Serial.println(c);
+    // }
+  float shuntvoltage = 0;
+  float busvoltage = 0;
+  float current_mA = 0;
+  float loadvoltage = 0;
+  float power_mW = 0;
+
+  shuntvoltage = ina219.getShuntVoltage_mV();
+  busvoltage = ina219.getBusVoltage_V();
+  current_mA = ina219.getCurrent_mA();
+  power_mW = ina219.getPower_mW();
+  loadvoltage = busvoltage + (shuntvoltage / 1000);
+  
+
+
+  delay(2000);
+}
+
+}
 
 Je vais devoir faire un montage pour tester cela : 
 
+RQ : et pourquoi on ne commencerez pas avce un rapport cyclique à 0,5 pour être au milieu de l'intervalle.
+
+
+
+Code mergé : 
+
+#include <Wire.h>
+#include <Adafruit_INA219.h>
+
+// Initialisation de l'INA219
+Adafruit_INA219 ina219;
+
+// Définition des broches
+#define SDA_PIN 21
+#define SCL_PIN 22
+#define PWM_PIN 25  // Broche pour le signal PWM
+
+// Variable pour le rapport cyclique PWM
+float pwmValue = 0.5; // Valeur initiale (50% de rapport cyclique)
+
+void setup() {
+  Serial.begin(115200);  // Initialise le port série
+  while (!Serial) {
+    delay(1);
+  }
+  Serial.println("ESP32 connected to UART");
+
+  // Configuration de l'I2C
+  Wire.begin(SDA_PIN, SCL_PIN);
+  Serial.println("I2C initialisé");
+
+  // Initialisation de l'INA219
+  if (!ina219.begin()) {
+    Serial.println("Failed to find INA219 chip");
+    while (1) { delay(10); }
+  } else {
+    Serial.println("INA219 initialisé");
+  }
+
+  // Configuration du PWM
+  ledcSetup(0, 5000, 10); // Canal 0, fréquence 5kHz, résolution 10 bits
+  ledcAttachPin(PWM_PIN, 0);
+}
+
+void loop() {
+  // Lire les valeurs actuelles de tension et de courant
+  float currentVoltage = ina219.getBusVoltage_V();
+  float currentCurrent = ina219.getCurrent_mA() / 1000.0; // Convertir en Ampères
+
+  // Calculer la puissance actuelle
+  float currentPower = currentVoltage * currentCurrent;
+
+  // Comparer la puissance actuelle avec la puissance précédente
+  static float previousPower = currentPower;
+  static float previousVoltage = currentVoltage;
+
+  if (currentPower > previousPower) {
+    // Si la puissance augmente, vérifier la tension
+    if (currentVoltage > previousVoltage) {
+      // Si la tension augmente, diminuer le rapport cyclique
+      pwmValue -= 0.01;
+    } else {
+      // Si la tension diminue, augmenter le rapport cyclique
+      pwmValue += 0.01;
+    }
+  } else {
+    // Si la puissance diminue, vérifier la tension
+    if (currentVoltage > previousVoltage) {
+      // Si la tension augmente, diminuer le rapport cyclique
+      pwmValue -= 0.01;
+    } else {
+      // Si la tension diminue, augmenter le rapport cyclique
+      pwmValue += 0.01;
+    }
+  }
+
+  // Limiter pwmValue entre 0 et 1
+  pwmValue = constrain(pwmValue, 0.0, 1.0);
+
+  // Mettre à jour le rapport cyclique PWM
+  int pwmDutyCycle = (int)(pwmValue * 1023); // Utiliser la résolution 10 bits
+  ledcWrite(0, pwmDutyCycle);
+
+  // Mettre à jour la puissance précédente et la tension précédente
+  previousPower = currentPower;
+  previousVoltage = currentVoltage;
+
+  // Afficher les valeurs sur le moniteur série
+  Serial.print("Tension: ");
+  Serial.print(currentVoltage);
+  Serial.print("V Courant: ");
+  Serial.print(currentCurrent);
+  Serial.print("A Puissance: ");
+  Serial.print(currentPower);
+  Serial.print("W Rapport Cyclique: ");
+  Serial.println(pwmValue);
+
+  // Attendre un peu avant la prochaine lecture
+  delay(1000);
+}
 
