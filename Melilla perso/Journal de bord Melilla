@@ -846,7 +846,7 @@ ordre du jour :
 2. continuer mesures des caractéristiques du panneau solaire à l'aide du réaustat
 3.Analyse des mesures 
 
-On re oinstalle le montage 
+On re installe le montage 
 
 
 rq : on est obligé de faire des pauses fréquente car le panneau chauffe 
@@ -858,7 +858,7 @@ besoin de faire l'algo
 on trace ne plus P en fontion de U -> cela nous sera utile dans le but de définir les 2 bornes nécessaires à l'algo mppt
 
 
-INFO / passage de fournissement de 220 à 230 V par EDF car moins d epertes à 230 V
+INFO / passage de fournissement de 220 à 230 V par EDF car moins de pertes à 230 V
 
 on observe que pour des puissances lumineuses comprise entre 260 et 750 W/M^2 on a une puissance compriuse entre 0,02 et 0,2 W tandis aque pour l'
 intensité luminuse max à 2000 w/m^2 on a une puissance comprise netre 0,6 et 6 W. 
@@ -867,7 +867,7 @@ La puissance du panneau semble faible.
 
 Quelle est l'ordre de grandeur luminuse du soleil en W/m^2 ? 
 
-source chat GPT L'ordre de grandeur de la puissance lumineuse du Soleil est d’environ 1361 W/m² au niveau de la limite de l’atmosphère terrestre (c'est la constante solaire).
+source chat GPT : L'ordre de grandeur de la puissance lumineuse du Soleil est d’environ 1361 W/m² au niveau de la limite de l’atmosphère terrestre (c'est la constante solaire).
 
 📌 Sur Terre, après absorption et diffusion par l’atmosphère, l’ensoleillement maximal atteint environ :
 
@@ -877,5 +877,26 @@ source chat GPT L'ordre de grandeur de la puissance lumineuse du Soleil est d’
 
 0 W/m² la nuit. 
 
-Pour lever le doute prise de mesure en exterieur => modification de l'instalation en prenant des multimêtre pas sur sevcteur 
+Pour lever le doute prise de mesure en exterieur => modification de l'instalation en prenant des multimêtre pas sur secteur 
+
+
+Pour mesurer les courbes caractèristiques de panneau solaire : 
+1.Choisir une tension d'alimentation grâce à l'autotransfo 
+2. Faire varier la résistance 
+
+07/04/25
+
+Fait à la dernière séance : 
+
+-Prise  de mesure courbe VI en exterieur à 16h 
+
+A faire cette séance : 
+
+- Prendre mesure autours de 12h plein soleil 
+-Mesurer l'impact de la chaleur sur la prise de puissance du panneau 
+-Appliquer la PWM aux courbes prises 
+
+
+- Refléxion sur l'algo de gestion du MPPT en fonction des courbes tracées
+
 
