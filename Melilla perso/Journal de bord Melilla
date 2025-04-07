@@ -898,5 +898,12 @@ A faire cette séance :
 
 
 - Refléxion sur l'algo de gestion du MPPT en fonction des courbes tracées
+https://www.researchgate.net/publication/325203523_Conception_d'un_regulateur_solaire_avec_commande_MPPT
+
+=> adaptation du process de l'article à notre cas 
+
+Besoin de déterminer une equation du tableau V et ppt => pour avoir un intervalle continue consituté à partir de prise de valeurs discretes 
+
+Utiliser ligne de tendance pour déterminer l'equation 
 
 
