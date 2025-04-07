@@ -146,4 +146,7 @@ les valeurs d'apres M. Peter ont l'air cohérentes quand meme.
 07/04/25 :
 Nous devions aujourd'hui refaire des mesures au soleil, mais il ne fai pas beau. Et il s'agit de notre avant dernière séance.
 Donc tant pis pour les mesures au soleil.
-Du coup je passe directement à l'analyse des mesures en traçant les courbes P=f(V)
+Du coup je passe directement à l'analyse des mesures en traçant les courbes P=f(V).
+Une fois ces courbes tracées pour chaque cas (nous en avons 6), je cherche sur celles ci les points MPPT.
+Je me sers des courbes de tendance pour cela. Mais j'ai du mal à l'appliquer. Car les courbes de tendances qui coincident le mieux 
+sont les polynomiales, mais c'est bizard quand meme.
