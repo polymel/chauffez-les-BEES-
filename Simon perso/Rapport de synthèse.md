@@ -24,7 +24,9 @@ lien vers présentation: [Oral S7 Chauffage ruche.pptx](https://unice-my.sharepo
 
 le suivi est fait aussi grace au rapport sur l'historique du projet altium (comme j'étais le seul à travailler dessus):
 
-![XEvent](./img/xevent.png)
+![log](log travail au 10_02_25 Simon sur le git.png)
+
+lien pdf schematic:![pdf schematic](../Altium_PCB/Project Outputs for Altium_PCB/Schematic&BOM.pdf)
 
 10/03/2025:
 
@@ -52,8 +54,7 @@ verification capteur température ( ceux brasés sur la carte , il en manque un 
 verification communication ina219
 verification comme quoi la puissance est relevée ( tension et courant)
 
-
-24/03/25: 
+24/03/25:
 
 en hard : pin 14esp coupé et fil tiré sur pin 13 pour relier data tempétature.
 
@@ -62,3 +63,26 @@ sur le code de Controle_all_esp32=>
 -modif pin data temps : problème lors du reset sur IO12 donc passage a IO14.
 
 -lecture température 4 capteurs sur la carte ( il manque le capteur externe qui arrivera plus tard)
+
+25/03/25:
+
+-changement Rshunt ( 0.5 à 0.1 ohm) pour avoir la bonne valeur de la tension
+
+-code arduino plus claire sur la lecture des données
+
+
+7/4/25:
+
+vitesse de basculement des transistors:
+
+Nmos BSS138: td(on)+tr+td(off)+ tf  (max)= 5+18+36+14= 73ns= >13,6986 MHz
+
+Pmos FQB22P10TM: td(on)+tr+td(off)+ tf  (max)=45+350+130+230 =755ns =>1,3245 MHz
+
+Donc Fmax
+
+INA 219 caract:
+
+Perr% =0,5-1%
+
+Verr=+- 50-100uA (&0,1-0,5uA/°C)
