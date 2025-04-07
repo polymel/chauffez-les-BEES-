@@ -894,7 +894,7 @@ A faire cette séance :
 
 - Prendre mesure autours de 12h plein soleil 
 -Mesurer l'impact de la chaleur sur la prise de puissance du panneau 
--Appliquer la PWM aux courbes prises 
+-Appliquer la PWM aux courbes prises => 
 
 
 - Refléxion sur l'algo de gestion du MPPT en fonction des courbes tracées
@@ -905,5 +905,76 @@ https://www.researchgate.net/publication/325203523_Conception_d'un_regulateur_so
 Besoin de déterminer une equation du tableau V et ppt => pour avoir un intervalle continue consituté à partir de prise de valeurs discretes 
 
 Utiliser ligne de tendance pour déterminer l'equation 
+
+
+comment augmenter alpha ? 
+
+le rapport cyclique alp$ha pest compris entre 0 et 1. 
+
+On commence le alpha à 0 pour ne pas avoir de regime transitoire. 
+
+après explication de l'algo à Mistral on trouve : 
+------------------------------------------------------
+void loop() {
+  // Lire les valeurs actuelles de tension et de courant
+  float currentVoltage = ina219.getBusVoltage_V();
+  float currentCurrent = ina219.getCurrent_mA() / 1000.0; // Convertir en Ampères
+
+  // Calculer la puissance actuelle
+  float currentPower = currentVoltage * currentCurrent;
+
+  // Comparer la puissance actuelle avec la puissance précédente
+  static float previousPower = currentPower;
+  if (currentPower > previousPower) {
+    // Si la puissance augmente, vérifier la tension
+    if (currentVoltage > previousVoltage) {
+      // Si la tension augmente, diminuer le rapport cyclique
+      pwmValue -= 0.01;
+    } else {
+      // Si la tension diminue, augmenter le rapport cyclique
+      pwmValue += 0.01;
+    }
+  } else {
+    // Si la puissance diminue, vérifier la tension
+    if (currentVoltage > previousVoltage) {
+      // Si la tension augmente, diminuer le rapport cyclique
+      pwmValue -= 0.01;
+    } else {
+      // Si la tension diminue, augmenter le rapport cyclique
+      pwmValue += 0.01;
+    }
+  }
+
+  // Limiter pwmValue entre 0 et 1
+  pwmValue = constrain(pwmValue, 0.0, 1.0);
+
+  // Mettre à jour le rapport cyclique PWM
+  int pwmDutyCycle = (int)(pwmValue * 255);
+  ledcWrite(0, pwmDutyCycle);
+
+  // Mettre à jour la puissance précédente
+  previousPower = currentPower;
+
+  // Afficher les valeurs sur le moniteur série
+  Serial.print("Tension: ");
+  Serial.print(currentVoltage);
+  Serial.print("V Courant: ");
+  Serial.print(currentCurrent);
+  Serial.print("A Puissance: ");
+  Serial.print(currentPower);
+  Serial.print("W Rapport Cyclique: ");
+  Serial.println(pwmValue);
+
+  // Attendre un peu avant la prochaine lecture
+  delay(1000);
+
+-------------------------------------------------------------
+Rq : ce code reprend l'algo avce les 4 etats et affiches les metriques.
+
+
+J'ajoute le code de lecture des P et V avec l'INA, puis j'essaie de compiler. 
+
+
+Je vais devoir faire un montage pour tester cela : 
 
 
