@@ -893,7 +893,7 @@ Fait à la dernière séance :
 A faire cette séance : 
 
 - Prendre mesure autours de 12h plein soleil 
--Mesurer l'impact de la chaleur sur la prise de puissance du panneau 
+-Mesurer l'impact de la chaleur sur la prise de puissance du panneau =>pas assez important et pas urgent 
 -Appliquer la PWM aux courbes prises => 
 
 
@@ -1187,4 +1187,18 @@ void loop() {
   // Attendre un peu avant la prochaine lecture
   delay(1000);
 }
+
+11/04/25
+
+fait la dernière fois : 
+
+- Adaptation de l'algo d'adaptation de alpha 
+
+à faire cette fois : 
+
+- faire un montage qui permet de tester l'algo ? 
+
+Est ce utile ? 
+
+
 
