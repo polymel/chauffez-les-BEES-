@@ -1,12 +1,14 @@
+// // Si TIMER_BASE_CLK n'est pas défini, on le définit sur 80MHz (valeur utilisée sur ESP32 Arduino 3.2.0)
+// #ifndef TIMER_BASE_CLK
+//   #define TIMER_BASE_CLK 80000000
+// #endif
 #include <Wire.h>
 #include <OneWire.h>
 #include <DallasTemperature.h>
 #include <Arduino.h>
-#define TIMER_BASE_CLK 80000000
-#include <ESP32TimerInterrupt.h>
 #include <Adafruit_INA219.h>
-Adafruit_INA219 ina219;
 
+Adafruit_INA219 ina219;
 // Définition des broches
 #define SDA_PIN 21
 #define SCL_PIN 22
@@ -17,40 +19,23 @@ Adafruit_INA219 ina219;
 #define TEMP_ID3 2816408E
 #define TEMP_ID4 2816408E
 #define TEMP_ID5 2816408E
-
 #define SIGNAL1 2  
 #define SIGNAL2 5
+
 #define FREQ_PWM1 400000 
 #define FREQ_PWM2 FREQ_PWM1
-#define DUTY_CYCLE1 0.5  // 50%
-#define DUTY_CYCLE2 0.5  // 50%
+#define DUTY_CYCLE1 50  // 50%
+#define DUTY_CYCLE2 20  // 50%
 
-ESP32Timer ITimer1(0);  // Timer pour SIGNAL1
-ESP32Timer ITimer2(1);  // Timer pour SIGNAL2
-
-volatile bool state1 = false;
-volatile bool state2 = false;
-int val=0;
-bool IRAM_ATTR onTimer1(void *arg) {
-  digitalWrite(SIGNAL1, !digitalRead(SIGNAL1));
-  return true;
-}
-
-bool IRAM_ATTR onTimer2(void *arg) {
-  digitalWrite(SIGNAL2, !digitalRead(SIGNAL2));
-  return true;
-}
 
 
 
 // Température cible
 const float TEMP_TARGET = 50.0;
 const float TEMP_HYSTERESIS = 2.0; // Hystérésis : 2°C
-
 // Initialisation du bus OneWire et du capteur
 OneWire oneWire(TEMP_SENSOR_PIN);
 DallasTemperature sensors(&oneWire);
-
 int numberOfDevices=5; // Number of temperature devices found
 float temperaturemin=0,temperaturemax=60;
 DeviceAddress tempDeviceAddress; // We'll use this variable to store a found device address
@@ -62,6 +47,7 @@ bool heating = false;
 // M: Mesure
 
 void setup() {
+  setCpuFrequencyMhz(80);
   Serial.begin(115200);  // Initialise le port série
     while (!Serial) {
       delay(1);
@@ -107,7 +93,6 @@ void setup() {
       Serial.println("I2C initialisé");
    }
 
-  setCpuFrequencyMhz(80);
   //INA219 
   uint32_t currentFrequency;
   if (! ina219.begin()) {
@@ -115,22 +100,16 @@ void setup() {
       Serial.println("Failed to find INA219 chip");
     while (1) { delay(10); }
   }else{
-		  Serial.print("I: ");
-      Serial.println("INA219 initialisé et calibré pour utilisation: 32V,2A");
+    ina219.setCalibration_32V_2A();
+    Serial.print("I: ");
+    Serial.println("INA219 initialisé et calibré pour utilisation: 32V,2A");
   }
 
   Serial.println("I: Initialisation PWM 1 et 2...");
-  pinMode( SIGNAL1, OUTPUT);
-  pinMode( SIGNAL2, OUTPUT);
-  analogWriteResolution(SIGNAL1,16);
-  analogWriteResolution(SIGNAL2,16);
-  val=65535*50/100;
-  analogWrite(SIGNAL2,val); 
-  analogWrite(SIGNAL1,val ); 
-  // uint32_t halfPeriod1 = (1.0 / FREQ_PWM1) * 1e6 * DUTY_CYCLE1;
-  // uint32_t halfPeriod2 = (1.0 / FREQ_PWM2) * 1e6 * DUTY_CYCLE2;
-  // ITimer1.attachInterruptInterval(halfPeriod1, onTimer1);
-  // ITimer2.attachInterruptInterval(halfPeriod2, onTimer2);
+  pinMode(SIGNAL1, OUTPUT);
+  pinMode(SIGNAL2, OUTPUT);
+  analogWrite(SIGNAL1, 128);
+  Serial.println(" sur 255");
   Serial.println("I: PWM 1 et 2 configuré");
 
 }
