@@ -150,3 +150,15 @@ Du coup je passe directement à l'analyse des mesures en traçant les courbes P=
 Une fois ces courbes tracées pour chaque cas (nous en avons 6), je cherche sur celles ci les points MPPT.
 Je me sers des courbes de tendance pour cela. Mais j'ai du mal à l'appliquer. Car les courbes de tendances qui coincident le mieux 
 sont les polynomiales, mais c'est bizard quand meme.
+
+11/04/25
+J'ai tracé les courbes de tendances de chaque courbes PV afin d'obtenir le point MPPT.
+Pour cela j'ai tracé les courbes de tendances polynomiales de degré 4 car c'est à ce degré que l'on se rapproche le plus de l'allure de 
+courbe principale. Ainsi, j'ai récupéré l'équiation de la courbe + le cofficient de corrélation.
+Et pour déterminer chaque point MPPT voici comment j'ai fait : 
+
+1. on calcule la dérivée de la fonction 
+2. on résout l'équation de dérivée nulle 
+3. de là on obtient le x 
+4. on calcule la puissance maximale en remplaçant le x trouvé au dessus dans l'équation de la courbe de base, ce qui nous donne l'ordonné 
+de là, on a donc x et y pour déterminer le point MPPT
