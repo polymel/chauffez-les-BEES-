@@ -1235,3 +1235,21 @@ exit status 1
 Je n'arrive pas à transférer le code : j'essaie un code super simple.
 
 Je désinstalle IDLE 
+
+
+--- une première erreur disparait-- 
+
+----la carte cible n'était pas la bonne ---
+
+
+Le code se téleverse :
+Writing at 0x0004dc69... (90 %)
+Writing at 0x00054459... (100 %)
+Wrote 283728 bytes (149894 compressed) at 0x00010000 in 2.2 seconds (effective 1012.8 kbit/s)...
+Hash of data verified.
+
+Leaving...
+Hard resetting via RTS pin...
+
+
+test : 
