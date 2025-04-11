@@ -1216,3 +1216,19 @@ On doit pourvoir utiliser un panneau solaire differents +  on a vu l'influence d
 - Récuperer le code de contrôle global pour y ajouter l'aklgo de modif du rapport cyclique 
 ----Code adaptation rapport cyclique---- et ---controle_all_esp32 (journal de bord Simon)----
 
+Le code de simon est pret : je peux tester l'algo sur la cîble finale. 
+
+On veut mesurer la puissance fournie aux resistances. 
+
+On va placer l'oscillo à leur place.
+
+
+
+Je debug le merge de code  :
+C:\Users\melim\Documents\Etude\POLYTECH\4A\S7\Projet électronique\32\32.ino: In function 'void setup()':
+C:\Users\melim\Documents\Etude\POLYTECH\4A\S7\Projet électronique\32\32.ino:42:3: error: 'ledcSetup' was not declared in this scope
+C:\Users\melim\Documents\Etude\POLYTECH\4A\S7\Projet électronique\32\32.ino:43:3: error: 'ledcAttachPin' was not declared in this scope; did you mean 'ledcAttach'?
+
+exit status 1
+
+
