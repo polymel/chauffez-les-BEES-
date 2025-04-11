@@ -1220,7 +1220,10 @@ Le code de simon est pret : je peux tester l'algo sur la cîble finale.
 
 On veut mesurer la puissance fournie aux resistances. 
 
-On va placer l'oscillo à leur place.
+On va placer l'oscillo à leur place => pas le temps
+
+
+
 
 
 
@@ -1250,6 +1253,14 @@ Hash of data verified.
 
 Leaving...
 Hard resetting via RTS pin...
+---------- Modification du programme poursuite du mppt : utilisation de analogwrite au lieu de ledc fonction
 
 
-test : 
+voir --Montage essai code poursuite mppt-- Observation du fct à partir de 10V 
+test :
+
+On observe des variations du (des, car il y a 2 zones) du rapport cyclique , en focntion de la variation de la 
+tension. 
+Lorsque la tension est stable les rapports sont quasi stables
+
+Après quelqules minutes on observe qu'ils tendent vers 255, pourquoi ? 
