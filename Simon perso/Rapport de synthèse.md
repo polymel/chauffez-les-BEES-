@@ -70,7 +70,6 @@ sur le code de Controle_all_esp32=>
 
 -code arduino plus claire sur la lecture des données
 
-
 7/4/25:
 
 vitesse de basculement des transistors:
@@ -86,3 +85,17 @@ INA 219 caract:
 Perr% =0,5-1%
 
 Verr=+- 50-100uA (&0,1-0,5uA/°C)
+
+11/04:
+
+recup adresse des 4 sensors
+
+pwm seulement avec analogwrite : trop de complication car pas d'utilisation de ledc
+
+finir carte n°2
+
+faire 2 connecteurs xt60 female male connexion pour les 2 cartes
+
+création wifi (chauffez-les-BEES-) de la carte avec page associée(192.168.1.2), sans mdp
+
+affichage dynamique des val ina219 et de la température toutes les 3.1sec
