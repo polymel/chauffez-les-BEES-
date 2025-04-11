@@ -1,0 +1,143 @@
+#include <Wire.h>
+#include <OneWire.h>
+#include <DallasTemperature.h>
+#include <Arduino.h>
+#include <Adafruit_INA219.h>
+
+Adafruit_INA219 ina219;
+
+#define SIGNAL1 2  
+#define SIGNAL2 5
+
+#define FREQ_PWM1 400000 
+#define FREQ_PWM2 FREQ_PWM1
+
+float DUTY_CYCLE1 = 255/2;
+float DUTY_CYCLE2 = 255/2;
+
+// Définition des broches I2C
+#define SDA_PIN 21
+#define SCL_PIN 22
+
+void setup() {
+  Serial.begin(115200);
+  while (!Serial) {
+    delay(1);
+  }
+  Serial.println("ESP32 connected to UART");
+
+  // Configuration de l'I2C
+  Wire.begin(SDA_PIN, SCL_PIN);
+  Serial.println("I2C initialisé");
+
+  // Initialisation de l'INA219
+  if (!ina219.begin()) {
+    Serial.println("Failed to find INA219 chip");
+    while (1) { delay(10); }
+  } else {
+    Serial.println("INA219 initialisé");
+  }
+
+  Serial.println("I: Initialisation PWM 1 et 2...");
+  pinMode(SIGNAL1, OUTPUT);
+  pinMode(SIGNAL2, OUTPUT);
+  analogWrite(SIGNAL1, (int)DUTY_CYCLE1);
+  analogWrite(SIGNAL2, (int)DUTY_CYCLE2);
+  Serial.println(" sur 255");
+  Serial.println("I: PWM 1 et 2 configuré");
+}
+
+void loop() {
+  // Lire les valeurs actuelles de tension et de courant
+  float currentVoltage = ina219.getBusVoltage_V();
+  float currentCurrent = ina219.getCurrent_mA() / 1000.0;
+  float currentPower = currentVoltage * currentCurrent;
+
+  static float previousPower = currentPower;
+  static float previousVoltage = currentVoltage;
+
+  if (currentPower > previousPower) {
+    if (currentVoltage > previousVoltage) {
+      DUTY_CYCLE1 -= 1;
+      DUTY_CYCLE2 -= 1;
+    } else {
+      DUTY_CYCLE1 += 1;
+      DUTY_CYCLE2 += 1;
+    }
+  } else {
+    if (currentVoltage > previousVoltage) {
+      DUTY_CYCLE1 -= 1;
+      DUTY_CYCLE2 -= 1;
+    } else {
+      DUTY_CYCLE1 += 1;
+      DUTY_CYCLE2 += 1;
+    }
+  }
+
+  // Saturation des PWM entre 0 et 255
+  DUTY_CYCLE1 = constrain(DUTY_CYCLE1, 0, 255);
+  DUTY_CYCLE2 = constrain(DUTY_CYCLE2, 0, 255);
+
+  // Mettre à jour le rapport cyclique PWM
+  analogWrite(SIGNAL1, (int)DUTY_CYCLE1);
+  analogWrite(SIGNAL2, (int)DUTY_CYCLE2);
+
+  // Mettre à jour la puissance précédente et la tension précédente
+  previousPower = currentPower;
+  previousVoltage = currentVoltage;
+
+  // Afficher les valeurs sur le moniteur série
+  Serial.print("Tension: ");
+  Serial.print(currentVoltage);
+  Serial.print("V Courant: ");
+  Serial.print(currentCurrent);
+  Serial.print("A Puissance: ");
+  Serial.print(currentPower);
+  Serial.print("W Rapport Cyclique 1: ");
+  Serial.println(DUTY_CYCLE1);
+  Serial.print("Rapport Cyclique 2: ");
+  Serial.println(DUTY_CYCLE2);
+
+  delay(1000);
+
+  // Changer la fréquence CPU (optionnel mais déplacé ici)
+  setCpuFrequencyMhz(80);
+
+
+
+  // Re-tester l’I2C (inutile à chaque loop, mais conservé à ta demande)
+  if (!Wire.begin(SDA_PIN, SCL_PIN)) {
+    Serial.print("E: ");
+    Serial.println("I2C non initialisé");
+  } else {
+    Serial.print("I: ");
+    Serial.println("I2C initialisé");
+  }
+
+  // Réinitialiser le capteur INA219 (non conseillé mais conservé à ta demande)
+  if (!ina219.begin()) {
+    Serial.print("E: ");
+    Serial.println("Failed to find INA219 chip");
+    while (1) { delay(10); }
+  } else {
+    ina219.setCalibration_32V_2A();
+    Serial.print("I: ");
+    Serial.println("INA219 initialisé et calibré pour utilisation: 32V,2A");
+  }
+
+  // Re-configure PWM (déjà fait au début, mais tu voulais le garder)
+  Serial.println("I: Initialisation PWM 1 et 2...");
+  pinMode(SIGNAL1, OUTPUT);
+  pinMode(SIGNAL2, OUTPUT);
+  analogWrite(SIGNAL1, (int)DUTY_CYCLE1);
+  Serial.println(" sur 255");
+  Serial.println("I: PWM 1 et 2 configuré");
+}
+
+// function to print a device address
+void printAddress(DeviceAddress deviceAddress) {
+  for (uint8_t i = 0; i < 8; i++) {
+    if (deviceAddress[i] < 16) Serial.print("0");
+    Serial.print(deviceAddress[i], HEX);
+  }
+}

@@ -1196,9 +1196,118 @@ fait la dernière fois :
 
 à faire cette fois : 
 
-- faire un montage qui permet de tester l'algo ? 
+- faire un montage qui permet de tester l'algo ? Est ce utile ? 
+- Ajouter le tableau des ppts dans l'algo => Non 
+- Récuperer le code de contrôle global pour y ajouter l'aklgo de modif du rapport cyclique 
 
-Est ce utile ? 
 
 
 
+- Ajouter le tableau des ppts dans l'algo => donner une cible à l'algo 
+
+pour le moment cet algo fonctionne sur le principe d'oberver les pertubations  => utiliser le tableau de valeurs de réference de mppt reviendrait à converger vers une cible
+
+- voir tableau convergence VS 
+
+----------on arrete tout ------------
+On doit pourvoir utiliser un panneau solaire differents +  on a vu l'influence de facteur exterieurs == on ne doit pas avoir une donnée fixe d'entrée.
+
+
+- Récuperer le code de contrôle global pour y ajouter l'aklgo de modif du rapport cyclique 
+----Code adaptation rapport cyclique---- et ---controle_all_esp32 (journal de bord Simon)----
+
+Le code de simon est pret : je peux tester l'algo sur la cîble finale. 
+
+On veut mesurer la puissance fournie aux resistances. 
+
+On va placer l'oscillo à leur place => pas le temps
+
+
+
+
+
+
+Je debug le merge de code  :
+C:\Users\melim\Documents\Etude\POLYTECH\4A\S7\Projet électronique\32\32.ino: In function 'void setup()':
+C:\Users\melim\Documents\Etude\POLYTECH\4A\S7\Projet électronique\32\32.ino:42:3: error: 'ledcSetup' was not declared in this scope
+C:\Users\melim\Documents\Etude\POLYTECH\4A\S7\Projet électronique\32\32.ino:43:3: error: 'ledcAttachPin' was not declared in this scope; did you mean 'ledcAttach'?
+
+exit status 1
+
+
+Je n'arrive pas à transférer le code : j'essaie un code super simple.
+
+Je désinstalle IDLE 
+
+
+--- une première erreur disparait-- 
+
+----la carte cible n'était pas la bonne ---
+
+
+Le code se téleverse :
+Writing at 0x0004dc69... (90 %)
+Writing at 0x00054459... (100 %)
+Wrote 283728 bytes (149894 compressed) at 0x00010000 in 2.2 seconds (effective 1012.8 kbit/s)...
+Hash of data verified.
+
+Leaving...
+Hard resetting via RTS pin...
+---------- Modification du programme poursuite du mppt : utilisation de analogwrite au lieu de ledc fonction
+
+
+voir --Montage essai code poursuite mppt-- Observation du fct à partir de 10V 
+test :
+
+On observe des variations du (des, car il y a 2 zones) du rapport cyclique , en focntion de la variation de la 
+tension. 
+Lorsque la tension est stable les rapports sont quasi stables
+
+Après quelqules minutes on observe qu'ils tendent vers 255, pourquoi ? 
+
+
+
+cas 1 = tension augmente  puissance  augmente ; Rapport cyclique dimminue => 
+
+Tension: 14.99V Courant: 0.06A Puissance: 0.90W Rapport Cyclique 1: 183.00
+Rapport Cyclique 2: 183.00
+I: I2C initialisé
+I: INA219 initialisé et calibré pour utilisation: 32V,2A
+I: Initialisation PWM 1 et 2...
+ sur 255
+I: PWM 1 et 2 configuré
+Tension: 15.99V Courant: 0.06A Puissance: 1.00W Rapport Cyclique 1: 182.00
+Rapport Cyclique 2: 182.00
+I: I2C initialisé
+I: INA219 initialisé et calibré pour utilisation: 32V,2A
+I: Initialisation PWM 1 et 2...
+ sur 255
+I: PWM 1 et 2 configuré
+Tension: 16.99V Courant: 0.06A Puissance: 1.10W Rapport Cyclique 1: 181.00
+Rapport Cyclique 2: 181.00
+I: I2C initialisé
+
+
+Cas 2 : tension dimune puissance diminue => rapport de cycle augmente  
+Tension: 21.98V Courant: 0.08A Puissance: 1.69W Rapport Cyclique 1: 178.00
+Rapport Cyclique 2: 178.00
+I: I2C initialisé
+I: INA219 initialisé et calibré pour utilisation: 32V,2A
+I: Initialisation PWM 1 et 2...
+ sur 255
+I: PWM 1 et 2 configuré
+Tension: 19.99V Courant: 0.07A Puissance: 1.45W Rapport Cyclique 1: 179.00
+Rapport Cyclique 2: 179.00
+I: I2C initialisé
+I: INA219 initialisé et calibré pour utilisation: 32V,2A
+I: Initialisation PWM 1 et 2...
+ sur 255
+I: PWM 1 et 2 configuré
+Tension: 19.99V Courant: 0.07A Puissance: 1.45W Rapport Cyclique 1: 180.00
+Rapport Cyclique 2: 180.00
+I: I2C initialisé
+I: INA219 initialisé et calibré pour utilisation: 32V,2A
+I: Initialisation PWM 1 et 2...
+ sur 255
+I: PWM 1 et 2 configuré
+Tension: 17.99V Courant: 0.07A Puissance: 1.21W Rapport Cyclique 1: 181.00
