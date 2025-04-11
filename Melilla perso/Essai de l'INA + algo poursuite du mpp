@@ -92,3 +92,5 @@ void loop() {
   // Attendre un peu avant la prochaine lecture
   delay(1000);
 }
+
+==> uniformisation des valeurs 
