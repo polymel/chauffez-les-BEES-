@@ -12,8 +12,8 @@ Adafruit_INA219 ina219;
 #define FREQ_PWM1 400000 
 #define FREQ_PWM2 FREQ_PWM1
 
-float DUTY_CYCLE1 = 50;
-float DUTY_CYCLE2 = 20;
+float DUTY_CYCLE1 = 255/2;
+float DUTY_CYCLE2 = 255/2;
 
 // Définition des broches I2C
 #define SDA_PIN 21
@@ -103,13 +103,7 @@ void loop() {
   // Changer la fréquence CPU (optionnel mais déplacé ici)
   setCpuFrequencyMhz(80);
 
-  // Tu n’as pas besoin de re-faire Serial.begin() ici :
-  /*
-  Serial.begin(115200);
-  while (!Serial) {
-    delay(1);
-  }
-  */
+
 
   // Re-tester l’I2C (inutile à chaque loop, mais conservé à ta demande)
   if (!Wire.begin(SDA_PIN, SCL_PIN)) {
