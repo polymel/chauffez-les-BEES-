@@ -1196,9 +1196,23 @@ fait la dernière fois :
 
 à faire cette fois : 
 
-- faire un montage qui permet de tester l'algo ? 
+- faire un montage qui permet de tester l'algo ? Est ce utile ? 
+- Ajouter le tableau des ppts dans l'algo => Non 
+- Récuperer le code de contrôle global pour y ajouter l'aklgo de modif du rapport cyclique 
 
-Est ce utile ? 
 
+
+
+- Ajouter le tableau des ppts dans l'algo => donner une cible à l'algo 
+
+pour le moment cet algo fonctionne sur le principe d'oberver les pertubations  => utiliser le tableau de valeurs de réference de mppt reviendrait à converger vers une cible
+
+- voir tableau convergence VS 
+
+----------on arrete tout ------------
+On doit pourvoir utiliser un panneau solaire differents +  on a vu l'influence de facteur exterieurs == on ne doit pas avoir une donnée fixe d'entrée.
+
+
+- Récuperer le code de contrôle global pour y ajouter l'aklgo de modif du rapport cyclique 
 
 
