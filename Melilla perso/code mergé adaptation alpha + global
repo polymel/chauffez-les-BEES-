@@ -1,0 +1,85 @@
+#include <Wire.h>
+#include <Adafruit_INA219.h>
+#include <Arduino.h>
+
+// Initialisation de l'INA219
+Adafruit_INA219 ina219;
+
+// Définition des broches
+#define SDA_PIN 21
+#define SCL_PIN 22
+#define PWM_PIN 25  // Broche PWM
+
+// Paramètres PWM
+#define PWM_FREQ 5000         // Fréquence PWM
+#define PWM_CHANNEL 0         // Canal PWM
+#define PWM_RESOLUTION 10     // Résolution (10 bits -> 0 à 1023)
+
+// Variable globale pour le rapport cyclique
+float pwmValue = 0.5; // 50% de duty cycle au départ
+
+void setup() {
+  setCpuFrequencyMhz(80); // Facultatif : baisse la fréquence CPU pour économies d'énergie
+
+  Serial.begin(115200);
+  while (!Serial) delay(1);
+  Serial.println("ESP32 démarré");
+
+  // Initialisation I2C
+  Wire.begin(SDA_PIN, SCL_PIN);
+  Serial.println("I2C initialisé");
+
+  // Initialisation INA219
+  if (!ina219.begin()) {
+    Serial.println("Erreur: INA219 non détecté");
+    while (1) delay(10);
+  } else {
+    ina219.setCalibration_32V_2A(); // Calibrage pour 32V/2A
+    Serial.println("INA219 initialisé et calibré (32V, 2A)");
+  }
+
+  // Configuration PWM
+  ledcSetup(PWM_CHANNEL, PWM_FREQ, PWM_RESOLUTION);
+  ledcAttachPin(PWM_PIN, PWM_CHANNEL);
+  ledcWrite(PWM_CHANNEL, (int)(pwmValue * 1023)); // Duty cycle initial
+  Serial.println("PWM configuré");
+}
+
+void loop() {
+  // Lire tension et courant
+  float currentVoltage = ina219.getBusVoltage_V();
+  float currentCurrent = ina219.getCurrent_mA() / 1000.0; // En Ampères
+
+  // Calcul de puissance
+  float currentPower = currentVoltage * currentCurrent;
+
+  // Stockage des valeurs précédentes (static => conservées entre boucles)
+  static float previousPower = currentPower;
+  static float previousVoltage = currentVoltage;
+
+  // Logique d'ajustement du rapport cyclique
+  if (currentPower > previousPower) {
+    pwmValue += (currentVoltage > previousVoltage) ? -0.01 : 0.01;
+  } else {
+    pwmValue += (currentVoltage > previousVoltage) ? -0.01 : 0.01;
+  }
+
+  // Limiter entre 0.0 et 1.0
+  pwmValue = constrain(pwmValue, 0.0, 1.0);
+
+  // Appliquer le nouveau rapport cyclique
+  int pwmDutyCycle = (int)(pwmValue * 1023);  // Conversion en 10 bits
+  ledcWrite(PWM_CHANNEL, pwmDutyCycle);
+
+  // Mise à jour des valeurs précédentes
+  previousPower = currentPower;
+  previousVoltage = currentVoltage;
+
+  // Affichage sur le port série
+  Serial.print("Tension: "); Serial.print(currentVoltage); Serial.print(" V | ");
+  Serial.print("Courant: "); Serial.print(currentCurrent); Serial.print(" A | ");
+  Serial.print("Puissance: "); Serial.print(currentPower); Serial.print(" W | ");
+  Serial.print("Duty: "); Serial.print(pwmValue * 100); Serial.println(" %");
+
+  delay(1000); // Attendre avant la prochaine mesure
+}
