@@ -1,0 +1,43 @@
+15:27:35.308 -> �ets Jul 29 2019 12:21:46
+15:27:35.308 -> 
+15:27:35.308 -> rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+15:27:35.308 -> configsip: 0, SPIWP:0xee
+15:27:35.308 -> clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+15:27:35.308 -> mode:DIO, clock div:1
+15:27:35.308 -> load:0x3fff0030,len:4916
+15:27:35.308 -> load:0x40078000,len:16492
+15:27:35.308 -> load:0x40080400,len:4
+15:27:35.308 -> load:0x40080404,len:3524
+15:27:35.308 -> entry 0x400805b8
+15:27:35.403 -> ESP32 connected to UART
+15:27:35.621 -> Locating temp sensors devices...Found 4 devices.
+15:27:35.621 -> 
+15:27:35.621 -> Found device 0 with address: 2820D4D90F000024
+15:27:35.657 -> Found device 1 with address: 288CD4D90F000005
+15:27:35.657 -> Found device 2 with address: 2811D4D90F0000FE
+15:27:35.735 -> Found device 3 with address: 28392CD90F000071
+15:27:35.735 -> I2C initialisé
+15:27:35.735 -> INA219 initialisé
+15:27:36.381 -> Capteur: 0
+15:27:36.381 -> M: 21.94°C
+15:27:36.428 -> Capteur: 1
+15:27:36.428 -> M: 21.00°C
+15:27:36.474 -> Capteur: 2
+15:27:36.474 -> M: 21.62°C
+15:27:36.519 -> Capteur: 3
+15:27:36.519 -> M: 21.50°C
+15:27:36.551 -> Bus Voltage:   13.96 V
+15:27:36.551 -> Shunt Voltage: 39.32 mV
+15:27:36.551 -> Load Voltage:  14.00 V
+15:27:36.551 -> Current:       353.00 mA
+15:27:36.551 -> Power:         4928.00 mW
+15:27:36.551 -> 
+15:27:39.182 -> Capteur: 0
+15:27:39.182 -> M: 22.00°C
+15:27:39.229 -> Capteur: 1
+15:27:39.229 -> M: 21.00°C
+15:27:39.266 -> Capteur: 2
+15:27:39.266 -> M: 21.69°C
+15:27:39.351 -> Capteur: 3
+15:27:39.351 -> M: 21.50°C
+15:27:39.351 -> Bus Voltage:   13.96 V
