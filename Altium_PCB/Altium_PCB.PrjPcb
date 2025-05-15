@@ -117,7 +117,7 @@ GenerateClassCluster=0
 DocumentUniqueId=IVTHVBHN
 
 [Document5]
-DocumentPath=CAMtastic1.Cam
+DocumentPath=CAMtastic3.Cam
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -134,7 +134,7 @@ GenerateClassCluster=0
 DocumentUniqueId=
 
 [Document6]
-DocumentPath=CAMtastic2.Cam
+DocumentPath=CAMtastic4.Cam
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -159,86 +159,154 @@ DocumentPath=Project Outputs for Altium_PCB\Design Rule Check - PCB_bee.html
 DItemRevisionGUID=
 
 [GeneratedDocument3]
-DocumentPath=Project Outputs for Altium_PCB\NC Drill\PCB_bee.DRR
+DocumentPath=Project Outputs for Altium_PCB\PCB_bee.1
 DItemRevisionGUID=
 
 [GeneratedDocument4]
-DocumentPath=Project Outputs for Altium_PCB\PCB_bee.DRR
+DocumentPath=Project Outputs for Altium_PCB\NC Drill\PCB_bee.DRR
 DItemRevisionGUID=
 
 [GeneratedDocument5]
-DocumentPath=Project Outputs for Altium_PCB\Gerber\PCB_bee.EXTREP
+DocumentPath=Project Outputs for Altium_PCB\PCB_bee.DRR
 DItemRevisionGUID=
 
 [GeneratedDocument6]
-DocumentPath=Project Outputs for Altium_PCB\PCB_bee.EXTREP
+DocumentPath=Project Outputs for Altium_PCB\Gerber\PCB_bee.EXTREP
 DItemRevisionGUID=
 
 [GeneratedDocument7]
-DocumentPath=Project Outputs for Altium_PCB\PCB_bee.GBL
+DocumentPath=Project Outputs for Altium_PCB\PCB_bee.EXTREP
 DItemRevisionGUID=
 
 [GeneratedDocument8]
-DocumentPath=Project Outputs for Altium_PCB\PCB_bee.GBO
+DocumentPath=Project Outputs for Altium_PCB\PCB_bee.GBL
 DItemRevisionGUID=
 
 [GeneratedDocument9]
-DocumentPath=Project Outputs for Altium_PCB\PCB_bee.GBP
+DocumentPath=Project Outputs for Altium_PCB\PCB_bee.GBO
 DItemRevisionGUID=
 
 [GeneratedDocument10]
-DocumentPath=Project Outputs for Altium_PCB\PCB_bee.GBS
+DocumentPath=Project Outputs for Altium_PCB\PCB_bee.GBP
 DItemRevisionGUID=
 
 [GeneratedDocument11]
-DocumentPath=Project Outputs for Altium_PCB\PCB_bee.GKO
+DocumentPath=Project Outputs for Altium_PCB\PCB_bee.GBS
 DItemRevisionGUID=
 
 [GeneratedDocument12]
-DocumentPath=Project Outputs for Altium_PCB\PCB_bee.GM
+DocumentPath=Project Outputs for Altium_PCB\PCB_bee.GD1
 DItemRevisionGUID=
 
 [GeneratedDocument13]
-DocumentPath=Project Outputs for Altium_PCB\PCB_bee.GTL
+DocumentPath=Project Outputs for Altium_PCB\PCB_bee.GG1
 DItemRevisionGUID=
 
 [GeneratedDocument14]
-DocumentPath=Project Outputs for Altium_PCB\PCB_bee.GTO
+DocumentPath=Project Outputs for Altium_PCB\PCB_bee.GKO
 DItemRevisionGUID=
 
 [GeneratedDocument15]
-DocumentPath=Project Outputs for Altium_PCB\PCB_bee.GTP
+DocumentPath=Project Outputs for Altium_PCB\PCB_bee.GM
 DItemRevisionGUID=
 
 [GeneratedDocument16]
-DocumentPath=Project Outputs for Altium_PCB\PCB_bee.GTS
+DocumentPath=Project Outputs for Altium_PCB\PCB_bee.GM1
 DItemRevisionGUID=
 
 [GeneratedDocument17]
-DocumentPath=Project Outputs for Altium_PCB\NC Drill\PCB_bee.LDP
+DocumentPath=Project Outputs for Altium_PCB\PCB_bee.GM2
 DItemRevisionGUID=
 
 [GeneratedDocument18]
-DocumentPath=Project Outputs for Altium_PCB\PCB_bee.LDP
+DocumentPath=Project Outputs for Altium_PCB\PCB_bee.GM3
 DItemRevisionGUID=
 
 [GeneratedDocument19]
-DocumentPath=Project Outputs for Altium_PCB\Gerber\PCB_bee.REP
+DocumentPath=Project Outputs for Altium_PCB\PCB_bee.GM4
 DItemRevisionGUID=
 
 [GeneratedDocument20]
-DocumentPath=Project Outputs for Altium_PCB\PCB_bee.REP
+DocumentPath=Project Outputs for Altium_PCB\PCB_bee.GM5
 DItemRevisionGUID=
 
 [GeneratedDocument21]
-DocumentPath=Project Outputs for Altium_PCB\NC Drill\PCB_bee.TXT
+DocumentPath=Project Outputs for Altium_PCB\PCB_bee.GM11
 DItemRevisionGUID=
 
 [GeneratedDocument22]
-DocumentPath=Project Outputs for Altium_PCB\PCB_bee.TXT
+DocumentPath=Project Outputs for Altium_PCB\PCB_bee.GM12
 DItemRevisionGUID=
 
 [GeneratedDocument23]
+DocumentPath=Project Outputs for Altium_PCB\PCB_bee.GM13
+DItemRevisionGUID=
+
+[GeneratedDocument24]
+DocumentPath=Project Outputs for Altium_PCB\PCB_bee.GM14
+DItemRevisionGUID=
+
+[GeneratedDocument25]
+DocumentPath=Project Outputs for Altium_PCB\PCB_bee.GM15
+DItemRevisionGUID=
+
+[GeneratedDocument26]
+DocumentPath=Project Outputs for Altium_PCB\PCB_bee.GM16
+DItemRevisionGUID=
+
+[GeneratedDocument27]
+DocumentPath=Project Outputs for Altium_PCB\PCB_bee.GM20
+DItemRevisionGUID=
+
+[GeneratedDocument28]
+DocumentPath=Project Outputs for Altium_PCB\PCB_bee.GM24
+DItemRevisionGUID=
+
+[GeneratedDocument29]
+DocumentPath=Project Outputs for Altium_PCB\PCB_bee.GML
+DItemRevisionGUID=
+
+[GeneratedDocument30]
+DocumentPath=Project Outputs for Altium_PCB\PCB_bee.GTL
+DItemRevisionGUID=
+
+[GeneratedDocument31]
+DocumentPath=Project Outputs for Altium_PCB\PCB_bee.GTO
+DItemRevisionGUID=
+
+[GeneratedDocument32]
+DocumentPath=Project Outputs for Altium_PCB\PCB_bee.GTP
+DItemRevisionGUID=
+
+[GeneratedDocument33]
+DocumentPath=Project Outputs for Altium_PCB\PCB_bee.GTS
+DItemRevisionGUID=
+
+[GeneratedDocument34]
+DocumentPath=Project Outputs for Altium_PCB\NC Drill\PCB_bee.LDP
+DItemRevisionGUID=
+
+[GeneratedDocument35]
+DocumentPath=Project Outputs for Altium_PCB\PCB_bee.LDP
+DItemRevisionGUID=
+
+[GeneratedDocument36]
+DocumentPath=Project Outputs for Altium_PCB\Gerber\PCB_bee.REP
+DItemRevisionGUID=
+
+[GeneratedDocument37]
+DocumentPath=Project Outputs for Altium_PCB\PCB_bee.REP
+DItemRevisionGUID=
+
+[GeneratedDocument38]
+DocumentPath=Project Outputs for Altium_PCB\NC Drill\PCB_bee.TXT
+DItemRevisionGUID=
+
+[GeneratedDocument39]
+DocumentPath=Project Outputs for Altium_PCB\PCB_bee.TXT
+DItemRevisionGUID=
+
+[GeneratedDocument40]
 DocumentPath=Project Outputs for Altium_PCB\Pick Place for PCB_bee.txt
 DItemRevisionGUID=
 
@@ -536,7 +604,47 @@ OutputName7=Drill Drawing/Guides
 OutputDocumentPath7=
 OutputVariantName7=[No Variations]
 OutputDefault7=0
-PageOptions7=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|PrintScale=1.00|XCorrection=1.00|YCorrection=1.00|PrintKind=1|BorderSize=5000000|LeftOffset=0|BottomOffset=0|Orientation=2|PaperLength=1000|PaperWidth=1000|Scale=100|PaperSource=7|PrintQuality=-3|MediaType=1|DitherType=10|PrintScaleMode=1|PaperKind=A4|PaperIndex=9
+PageOptions7=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|PrintScale=1.05|XCorrection=1.00|YCorrection=1.00|PrintKind=1|BorderSize=5000000|LeftOffset=0|BottomOffset=0|Orientation=2|PaperLength=1000|PaperWidth=1000|Scale=100|PaperSource=7|PrintQuality=-3|MediaType=1|DitherType=10|PrintScaleMode=1|PaperKind=A4|PaperIndex=9
+Configuration7_Name1=ForceUpdateSettings
+Configuration7_Item1=False
+Configuration7_Name2=OutputConfigurationParameter1
+Configuration7_Item2=DesignatorDisplayMode=Physical|PrintArea=DesignExtent|PrintAreaLowerLeftCornerX=0|PrintAreaLowerLeftCornerY=0|PrintAreaUpperRightCornerX=0|PrintAreaUpperRightCornerY=0|Record=PcbPrintView|DocumentPath=C:\Users\SimonBressot\OneDrive - bizofficeonecorp\Documents\Polytech Nice\chauffez-les-BEES-\Altium_PCB\PCB_bee.PcbDoc
+Configuration7_Name3=OutputConfigurationParameter2
+Configuration7_Item3=IncludeBoardCutouts=False|IncludeBottomLayerComponents=True|IncludeMultiLayerComponents=True|IncludeTopLayerComponents=True|IncludeViewports=True|Index=0|Mirror=False|Name=Drill Drawing For (Top Layer - Bottom Layer)|PadNumberFontSize=14|Record=PcbPrintOut|ShowHoles=False|ShowPadNets=False|ShowPadNumbers=False|SubstituteFonts=False|DocumentPath=C:\Users\SimonBressot\OneDrive - bizofficeonecorp\Documents\Polytech Nice\chauffez-les-BEES-\Altium_PCB\PCB_bee.PcbDoc
+Configuration7_Name4=OutputConfigurationParameter3
+Configuration7_Item4=CArc=Full|CFill=Full|Comment=Full|Coordinate=Full|CPad=Full|CRegion=Full|CText=Full|CTrack=Full|CVia=Full|Designator=Full|Dimension=Full|DLayer1=TopLayer|DLayer2=BottomLayer|DrillType=Regular|FArc=Full|FFill=Full|FPad=Full|FRegion=Full|FText=Full|FTrack=Full|FVia=Full|Layer=DrillDrawing|Polygon=Full|PrintOutIndex=0|Record=PcbPrintLayer|DocumentPath=C:\Users\SimonBressot\OneDrive - bizofficeonecorp\Documents\Polytech Nice\chauffez-les-BEES-\Altium_PCB\PCB_bee.PcbDoc
+Configuration7_Name5=OutputConfigurationParameter4
+Configuration7_Item5=CArc=Full|CFill=Full|Comment=Full|Coordinate=Full|CPad=Full|CRegion=Full|CText=Full|CTrack=Full|CVia=Full|Designator=Full|Dimension=Full|DLayer1=TopLayer|DLayer2=BottomLayer|DrillType=Regular|FArc=Full|FFill=Full|FPad=Full|FRegion=Full|FText=Full|FTrack=Full|FVia=Full|Layer=Mechanical1|Polygon=Full|PrintOutIndex=0|Record=PcbPrintLayer|DocumentPath=C:\Users\SimonBressot\OneDrive - bizofficeonecorp\Documents\Polytech Nice\chauffez-les-BEES-\Altium_PCB\PCB_bee.PcbDoc
+Configuration7_Name6=OutputConfigurationParameter5
+Configuration7_Item6=CArc=Full|CFill=Full|Comment=Full|Coordinate=Full|CPad=Full|CRegion=Full|CText=Full|CTrack=Full|CVia=Full|Designator=Full|Dimension=Full|DLayer1=TopLayer|DLayer2=BottomLayer|DrillType=Regular|FArc=Full|FFill=Full|FPad=Full|FRegion=Full|FText=Full|FTrack=Full|FVia=Full|Layer=Mechanical2|Polygon=Full|PrintOutIndex=0|Record=PcbPrintLayer|DocumentPath=C:\Users\SimonBressot\OneDrive - bizofficeonecorp\Documents\Polytech Nice\chauffez-les-BEES-\Altium_PCB\PCB_bee.PcbDoc
+Configuration7_Name7=OutputConfigurationParameter6
+Configuration7_Item7=CArc=Full|CFill=Full|Comment=Full|Coordinate=Full|CPad=Full|CRegion=Full|CText=Full|CTrack=Full|CVia=Full|Designator=Full|Dimension=Full|DLayer1=TopLayer|DLayer2=BottomLayer|DrillType=Regular|FArc=Full|FFill=Full|FPad=Full|FRegion=Full|FText=Full|FTrack=Full|FVia=Full|Layer=Mechanical3|Polygon=Full|PrintOutIndex=0|Record=PcbPrintLayer|DocumentPath=C:\Users\SimonBressot\OneDrive - bizofficeonecorp\Documents\Polytech Nice\chauffez-les-BEES-\Altium_PCB\PCB_bee.PcbDoc
+Configuration7_Name8=OutputConfigurationParameter7
+Configuration7_Item8=CArc=Full|CFill=Full|Comment=Full|Coordinate=Full|CPad=Full|CRegion=Full|CText=Full|CTrack=Full|CVia=Full|Designator=Full|Dimension=Full|DLayer1=TopLayer|DLayer2=BottomLayer|DrillType=Regular|FArc=Full|FFill=Full|FPad=Full|FRegion=Full|FText=Full|FTrack=Full|FVia=Full|Layer=Mechanical5|Polygon=Full|PrintOutIndex=0|Record=PcbPrintLayer|DocumentPath=C:\Users\SimonBressot\OneDrive - bizofficeonecorp\Documents\Polytech Nice\chauffez-les-BEES-\Altium_PCB\PCB_bee.PcbDoc
+Configuration7_Name9=OutputConfigurationParameter8
+Configuration7_Item9=CArc=Full|CFill=Full|Comment=Full|Coordinate=Full|CPad=Full|CRegion=Full|CText=Full|CTrack=Full|CVia=Full|Designator=Full|Dimension=Full|DLayer1=TopLayer|DLayer2=BottomLayer|DrillType=Regular|FArc=Full|FFill=Full|FPad=Full|FRegion=Full|FText=Full|FTrack=Full|FVia=Full|Layer=Mechanical11|Polygon=Full|PrintOutIndex=0|Record=PcbPrintLayer|DocumentPath=C:\Users\SimonBressot\OneDrive - bizofficeonecorp\Documents\Polytech Nice\chauffez-les-BEES-\Altium_PCB\PCB_bee.PcbDoc
+Configuration7_Name10=OutputConfigurationParameter9
+Configuration7_Item10=CArc=Full|CFill=Full|Comment=Full|Coordinate=Full|CPad=Full|CRegion=Full|CText=Full|CTrack=Full|CVia=Full|Designator=Full|Dimension=Full|DLayer1=TopLayer|DLayer2=BottomLayer|DrillType=Regular|FArc=Full|FFill=Full|FPad=Full|FRegion=Full|FText=Full|FTrack=Full|FVia=Full|Layer=Mechanical13|Polygon=Full|PrintOutIndex=0|Record=PcbPrintLayer|DocumentPath=C:\Users\SimonBressot\OneDrive - bizofficeonecorp\Documents\Polytech Nice\chauffez-les-BEES-\Altium_PCB\PCB_bee.PcbDoc
+Configuration7_Name11=OutputConfigurationParameter10
+Configuration7_Item11=CArc=Full|CFill=Full|Comment=Full|Coordinate=Full|CPad=Full|CRegion=Full|CText=Full|CTrack=Full|CVia=Full|Designator=Full|Dimension=Full|DLayer1=TopLayer|DLayer2=BottomLayer|DrillType=Regular|FArc=Full|FFill=Full|FPad=Full|FRegion=Full|FText=Full|FTrack=Full|FVia=Full|Layer=Mechanical15|Polygon=Full|PrintOutIndex=0|Record=PcbPrintLayer|DocumentPath=C:\Users\SimonBressot\OneDrive - bizofficeonecorp\Documents\Polytech Nice\chauffez-les-BEES-\Altium_PCB\PCB_bee.PcbDoc
+Configuration7_Name12=OutputConfigurationParameter11
+Configuration7_Item12=IncludeBoardCutouts=False|IncludeBottomLayerComponents=True|IncludeMultiLayerComponents=True|IncludeTopLayerComponents=True|IncludeViewports=True|Index=1|Mirror=False|Name=Drill Guide For (Top Layer - Bottom Layer)|PadNumberFontSize=14|Record=PcbPrintOut|ShowHoles=False|ShowPadNets=False|ShowPadNumbers=False|SubstituteFonts=False|DocumentPath=C:\Users\SimonBressot\OneDrive - bizofficeonecorp\Documents\Polytech Nice\chauffez-les-BEES-\Altium_PCB\PCB_bee.PcbDoc
+Configuration7_Name13=OutputConfigurationParameter12
+Configuration7_Item13=CArc=Full|CFill=Full|Comment=Full|Coordinate=Full|CPad=Full|CRegion=Full|CText=Full|CTrack=Full|CVia=Full|Designator=Full|Dimension=Full|DLayer1=TopLayer|DLayer2=BottomLayer|DrillType=Regular|FArc=Full|FFill=Full|FPad=Full|FRegion=Full|FText=Full|FTrack=Full|FVia=Full|Layer=DrillGuide|Polygon=Full|PrintOutIndex=1|Record=PcbPrintLayer|DocumentPath=C:\Users\SimonBressot\OneDrive - bizofficeonecorp\Documents\Polytech Nice\chauffez-les-BEES-\Altium_PCB\PCB_bee.PcbDoc
+Configuration7_Name14=OutputConfigurationParameter13
+Configuration7_Item14=CArc=Full|CFill=Full|Comment=Full|Coordinate=Full|CPad=Full|CRegion=Full|CText=Full|CTrack=Full|CVia=Full|Designator=Full|Dimension=Full|DLayer1=TopLayer|DLayer2=BottomLayer|DrillType=Regular|FArc=Full|FFill=Full|FPad=Full|FRegion=Full|FText=Full|FTrack=Full|FVia=Full|Layer=Mechanical1|Polygon=Full|PrintOutIndex=1|Record=PcbPrintLayer|DocumentPath=C:\Users\SimonBressot\OneDrive - bizofficeonecorp\Documents\Polytech Nice\chauffez-les-BEES-\Altium_PCB\PCB_bee.PcbDoc
+Configuration7_Name15=OutputConfigurationParameter14
+Configuration7_Item15=CArc=Full|CFill=Full|Comment=Full|Coordinate=Full|CPad=Full|CRegion=Full|CText=Full|CTrack=Full|CVia=Full|Designator=Full|Dimension=Full|DLayer1=TopLayer|DLayer2=BottomLayer|DrillType=Regular|FArc=Full|FFill=Full|FPad=Full|FRegion=Full|FText=Full|FTrack=Full|FVia=Full|Layer=Mechanical2|Polygon=Full|PrintOutIndex=1|Record=PcbPrintLayer|DocumentPath=C:\Users\SimonBressot\OneDrive - bizofficeonecorp\Documents\Polytech Nice\chauffez-les-BEES-\Altium_PCB\PCB_bee.PcbDoc
+Configuration7_Name16=OutputConfigurationParameter15
+Configuration7_Item16=CArc=Full|CFill=Full|Comment=Full|Coordinate=Full|CPad=Full|CRegion=Full|CText=Full|CTrack=Full|CVia=Full|Designator=Full|Dimension=Full|DLayer1=TopLayer|DLayer2=BottomLayer|DrillType=Regular|FArc=Full|FFill=Full|FPad=Full|FRegion=Full|FText=Full|FTrack=Full|FVia=Full|Layer=Mechanical3|Polygon=Full|PrintOutIndex=1|Record=PcbPrintLayer|DocumentPath=C:\Users\SimonBressot\OneDrive - bizofficeonecorp\Documents\Polytech Nice\chauffez-les-BEES-\Altium_PCB\PCB_bee.PcbDoc
+Configuration7_Name17=OutputConfigurationParameter16
+Configuration7_Item17=CArc=Full|CFill=Full|Comment=Full|Coordinate=Full|CPad=Full|CRegion=Full|CText=Full|CTrack=Full|CVia=Full|Designator=Full|Dimension=Full|DLayer1=TopLayer|DLayer2=BottomLayer|DrillType=Regular|FArc=Full|FFill=Full|FPad=Full|FRegion=Full|FText=Full|FTrack=Full|FVia=Full|Layer=Mechanical5|Polygon=Full|PrintOutIndex=1|Record=PcbPrintLayer|DocumentPath=C:\Users\SimonBressot\OneDrive - bizofficeonecorp\Documents\Polytech Nice\chauffez-les-BEES-\Altium_PCB\PCB_bee.PcbDoc
+Configuration7_Name18=OutputConfigurationParameter17
+Configuration7_Item18=CArc=Full|CFill=Full|Comment=Full|Coordinate=Full|CPad=Full|CRegion=Full|CText=Full|CTrack=Full|CVia=Full|Designator=Full|Dimension=Full|DLayer1=TopLayer|DLayer2=BottomLayer|DrillType=Regular|FArc=Full|FFill=Full|FPad=Full|FRegion=Full|FText=Full|FTrack=Full|FVia=Full|Layer=Mechanical11|Polygon=Full|PrintOutIndex=1|Record=PcbPrintLayer|DocumentPath=C:\Users\SimonBressot\OneDrive - bizofficeonecorp\Documents\Polytech Nice\chauffez-les-BEES-\Altium_PCB\PCB_bee.PcbDoc
+Configuration7_Name19=OutputConfigurationParameter18
+Configuration7_Item19=CArc=Full|CFill=Full|Comment=Full|Coordinate=Full|CPad=Full|CRegion=Full|CText=Full|CTrack=Full|CVia=Full|Designator=Full|Dimension=Full|DLayer1=TopLayer|DLayer2=BottomLayer|DrillType=Regular|FArc=Full|FFill=Full|FPad=Full|FRegion=Full|FText=Full|FTrack=Full|FVia=Full|Layer=Mechanical13|Polygon=Full|PrintOutIndex=1|Record=PcbPrintLayer|DocumentPath=C:\Users\SimonBressot\OneDrive - bizofficeonecorp\Documents\Polytech Nice\chauffez-les-BEES-\Altium_PCB\PCB_bee.PcbDoc
+Configuration7_Name20=OutputConfigurationParameter19
+Configuration7_Item20=CArc=Full|CFill=Full|Comment=Full|Coordinate=Full|CPad=Full|CRegion=Full|CText=Full|CTrack=Full|CVia=Full|Designator=Full|Dimension=Full|DLayer1=TopLayer|DLayer2=BottomLayer|DrillType=Regular|FArc=Full|FFill=Full|FPad=Full|FRegion=Full|FText=Full|FTrack=Full|FVia=Full|Layer=Mechanical15|Polygon=Full|PrintOutIndex=1|Record=PcbPrintLayer|DocumentPath=C:\Users\SimonBressot\OneDrive - bizofficeonecorp\Documents\Polytech Nice\chauffez-les-BEES-\Altium_PCB\PCB_bee.PcbDoc
 OutputType8=CompositeDrill
 OutputName8=Composite Drill Drawing
 OutputDocumentPath8=
@@ -568,7 +676,7 @@ OutputDefault12=0
 Configuration12_Name1=ForceUpdateSettings
 Configuration12_Item1=False
 Configuration12_Name2=OutputConfigurationParameter1
-Configuration12_Item2=AddToAllLayerClasses.Set= |AddToAllPlots.Set=SerializeLayerHash.Version~2,ClassName~TPlotLayerStateArray|BoardID=IVTHVBHN|CentrePlots=False|DrillDrawingSymbol=GraphicsSymbol|DrillDrawingSymbolSize=500000|EmbeddedApertures=True|FilmBorderSize=10000000|FilmXSize=200000000|FilmYSize=160000000|FlashAllFills=False|FlashPadShapes=True|G54OnApertureChange=False|GenerateDRCRulesFile=False|GenerateDRCRulesFile=False|GenerateReliefShapes=True|GenerateReports=True|GerberUnit=Metric|GerberUnit=Metric|IncludeUnconnectedMidLayerPads=True|LayerClassesMirror.Set= |LayerClassesPlot.Set= |LeadingAndTrailingZeroesMode=SuppressLeadingZeroes|MaxApertureSize=2500000|MergePadAndRegion=False|MinusApertureTolerance=50|MinusApertureTolerance=50|Mirror.Set=SerializeLayerHash.Version~2,ClassName~TPlotLayerStateArray|MirrorDrillDrawingPlots=False|MirrorDrillGuidePlots=False|NoRegularPolygons=False|NumberOfDecimals=4|NumberOfDecimals=4|OptimizeChangeLocationCommands=True|OptimizeChangeLocationCommands=True|OriginPosition=Relative|OutputFormat=Different|Panelize=False|Plot.Set=SerializeLayerHash.Version~2,ClassName~TPlotLayerStateArray,16777217~1,16842751~1,16973830~1,16973831~1,16973834~1,16973835~1,16973832~1,16973833~1,16973837~1|PlotBoardProfile=True|PlotBoardProfileFileName= |PlotPositivePlaneLayers=False|PlotUsedDrillDrawingLayerPairs=False|PlotUsedDrillGuideLayerPairs=False|PlusApertureTolerance=50|PlusApertureTolerance=50|Record=GerberView|SoftwareArcs=False|Sorted=False|Sorted=False|UncheckPlotDrillDrawingLayerPair0_Backdrill=False|UncheckPlotDrillDrawingLayerPair0_Checked=False|UncheckPlotDrillDrawingLayerPair0_DrillType=Regular|UncheckPlotDrillDrawingLayerPair0_FileName= |UncheckPlotDrillDrawingLayerPair0_HighLayer=Bottom Layer|UncheckPlotDrillDrawingLayerPair0_LowLayer=Top Layer|UncheckPlotDrillGuideLayerPair0_Backdrill=False|UncheckPlotDrillGuideLayerPair0_Checked=False|UncheckPlotDrillGuideLayerPair0_DrillType=Regular|UncheckPlotDrillGuideLayerPair0_FileName= |UncheckPlotDrillGuideLayerPair0_HighLayer=Bottom Layer|UncheckPlotDrillGuideLayerPair0_LowLayer=Top Layer|DocumentPath=C:\Users\SimonBressot\OneDrive - bizofficeonecorp\Documents\Polytech Nice\chauffez-les-BEES-\Altium_PCB\PCB_bee.PcbDoc
+Configuration12_Item2=AddToAllLayerClasses.Set= |AddToAllPlots.Set=SerializeLayerHash.Version~2,ClassName~TPlotLayerStateArray|BoardID=IVTHVBHN|CentrePlots=False|DrillDrawingSymbol=GraphicsSymbol|DrillDrawingSymbolSize=500000|EmbeddedApertures=True|FilmBorderSize=10000000|FilmXSize=200000000|FilmYSize=160000000|FlashAllFills=False|FlashPadShapes=True|G54OnApertureChange=False|GenerateDRCRulesFile=False|GenerateDRCRulesFile=False|GenerateReliefShapes=True|GenerateReports=True|GerberUnit=Metric|GerberUnit=Metric|IncludeUnconnectedMidLayerPads=True|LayerClassesMirror.Set= |LayerClassesPlot.Set="All Layers","Component Layers","Signal Layers","Electrical Layers"|LeadingAndTrailingZeroesMode=SuppressLeadingZeroes|MaxApertureSize=2500000|MergePadAndRegion=False|MinusApertureTolerance=50|MinusApertureTolerance=50|Mirror.Set=SerializeLayerHash.Version~2,ClassName~TPlotLayerStateArray|MirrorDrillDrawingPlots=False|MirrorDrillGuidePlots=False|NoRegularPolygons=False|NumberOfDecimals=4|NumberOfDecimals=4|OptimizeChangeLocationCommands=True|OptimizeChangeLocationCommands=True|OriginPosition=Relative|OutputFormat=Different|Panelize=False|Plot.Set=SerializeLayerHash.Version~2,ClassName~TPlotLayerStateArray,16777217~1,16842751~1,16973830~1,16973831~1,16973834~1,16973835~1,16973832~1,16973833~1,16973837~1|PlotBoardProfile=True|PlotBoardProfileFileName= |PlotDrillDrawingLayerPair0_Backdrill=False|PlotDrillDrawingLayerPair0_Checked=True|PlotDrillDrawingLayerPair0_DrillType=Regular|PlotDrillDrawingLayerPair0_FileName= |PlotDrillDrawingLayerPair0_HighLayer=Bottom Layer|PlotDrillDrawingLayerPair0_LowLayer=Top Layer|PlotDrillGuideLayerPair0_Backdrill=False|PlotDrillGuideLayerPair0_Checked=True|PlotDrillGuideLayerPair0_DrillType=Regular|PlotDrillGuideLayerPair0_FileName= |PlotDrillGuideLayerPair0_HighLayer=Bottom Layer|PlotDrillGuideLayerPair0_LowLayer=Top Layer|PlotPositivePlaneLayers=False|PlotUsedDrillDrawingLayerPairs=False|PlotUsedDrillGuideLayerPairs=False|PlusApertureTolerance=50|PlusApertureTolerance=50|Record=GerberView|SoftwareArcs=False|Sorted=False|Sorted=False|DocumentPath=C:\Users\SimonBressot\OneDrive - bizofficeonecorp\Documents\Polytech Nice\chauffez-les-BEES-\Altium_PCB\PCB_bee.PcbDoc
 
 [OutputGroup6]
 Name=Report Outputs
