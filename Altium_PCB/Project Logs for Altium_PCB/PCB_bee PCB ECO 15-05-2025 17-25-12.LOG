@@ -1,0 +1,76 @@
+Removed Pin From Net: NetName=Powerline Pin=J1-1
+Removed Pin From Net: NetName=GND Pin=J1-2
+Removed Pin From Net: NetName=Powerline2 Pin=QP1-1
+Removed Pin From Net: NetName=NetQN1_3 Pin=QP1-3
+Removed Pin From Net: NetName=Powerline2 Pin=QP2-1
+Removed Pin From Net: NetName=NetQN2_3 Pin=QP2-3
+Removed Pin From Net: NetName=Powerline2 Pin=R_shunt1-1
+Removed Pin From Net: NetName=Powerline Pin=R_shunt1-2
+Removed Pin From Net: NetName=DATA_Temp Pin=U2-14
+Change Component Footprint: Designator=R3 Old Footprint=RESC3116X70X50ML13T20 New Footprint=SMD-1206-RES
+Change Component Footprint: Designator=R_shunt1 Old Footprint=RESC6432X89X76NL25T25 New Footprint=FP-WSLT2512-MFG
+Change Component Comment : Designator=R3 Old Comment=Resistor 4k7 +/-1% 1206 250 mW New Comment=ERJ-8ENF4700V
+Change Component Comment : Designator=R_shunt1 Old Comment=WSLT2512R5000FEA New Comment=WSLT2512R1000FEA
+Change Managed Component Library Link : Designator=R3 Old VaultGUID=5B26D8F1-A3CD-4BE8-A3DB-4974E817109B New VaultGUID=5B26D8F1-A3CD-4BE8-A3DB-4974E817109B Old ItemGUID=28060701-8810-4FD9-AAE4-40444EA2DA47 New ItemGUID=4FCD9984-5435-4815-9C18-6B2834870788 Old RevisionGUID=11ECD93A-9BFD-4569-9635-CED27FCFA37E New RevisionGUID=FD55C521-6482-40BB-B220-59B280854328
+Change Managed Component Library Link : Designator=R_shunt1 Old VaultGUID=B7D15EC3-160A-466F-A46C-7801FE6295A7 New VaultGUID=B7D15EC3-160A-466F-A46C-7801FE6295A7 Old ItemGUID=BC40F631-F3CA-4343-9013-4B67183C67FC New ItemGUID=E676AD17-EB2C-429E-90E0-77D7189687A6 Old RevisionGUID=06ADDD64-5E45-4483-AD2A-E215912C7447 New RevisionGUID=ABCE618F-E857-4453-94F8-28D1E223C7B2
+Change component parameters: Designator = "R3" ("R3"); Footprint = "RESC3116X70X50ML13T20"; UniqueID = "\GTDXDMYV" ("\GTDXDMYV")
+Change component parameters (AddParameter): Name = "@ qty"; Value = "1500"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Composition"; Value = "Thick Film"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Datasheets"; Value = "http://industrial.panasonic.com/www-cgi/jvcr13pz.cgi?E+PZ+3+AOA0002+ERJ8ENF4700V+7+WW"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Digi-Key Part Number"; Value = "P470FCT-ND"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Factory Stock"; Value = "0"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Failure Rate"; Value = "-"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Features"; Value = "Automotive AEC-Q200"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Height - Seated (Max)"; Value = "0.028" (0.70mm)"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Image"; Value = "//media.digikey.com/Renders/Panasonic%20Renders/ERJ-1206%20Pkg.jpg"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "Panasonic Electronic Components"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Minimum Quantity"; Value = "1"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Number of Terminations"; Value = "2"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Operating Temperature"; Value = "-55°C ~ 155°C"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Package / Case"; Value = "1206 (3216 Metric)"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Packaging"; Value = "Cut Tape (CT)"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Part Number"; Value = "ERJ-8ENF4700V"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Part Status"; Value = "Active"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Power (Watts)"; Value = "0.25W, 1/4W"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Quantity Available"; Value = "55045"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Series"; Value = "ERJ"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Size / Dimension"; Value = "0.126" L x 0.063" W (3.20mm x 1.60mm)"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Supplier Device Package"; Value = "1206"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Temperature Coefficient"; Value = "±100ppm/°C"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Tolerance"; Value = "±1%"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Unit Price (USD)"; Value = "0.00933"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "470"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R_shunt1" ("R_shunt1"); Footprint = "RESC6432X89X76NL25T25"; UniqueID = "\GGCUSCCZ" ("\GGCUSCCZ")
+Change component parameters (AddParameter): Name = "Case Code (Imperial)"; Value = "2512"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Case Code (Metric)"; Value = "6432"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Case/Package"; Value = "2512"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Composition"; Value = "Metal Element, Metal Strip"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Depth"; Value = "3.18mm"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Height"; Value = "635µm"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Lead Free"; Value = "Lead Free"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Length"; Value = "6.3mm"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Max Operating Temperature"; Value = "275°C"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Min Operating Temperature"; Value = "-65°C"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mount"; Value = "Surface Mount"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "NexarPartId"; Value = "44432532"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Packaging"; Value = "Cut Tape"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Power Rating"; Value = "1W"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Radiation Hardening"; Value = "No"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "REACH SVHC"; Value = "Unknown"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Resistance"; Value = "100mO"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "RoHS"; Value = "Compliant"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Schedule B"; Value = "8533210045, 8533210045"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Temperature Coefficient"; Value = "75ppm/°C"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Termination"; Value = "SMD/SMT"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Tolerance"; Value = "1%"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Weight"; Value = "40.511469mg"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Width"; Value = "3.2mm"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=GND Pin=J1-1
+Added Pin To Net: NetName=Powerline Pin=J1-2
+Added Pin To Net: NetName=NetQN1_3 Pin=QP1-1
+Added Pin To Net: NetName=Powerline2 Pin=QP1-3
+Added Pin To Net: NetName=NetQN2_3 Pin=QP2-1
+Added Pin To Net: NetName=Powerline2 Pin=QP2-3
+Added Pin To Net: NetName=Powerline Pin=R_shunt1-1
+Added Pin To Net: NetName=Powerline2 Pin=R_shunt1-2
+Added Pin To Net: NetName=DATA_Temp Pin=U2-13

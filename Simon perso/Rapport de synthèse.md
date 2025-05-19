@@ -85,6 +85,30 @@ M: Mesure
 
 7/4/25:
 
+Pour augmenter la tension Vconsigne , on fait une pwm sur le Cmos avec un rapport cyclique augmentant en sachant que 60% de rapport cyclique <=> 0.6*Vcourt circuit panneau sol
+
+Methode de MPPT applicable: 3 facons différentes
+
+FOCV: % de open circuit volt => marche mais que à 70/80% de rendement
+
+PO: perturb & oberverve => plus précis car mesure la puissance en permanence et avec un variation de la tension sur la commande, on regarde si la puissance augmente ou diminue et en fonction de ce que l'on observe , on rechage la tension
+
+exemple: si on a vàtester=Vconsigne+0.1 et que l'on voit que P(I sol*Vsol)augmente alors Vconsigne+=0.1 sinon on fait l'inverse  !!! au local maximal dans cette méthode
+
+IC:  incremental Conductance: comme PO mais utilise directement la dérivée de la puissance par rapport à la tension pour déterminer avec précision la position du MPP.
+
+si dP/dV>0 => V a augmenter
+
+si dP/dV<0 => V a diminuer
+
+si dP/dV=0 on est sur MPP donc pas bouger
+
+!!! MPP change beaucoup en fonction de la lum
+
+comment prendre en compte ca: compare avec une variation de tension en dessous et au dessus de celle précédente et on se dirige juste vers le P le plus grand
+
+si dP new > dP old , alors le dV doit etre plus grand ( à voir de cmb)
+
 vitesse de basculement des transistors:
 
 Nmos BSS138: td(on)+tr+td(off)+ tf  (max)= 5+18+36+14= 73ns= >13,6986 MHz
@@ -99,7 +123,6 @@ Perr% =0,5-1%
 
 Verr=+- 50-100uA (&0,1-0,5uA/°C)
 
-
 Les équations au dessus sont la pour savoir la vitesse de basculement max que l'on peut avoir pour le nmos et pmos afin de ne pas avoir le temps de monter ou descendre à la bonne tension.
 
 Cela sera utile pour la pwm ( étant en developpement)
@@ -108,7 +131,7 @@ Cela sera utile pour la pwm ( étant en developpement)
 
 recup adresse des 4 sensors avec ce code: [Detecteur adresse capteur DS18B20](Simon perso\Detecteur_adresse_DS18B20)
 
-pwm seulement avec analogwrite : trop de complication car pas d'utilisation de ledc à partire de la V3 d'arduino... 
+pwm seulement avec analogwrite : trop de complication car pas d'utilisation de ledc à partire de la V3 d'arduino...
 
 finir carte n°2 de laura et mel avec les changements à effectuer sur la carte, un checking des connexions et un test de téléversage du code controle_all_esp32 directement sur la carte.
 
@@ -117,8 +140,6 @@ faire 2 connecteurs xt60 female male connexion pour les 2 cartes afin de se conn
 création d'un wifi (chauffez-les-BEES-) sur la carte avec page associée(192.168.1.2), sans mdp
 
 affichage dynamique des val ina219 et de la température toutes les 3.1sec, voir photo correspondante: [Page Web screenshot](Simon perso\Screenshot_Simon\Page html d'affichage des donées via wifi direct.png)(l'affichage sur le terminal reste le même)
-
-
 
 bilan des taches à accomplir:
 
